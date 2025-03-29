@@ -85,3 +85,82 @@ Kompilator języka zostanie zaimplementowany z backendem generującym kod w jęz
 
 Projekt zakłada stworzenie nowoczesnego języka programowania z prostą, ale solidną infrastrukturą kompilacyjną. Kluczowe funkcje, takie jak obsługa generyków, listy dwukierunkowej i interfejs do baz danych, uczynią go wygodnym w zastosowaniach praktycznych.
 
+# Szczegóły techniczne projektu
+
+## Lista tokenów - TO DO zrobic żeby bylo bardziej nowoczesne np zaminiec begin end na klamerki
+
+### 1. Słowa kluczowe
+```
+KW_BEGIN       "begin"
+KW_END         "end"
+KW_IF          "if"
+KW_THEN        "then"
+KW_ELSE        "else"
+KW_LOOP        "loop"
+KW_WHILE       "while"
+KW_FOR         "for"
+KW_IN          "in"
+KW_RETURN      "return"
+KW_PROCEDURE   "procedure"
+KW_FUNCTION    "function"
+KW_IS          "is"
+KW_TYPE        "type"
+KW_RECORD      "record"
+KW_ARRAY       "array"
+KW_OF          "of"
+KW_VAR         "var"
+KW_CONST       "const"
+KW_GENERIC     "generic"
+KW_PACKAGE     "package"
+KW_USE         "use"
+KW_WITH        "with"
+KW_PRIVATE     "private"
+KW_PROTECTED   "protected"
+KW_OVERRIDE    "override"
+KW_CLASS       "class"
+KW_NEW         "new"
+```
+
+### 2. Operatory i symbole
+```
+OP_ASSIGN      ":="
+OP_EQUAL       "="
+OP_NOT_EQUAL   "/="
+OP_LESS        "<"
+OP_LESS_EQ     "<="
+OP_GREATER     ">"
+OP_GREATER_EQ  ">="
+OP_PLUS        "+"
+OP_MINUS       "-"
+OP_MUL         "*"
+OP_DIV         "/"
+OP_MOD         "mod"
+OP_AND         "and"
+OP_OR          "or"
+OP_NOT         "not"
+OP_DOT         "."
+OP_COLON       ":"
+OP_SEMICOLON   ";"
+OP_COMMA       ","
+OP_ARROW       "=>"
+OP_LPAREN      "("
+OP_RPAREN      ")"
+OP_LBRACKET    "["
+OP_RBRACKET    "]"
+```
+### 3. Literały
+```
+LIT_INT        "[0-9]+"
+LIT_FLOAT      "[0-9]+\\.[0-9]+"
+LIT_STRING     "\"[^\"]*\""
+LIT_CHAR       "'[a-zA-Z0-9]'"
+```
+### 4. Identyfikatory
+```
+IDENTIFIER     "[a-zA-Z_][a-zA-Z0-9_]*"
+```
+5. Komentarze
+```
+COMMENT        "--.*"
+MULTILINE_COMMENT  "/* .*? */"
+```
