@@ -7,36 +7,51 @@ options {
 // Top-level program rule
 program: statement* EOF;
 
-// Statement can be either an if-statement or an assignment
-statement: ifStatement | assignment;
+// Statement can be either an if-statement or an assignment or loop statement or procedure declaration
+statement
+    : ifStatement
+    | loopStatement
+    | assignment
+    | procedureDeclaration
+    ;
 
-// if with optional elsif and else
+// if statement
 ifStatement
-    : 'if' condition 'then' statement*
-      ('elsif' condition 'then' statement*)*
-      ('else' statement*)?
-      'end' 'if' ';'
+: KW_IF condition KW_THEN statement*
+      (KW_ELSE statement*)?
+      KW_END KW_IF OP_SEMICOLON
+    ;
+// while loop 
+loopStatement
+    : KW_WHILE condition KW_LOOP statement* KW_END KW_LOOP OP_SEMICOLON
     ;
 
 
 assignment
-    : ID ':=' expr ';'
+    : IDENTIFIER OP_ASSIGN expression OP_SEMICOLON
+    ;
+
+//procedure declaration
+procedureDeclaration
+    : KW_PROCEDURE IDENTIFIER KW_IS KW_BEGIN statement* KW_END KW_PROCEDURE OP_SEMICOLON
     ;
 
 condition
-    : expr relop expr
+    : expression relop expression
     ;
 
-expr
-    : ID
-    | INT
+expression
+    : IDENTIFIER
+    | LIT_INT
+    | LIT_FLOAT
+    | LIT_STRING
     ;
 
 relop
-    : '>'
-    | '<'
-    | '>='
-    | '<='
-    | '='
-    | "/="
+    : OP_EQUAL
+    | OP_NOT_EQUAL
+    | OP_LESS
+    | OP_LESS_EQ
+    | OP_GREATER
+    | OP_GREATER_EQ
     ;
