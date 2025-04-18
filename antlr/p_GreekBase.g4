@@ -1,4 +1,4 @@
-parser grammar GreekBase;
+parser grammar p_GreekBase;
 
 options {
     tokenVocab = l_GreekBase;
@@ -17,13 +17,29 @@ statement
 
 // if statement
 ifStatement
-: KW_IF condition KW_THEN statement*
-      (KW_ELSE statement*)?
-      KW_END KW_IF OP_SEMICOLON
+: KW_IF condition
+    (
+        (KW_THEN statement*
+        (KW_ELSE statement*)?
+        KW_END KW_IF OP_SEMICOLON)
+
+        |
+
+        ('{' statement*
+        (KW_ELSE statement*)?
+        '}')
+    )
     ;
 // while loop 
 loopStatement
-    : KW_WHILE condition KW_LOOP statement* KW_END KW_LOOP OP_SEMICOLON
+    : KW_WHILE condition
+    (
+        (KW_LOOP statement* (KW_END KW_LOOP OP_SEMICOLON))
+
+        |
+
+        ('{' statement* '}')
+    )
     ;
 
 

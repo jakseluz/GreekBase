@@ -28,6 +28,8 @@ KW_PROTECTED  : 'protected';
 KW_OVERRIDE   : 'override';
 KW_CLASS      : 'class';
 KW_NEW        : 'new';
+KW_LCURL : '{';
+KW_RCURL : '}';
 
 // Symbols and operators
 OP_ASSIGN     : ':=';
