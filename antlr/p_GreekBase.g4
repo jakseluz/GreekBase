@@ -35,7 +35,12 @@ assignment
 procedureDeclaration
     : KW_PROCEDURE IDENTIFIER KW_IS KW_BEGIN statement* KW_END KW_PROCEDURE OP_SEMICOLON
     ;
-
+// function declaration
+functionDeclaration
+    : KW_FUNCTION IDENTIFIER OP_LPAREN (IDENTIFIER (OP_COMMA IDENTIFIER)*)? OP_RPAREN
+      OP_COLON IDENTIFIER
+      KW_IS KW_BEGIN statement* KW_END KW_FUNCTION OP_SEMICOLON
+    ;
 condition
     : expression relop expression
     ;
