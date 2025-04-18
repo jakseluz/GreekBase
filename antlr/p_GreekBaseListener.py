@@ -62,6 +62,15 @@ class p_GreekBaseListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by p_GreekBase#functionDeclaration.
+    def enterFunctionDeclaration(self, ctx:p_GreekBase.FunctionDeclarationContext):
+        pass
+
+    # Exit a parse tree produced by p_GreekBase#functionDeclaration.
+    def exitFunctionDeclaration(self, ctx:p_GreekBase.FunctionDeclarationContext):
+        pass
+
+
     # Enter a parse tree produced by p_GreekBase#condition.
     def enterCondition(self, ctx:p_GreekBase.ConditionContext):
         pass
