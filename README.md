@@ -19,7 +19,7 @@ Język obiektowy inspirowany Adą, kompilowany do C lub LLVM, z obsługą typów
 ├── main.py # Główne wejście do programu – uruchamia parser i interpreter
 ├── .gitignore 
 ├── LICENSE 
-└── README.md # Dokumentacja projektu
+└── README.md # Dokumentacja projektu 
 
 ```
 ## 1. Wprowadzenie
