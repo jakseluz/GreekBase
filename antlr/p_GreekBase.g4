@@ -14,6 +14,13 @@ statement
     | assignment
     | procedureDeclaration
     ;
+//statements that does not allow making declarations of functions or procedures
+nonDeclarativeStatement
+    :
+    ifStatement
+    | loopStatement
+    | assignment
+    ;
 literal
     : LIT_INT
     | LIT_FLOAT
@@ -25,14 +32,14 @@ literal
 ifStatement
 : KW_IF condition
     (
-        (KW_THEN statement*
-        (KW_ELSE statement*)?
+        (KW_THEN nonDeclarativeStatement*
+        (KW_ELSE nonDeclarativeStatement*)?
         KW_END KW_IF OP_SEMICOLON)
 
         |
 
-        ( KW_LCURL statement*
-        (KW_ELSE statement*)?
+        ( KW_LCURL nonDeclarativeStatement*
+        (KW_ELSE nonDeclarativeStatement*)?
         KW_RCURL)
     )
     ;
@@ -40,11 +47,11 @@ ifStatement
 loopStatement
     : KW_WHILE condition
     (
-        (KW_LOOP statement* (KW_END KW_LOOP OP_SEMICOLON))
+        (KW_LOOP nonDeclarativeStatement* (KW_END KW_LOOP OP_SEMICOLON))
 
         |
 
-        (KW_LCURL statement* KW_RCURL)
+        (KW_LCURL nonDeclarativeStatement* KW_RCURL)
     )
     ;
 
@@ -54,13 +61,7 @@ assignment
     ;
 // ----procedure specific things----
 //TODO: our procedure declaration doesn't have declarative part yet e.g. you have to declare temporary values in body of the procedure
-//statements allowed in procedure block
-procedureStatement
-    :
-    ifStatement
-    | loopStatement
-    | assignment
-    ;
+
 //formal parameter part is for defining in and out variables
 formalParameterPart
     :
@@ -78,7 +79,7 @@ modeSpecifier
 //procedure declaration
 procedureDeclaration
     : KW_PROCEDURE IDENTIFIER formalParameterPart? KW_IS KW_BEGIN
-    procedureStatement*
+    nonDeclarativeStatement*
     KW_END KW_PROCEDURE OP_SEMICOLON
     ;
 // ---- function ----
