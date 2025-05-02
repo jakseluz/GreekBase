@@ -1,7 +1,7 @@
 from antlr4 import *
-from .p_GreekBaseListener import p_GreekBaseListener #import wewnątrz pakietu (kropka na poczatku)
-from .p_GreekBaseParser import p_GreekBaseParser #import wewnątrz pakietu (kropka na poczatku)
-class GreekInterpreter(p_GreekBaseListener):
+from .p_GreekBaseVisitor import p_GreekBaseVisitor #import wewnątrz pakietu (kropka na poczatku)
+from .p_GreekBase import p_GreekBase #import wewnątrz pakietu (kropka na poczatku)
+class GreekInterpreter(p_GreekBaseVisitor):
     def __init__(self):
         self.memory = {} # Dictionary for variables
     def enterAssignment(self, ctx:p_GreekBaseParser.AssignmentContext):
