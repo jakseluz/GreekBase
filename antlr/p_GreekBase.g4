@@ -49,7 +49,11 @@ assignment
 
 //procedure declaration
 procedureDeclaration
-    : KW_PROCEDURE IDENTIFIER KW_IS KW_BEGIN statement* KW_END KW_PROCEDURE OP_SEMICOLON
+    : KW_PROCEDURE IDENTIFIER KW_IS KW_BEGIN
+    (ifStatement
+    | loopStatement
+    | assignment)*
+    KW_END KW_PROCEDURE OP_SEMICOLON
     ;
 // function declaration
 functionDeclaration

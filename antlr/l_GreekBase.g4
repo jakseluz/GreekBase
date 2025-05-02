@@ -9,6 +9,7 @@ KW_LOOP       : 'loop';
 KW_WHILE      : 'while';
 KW_FOR        : 'for';
 KW_IN         : 'in';
+KW_OUT        : 'out';
 KW_RETURN     : 'return';
 KW_PROCEDURE  : 'procedure';
 KW_FUNCTION   : 'function';
