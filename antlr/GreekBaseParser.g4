@@ -1,7 +1,7 @@
-parser grammar p_GreekBase;
+parser grammar GreekBaseParser;
 
 options {
-    tokenVocab = l_GreekBase;
+    tokenVocab = GreekBaseLexer;
 }
 
 // Top-level program rule

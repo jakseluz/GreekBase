@@ -1,4 +1,4 @@
-lexer grammar l_GreekBase;
+lexer grammar GreekBaseLexer;
 // Keywords
 KW_BEGIN      : 'begin';
 KW_END        : 'end';
