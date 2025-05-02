@@ -2,7 +2,26 @@
 ## Opis projektu:
 Własny obiektowy język programowania z operacjami bazodanowymi „GreekBase”
 Język obiektowy inspirowany Adą, kompilowany do C lub LLVM, z obsługą typów generycznych, listy dwukierunkowej i biblioteki do operacji na bazach danych.
+## Struktura projektu
+```
+├── antlr/ # Katalog z wygenerowanymi i własnymi plikami do gramatyki
+│ ├── interpreter.py # Interpreter logika wykonywania kodu
+│ ├── l_GreekBase.g4 # Gramatyka dla leksyki (lexer)
+│ ├── l_GreekBase.interp # Plik pomocniczy wygenerowany przez ANTLR
+│ ├── l_GreekBase.tokens # Lista tokenów wygenerowana przez ANTLR
+│ ├── l_GreekBase.py # Lexer wygenerowany przez ANTLR
+│ ├── p_GreekBase.g4 # Gramatyka parsera
+│ ├── p_GreekBase.interp # Plik pomocniczy wygenerowany przez ANTLR
+│ ├── p_GreekBase.tokens # Lista tokenów parsera
+│ ├── p_GreekBase.py # Parser generowany przez ANTLR
+│ ├── p_GreekBaseListener.py 
+│ └── p_GreekBaseVisitor.py # Szkielet klas odwiedzających, generowany przez ANTLR
+├── main.py # Główne wejście do programu – uruchamia parser i interpreter
+├── .gitignore 
+├── LICENSE 
+└── README.md # Dokumentacja projektu
 
+```
 ## 1. Wprowadzenie
 
 ### Cel projektu
