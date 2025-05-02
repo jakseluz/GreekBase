@@ -14,6 +14,12 @@ statement
     | assignment
     | procedureDeclaration
     ;
+literal
+    : LIT_INT
+    | LIT_FLOAT
+    | LIT_CHAR
+    | LIT_STRING
+    ;
 
 // if statement
 ifStatement
@@ -25,9 +31,9 @@ ifStatement
 
         |
 
-        ('{' statement*
+        ( KW_LCURL statement*
         (KW_ELSE statement*)?
-        '}')
+        KW_RCURL)
     )
     ;
 // while loop 
@@ -38,7 +44,7 @@ loopStatement
 
         |
 
-        ('{' statement* '}')
+        (KW_LCURL statement* KW_RCURL)
     )
     ;
 
@@ -46,15 +52,36 @@ loopStatement
 assignment
     : IDENTIFIER OP_ASSIGN expression OP_SEMICOLON
     ;
-
+// ----procedure specific things----
+//TODO: our procedure declaration doesn't have declarative part yet e.g. you have to declare temporary values in body of the procedure
+//statements allowed in procedure block
+procedureStatement
+    :
+    ifStatement
+    | loopStatement
+    | assignment
+    ;
+//formal parameter part is for defining in and out variables
+formalParameterPart
+    :
+    OP_LPAREN parameterSpecification (OP_SEMICOLON parameterSpecification)* OP_RPAREN ;
+//parameter specification is for definining which variables should have what mode and what type
+parameterSpecification
+    : IDENTIFIER (OP_COMMA IDENTIFIER)* OP_COLON modeSpecifier literal
+    ;
+//modes can be either in, out or in out
+modeSpecifier
+    : KW_IN
+    | KW_OUT
+    | KW_IN KW_OUT
+    ;
 //procedure declaration
 procedureDeclaration
-    : KW_PROCEDURE IDENTIFIER KW_IS KW_BEGIN
-    (ifStatement
-    | loopStatement
-    | assignment)*
+    : KW_PROCEDURE IDENTIFIER formalParameterPart? KW_IS KW_BEGIN
+    procedureStatement*
     KW_END KW_PROCEDURE OP_SEMICOLON
     ;
+// ---- function ----
 // function declaration
 functionDeclaration
     : KW_FUNCTION IDENTIFIER OP_LPAREN (IDENTIFIER (OP_COMMA IDENTIFIER)*)? OP_RPAREN
