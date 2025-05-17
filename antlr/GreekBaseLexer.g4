@@ -21,6 +21,7 @@ KW_CONST      : 'const';
 KW_USE        : 'use';
 KW_WITH       : 'with';
 KW_NEW        : 'new';
+KW_PRINT     : 'print';
 KW_LCURL : '{';
 KW_RCURL : '}';
 
@@ -32,8 +33,8 @@ OP_LESS       : '<';
 OP_LESS_EQ    : '<=';
 OP_GREATER    : '>';
 OP_GREATER_EQ : '>=';
-OP_PLUS       : '+';
-OP_MINUS      : '-';
+OP_ADD       : '+';
+OP_SUB      : '-';
 OP_MUL        : '*';
 OP_DIV        : '/';
 OP_MOD        : 'mod';

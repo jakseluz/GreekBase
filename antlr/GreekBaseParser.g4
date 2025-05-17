@@ -2,32 +2,34 @@ parser grammar GreekBaseParser;
 
 options {
     tokenVocab = GreekBaseLexer;
+    visitor = true;
 }
 
 // Top-level program rule
 program: statement* EOF;
-
-// Statement can be either an if-statement or an assignment or loop statement or procedure declaration
-statement
-    : ifStatement
-    | loopStatement
-    | assignment
-    | procedureDeclaration
-    ;
-//statements that does not allow making declarations of functions or procedures
-nonDeclarativeStatement
-    :
-    ifStatement
-    | loopStatement
-    | assignment
-    ;
 literal
     : LIT_INT
     | LIT_FLOAT
     | LIT_CHAR
     | LIT_STRING
     ;
+// Statement can be either an if-statement or an assignment or loop statement or procedure declaration
+statement
+    : ifStatement
+    | loopStatement
+    | assignment
+    | procedureDeclaration
+    | printStatement
+    ;
 
+//statements that explicitly do not allow making declarations of functions or procedures
+nonDeclarativeStatement
+    :
+    ifStatement
+    | loopStatement
+    | assignment
+    ;
+// ----statements----
 // if statement
 ifStatement
 : KW_IF condition
@@ -55,7 +57,10 @@ loopStatement
     )
     ;
 
-
+// print statement
+printStatement
+    : KW_PRINT expression OP_SEMICOLON
+    ;
 assignment
     : IDENTIFIER OP_ASSIGN expression OP_SEMICOLON
     ;
@@ -92,13 +97,20 @@ functionDeclaration
 condition
     : expression relop expression
     ;
-
+//without labels #addExpr, #subExpr, #mulExpr, #divExpr you'd have to check what's in ctx, now you can 
+//use method such as visitAddExpr, visitIdExpr, etc., these are not comments don't change them or delete them
 expression
-    : IDENTIFIER
-    | LIT_INT
-    | LIT_FLOAT
-    | LIT_STRING
+    : expression OP_ADD expression     # addExpr
+    | expression OP_SUB expression     # subExpr
+    | expression OP_MUL expression     # mulExpr
+    | expression OP_DIV expression     # divExpr
+    | OP_LPAREN expression OP_RPAREN   # parensExpr
+    | IDENTIFIER                       # idExpr
+    | LIT_INT                          # intExpr
+    | LIT_FLOAT                        # floatExpr
+    | LIT_STRING                       # stringExpr
     ;
+
 
 relop
     : OP_EQUAL

@@ -171,8 +171,8 @@ class GreekBaseLexer(Lexer):
     OP_LESS_EQ = 28
     OP_GREATER = 29
     OP_GREATER_EQ = 30
-    OP_PLUS = 31
-    OP_MINUS = 32
+    OP_ADD = 31
+    OP_SUB = 32
     OP_MUL = 33
     OP_DIV = 34
     OP_MOD = 35
@@ -216,20 +216,19 @@ class GreekBaseLexer(Lexer):
             "KW_FUNCTION", "KW_IS", "KW_TYPE", "KW_ARRAY", "KW_OF", "KW_CONST", 
             "KW_USE", "KW_WITH", "KW_NEW", "KW_LCURL", "KW_RCURL", "OP_ASSIGN", 
             "OP_EQUAL", "OP_NOT_EQUAL", "OP_LESS", "OP_LESS_EQ", "OP_GREATER", 
-            "OP_GREATER_EQ", "OP_PLUS", "OP_MINUS", "OP_MUL", "OP_DIV", 
-            "OP_MOD", "OP_AND", "OP_OR", "OP_NOT", "OP_DOT", "OP_COLON", 
-            "OP_SEMICOLON", "OP_COMMA", "OP_ARROW", "OP_LPAREN", "OP_RPAREN", 
-            "OP_LBRACKET", "OP_RBRACKET", "LIT_INT", "LIT_FLOAT", "LIT_STRING", 
-            "LIT_CHAR", "IDENTIFIER", "LINE_COMMENT", "MULTILINE_COMMENT", 
-            "WS" ]
+            "OP_GREATER_EQ", "OP_ADD", "OP_SUB", "OP_MUL", "OP_DIV", "OP_MOD", 
+            "OP_AND", "OP_OR", "OP_NOT", "OP_DOT", "OP_COLON", "OP_SEMICOLON", 
+            "OP_COMMA", "OP_ARROW", "OP_LPAREN", "OP_RPAREN", "OP_LBRACKET", 
+            "OP_RBRACKET", "LIT_INT", "LIT_FLOAT", "LIT_STRING", "LIT_CHAR", 
+            "IDENTIFIER", "LINE_COMMENT", "MULTILINE_COMMENT", "WS" ]
 
     ruleNames = [ "KW_BEGIN", "KW_END", "KW_IF", "KW_THEN", "KW_ELSE", "KW_LOOP", 
                   "KW_WHILE", "KW_FOR", "KW_IN", "KW_OUT", "KW_RETURN", 
                   "KW_PROCEDURE", "KW_FUNCTION", "KW_IS", "KW_TYPE", "KW_ARRAY", 
                   "KW_OF", "KW_CONST", "KW_USE", "KW_WITH", "KW_NEW", "KW_LCURL", 
                   "KW_RCURL", "OP_ASSIGN", "OP_EQUAL", "OP_NOT_EQUAL", "OP_LESS", 
-                  "OP_LESS_EQ", "OP_GREATER", "OP_GREATER_EQ", "OP_PLUS", 
-                  "OP_MINUS", "OP_MUL", "OP_DIV", "OP_MOD", "OP_AND", "OP_OR", 
+                  "OP_LESS_EQ", "OP_GREATER", "OP_GREATER_EQ", "OP_ADD", 
+                  "OP_SUB", "OP_MUL", "OP_DIV", "OP_MOD", "OP_AND", "OP_OR", 
                   "OP_NOT", "OP_DOT", "OP_COLON", "OP_SEMICOLON", "OP_COMMA", 
                   "OP_ARROW", "OP_LPAREN", "OP_RPAREN", "OP_LBRACKET", "OP_RBRACKET", 
                   "LIT_INT", "LIT_FLOAT", "LIT_STRING", "LIT_CHAR", "IDENTIFIER", 

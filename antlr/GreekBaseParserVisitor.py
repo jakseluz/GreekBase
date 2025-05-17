@@ -14,6 +14,11 @@ class GreekBaseParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by GreekBaseParser#literal.
+    def visitLiteral(self, ctx:GreekBaseParser.LiteralContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by GreekBaseParser#statement.
     def visitStatement(self, ctx:GreekBaseParser.StatementContext):
         return self.visitChildren(ctx)
@@ -24,11 +29,6 @@ class GreekBaseParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by GreekBaseParser#literal.
-    def visitLiteral(self, ctx:GreekBaseParser.LiteralContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by GreekBaseParser#ifStatement.
     def visitIfStatement(self, ctx:GreekBaseParser.IfStatementContext):
         return self.visitChildren(ctx)
@@ -36,6 +36,11 @@ class GreekBaseParserVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by GreekBaseParser#loopStatement.
     def visitLoopStatement(self, ctx:GreekBaseParser.LoopStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#printStatement.
+    def visitPrintStatement(self, ctx:GreekBaseParser.PrintStatementContext):
         return self.visitChildren(ctx)
 
 
@@ -74,8 +79,48 @@ class GreekBaseParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by GreekBaseParser#expression.
-    def visitExpression(self, ctx:GreekBaseParser.ExpressionContext):
+    # Visit a parse tree produced by GreekBaseParser#stringExpr.
+    def visitStringExpr(self, ctx:GreekBaseParser.StringExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#floatExpr.
+    def visitFloatExpr(self, ctx:GreekBaseParser.FloatExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#intExpr.
+    def visitIntExpr(self, ctx:GreekBaseParser.IntExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#addExpr.
+    def visitAddExpr(self, ctx:GreekBaseParser.AddExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#mulExpr.
+    def visitMulExpr(self, ctx:GreekBaseParser.MulExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#divExpr.
+    def visitDivExpr(self, ctx:GreekBaseParser.DivExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#parensExpr.
+    def visitParensExpr(self, ctx:GreekBaseParser.ParensExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#subExpr.
+    def visitSubExpr(self, ctx:GreekBaseParser.SubExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#idExpr.
+    def visitIdExpr(self, ctx:GreekBaseParser.IdExprContext):
         return self.visitChildren(ctx)
 
 
