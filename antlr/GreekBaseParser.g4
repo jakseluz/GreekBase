@@ -2,7 +2,6 @@ parser grammar GreekBaseParser;
 
 options {
     tokenVocab = GreekBaseLexer;
-    visitor = true;
 }
 
 // Top-level program rule

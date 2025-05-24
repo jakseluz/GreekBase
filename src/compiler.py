@@ -1,9 +1,8 @@
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'antlr', 'generated')))
+from GreekBaseParserVisitor import GreekBaseParserVisitor
+from GreekBaseParser import GreekBaseParser
 
-from .GreekBaseParserVisitor import GreekBaseParserVisitor
-from .GreekBaseParser import GreekBaseParser
 class GreekInterpreter(GreekBaseParserVisitor):
     def __init__(self):
         # Memory stores variable values globally and per procedure
