@@ -23,9 +23,9 @@ GreekBase
 │   └── test1.myl
 ├── output/                     ← generated C files
 │   └── test1.c
-├── main.py              		 ← main file that starts the compiler
+├── main.py                     ← main file that starts the compiler
 ├── requirements.txt
-└── README.md              	 ← brief project documentation
+└── README.md                   ← brief project documentation
 ```
 ## Details
 
