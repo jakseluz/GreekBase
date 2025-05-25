@@ -23,9 +23,9 @@ GreekBase
 │   └── test1.myl
 ├── output/                     ← generated C files
 │   └── test1.c
-├── main.py              		← main file that starts the compiler
+├── main.py              		 ← main file that starts the compiler
 ├── requirements.txt
-└── README.md              	    ← brief project documentation
+└── README.md              	 ← brief project documentation
 ```
 ## Details
 
@@ -35,7 +35,11 @@ GreekBase
 [Parser's grammar](antlr/GreekBaseParser.g4)
 
 ### 2. Tutorial
-TODO
+1. Please run
+```bash
+	./run.sh
+```
+in order to generate the parser and its tools needed later.
 
 ### 3. Example
 TODO
