@@ -2,25 +2,26 @@ import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'antlr', 'generated')))
 from GreekBaseParserVisitor import GreekBaseParserVisitor
 from GreekBaseParser import GreekBaseParser
+import ast
 
-class GreekInterpreter(GreekBaseParserVisitor):
-    def __init__(self):
-        # Memory stores variable values globally and per procedure
-        self.memory = {}
-        self.procedures = {}
-
+class GreekASTBuilder(GreekBaseParserVisitor):
     def visitProgram(self, ctx: GreekBaseParser.ProgramContext):
         # Visit all statements in the program
-        for stmt in ctx.statement():
-            self.visit(stmt)
+        return ast.Program([self.visit(stmt) for stmt in ctx.statement()])
+
+    def visitVariableDeclaration(self, ctx: GreekBaseParser.VariableDeclarationContext):
+        var_name = ctx.Identifier().getText()
+        var_type = self.visit(ctx.literal())
+        return ast.VariableDeclaration(var_type, var_name)
 
     def visitAssignment(self, ctx: GreekBaseParser.AssignmentContext):
         # Handles: IDENTIFIER := expression;
         var_name = ctx.IDENTIFIER().getText()
         value = self.visit(ctx.expression())
-        self.memory[var_name] = value
-        print(f"[assign] {var_name} := {value}")
+        return ast.Assignment(var_name, value)
 
+
+    """REMAINS OF THE INTERPRETER - to be changed"""
     def visitExpression(self, ctx: GreekBaseParser.ExpressionContext):
         # Returns value of literal or identifier
         if ctx.IDENTIFIER():
