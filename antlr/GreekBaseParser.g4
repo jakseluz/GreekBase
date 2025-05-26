@@ -38,14 +38,14 @@ nonDeclarativeStatement
 ifStatement
 : KW_IF condition
     (
-        (KW_THEN nonDeclarativeStatement*
-        (KW_ELSE nonDeclarativeStatement*)?
+        (KW_THEN thenBranch+=nonDeclarativeStatement*
+        (KW_ELSE elseBranch+=nonDeclarativeStatement*)?
         KW_END KW_IF OP_SEMICOLON)
 
         |
 
-        ( KW_LCURL nonDeclarativeStatement*
-        (KW_ELSE nonDeclarativeStatement*)?
+        ( KW_LCURL thenBranch+=nonDeclarativeStatement*
+        (KW_ELSE elseBranch+=nonDeclarativeStatement*)?
         KW_RCURL)
     )
     ;

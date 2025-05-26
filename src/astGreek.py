@@ -77,7 +77,7 @@ class Identifier(Expression):
 @dataclass
 class IfStatement(NonDeclarativeStatement):
     condition: Condition
-    then : List[NonDeclarativeStatement]
+    then_branch : List[NonDeclarativeStatement]
     else_branch: List[NonDeclarativeStatement]
 
 @dataclass

@@ -2,7 +2,7 @@ import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'antlr', 'generated')))
 from GreekBaseParserVisitor import GreekBaseParserVisitor
 from GreekBaseParser import GreekBaseParser
-import ast
+import astGreek as ast
 
 class GreekASTBuilder(GreekBaseParserVisitor):
     def visitProgram(self, ctx: GreekBaseParser.ProgramContext):
@@ -21,126 +21,93 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         return ast.Assignment(var_name, value)
 
 
-    """REMAINS OF THE INTERPRETER - to be changed"""
     def visitExpression(self, ctx: GreekBaseParser.ExpressionContext):
-        # Returns value of literal or identifier
+        if ctx.literal():
+            return self.visit(ctx.literal())
+        
+    def visitIdExpr(self, ctx: GreekBaseParser.IdExprContext):
         if ctx.IDENTIFIER():
-            var_name = ctx.IDENTIFIER().getText()
-            return self.memory.get(var_name, 0)  # default to 0 if undefined
-        elif ctx.LIT_INT():
-            return int(ctx.LIT_INT().getText())
+            return ast.Identifier(ctx.IDENTIFIER().getText())
+
+    def visitLiteral(self, ctx: GreekBaseParser.LiteralContext):
+        if ctx.LIT_INT():
+            return ast.IntLiteral(int(ctx.LIT_INT().getText()))
         elif ctx.LIT_FLOAT():
-            return float(ctx.LIT_FLOAT().getText())
+            return ast.FloatLiteral(float(ctx.LIT_FLOAT().getText()))
         elif ctx.LIT_STRING():
-            return ctx.LIT_STRING().getText().strip('"')
-        else:
-            return None
+            return ast.StringLiteral(ctx.LIT_STRING().getText().strip('"'))
+        elif ctx.LIT_CHAR():
+            return ast.CharLiteral(ctx.LIT_CHAR().getText().strip("'")[0])
 
     def visitIfStatement(self, ctx: GreekBaseParser.IfStatementContext):
+        # note that there are two possibilities of IF "scoping"
         # Handles if <cond> then {statements} [else {statements}] end if;
-        condition_result = self.visit(ctx.condition())
-        if condition_result:
-            for stmt in ctx.nonDeclarativeStatement():
-                self.visit(stmt)
-        elif ctx.KW_ELSE():
-            for stmt in ctx.nonDeclarativeStatement(1):  # 2nd block is else
-                self.visit(stmt)
+        condition = self.visit(ctx.condition())
+        then_branch = [self.visit(nondecl_stmt) for nondecl_stmt in ctx.thenBranch]
+        else_branch = [self.visit(nondecl_stmt) for nondecl_stmt in ctx.elseBranch] if ctx.elseBranch else []
+        return ast.IfStatement(condition, then_branch, else_branch)
 
     def visitLoopStatement(self, ctx: GreekBaseParser.LoopStatementContext):
         # Handles while <cond> loop {statements} end loop;
-        while self.visit(ctx.condition()):
-            for stmt in ctx.nonDeclarativeStatement():
-                self.visit(stmt)
+        condition = self.visit(ctx.condition())
+        then = [self.visit(nondecl_stmt) for nondecl_stmt in ctx.nonDeclarativeStatement()]
+        return ast.LoopStatement(condition, then)
 
     def visitCondition(self, ctx: GreekBaseParser.ConditionContext):
-        # Evaluates condition: expr <relop> expr
+        # Handles condition: expr <relop> expr
         left = self.visit(ctx.expression(0))
+        operator = ctx.relop().getText()
         right = self.visit(ctx.expression(1))
-        op = ctx.relop().getText()
-        return self.evalRelOp(left, right, op)
+        return ast.Condition(left, operator, right)
 
-    def evalRelOp(self, left, right, op):
-        # Evaluates relational operators
-        if op == "=":
-            return left == right
-        elif op == "/=":
-            return left != right
-        elif op == "<":
-            return left < right
-        elif op == "<=":
-            return left <= right
-        elif op == ">":
-            return left > right
-        elif op == ">=":
-            return left >= right
-        else:
-            raise Exception(f"Unknown operator {op}")
 
     def visitProcedureDeclaration(self, ctx: GreekBaseParser.ProcedureDeclarationContext):
         # Store the procedure definition by its name
         name = ctx.IDENTIFIER().getText()
-        self.procedures[name] = ctx
-        print(f"[define] procedure {name} stored.")
+        formalParameterPart = self.visit(ctx.formalParameterPart()) if ctx.formalParameterPart() else []
+        body = [self.visit(nondecl_stmt) for nondecl_stmt in ctx.nonDeclarativeStatement()]
+        return ast.Procedure(name, formalParameterPart, body)
 
-    def callProcedure(self, name, args):
-        # Calls a previously stored procedure
-        if name not in self.procedures:
-            raise Exception(f"Undefined procedure: {name}")
-
-        ctx = self.procedures[name]
-        param_ctx = ctx.formalParameterPart()
-        old_memory = self.memory.copy()
-
-        # Bind arguments to parameter names
-        if param_ctx:
-            param_specs = param_ctx.parameterSpecification()
-            for spec, value in zip(param_specs, args):
-                ids = [id_tok.getText() for id_tok in spec.IDENTIFIER()]
-                for id_ in ids:
-                    self.memory[id_] = value
-
-        # Run body
-        for stmt in ctx.nonDeclarativeStatement():
-            self.visit(stmt)
-
-        # Restore previous memory (no side effects)
-        self.memory = old_memory
 
     # Optional: stub for functionDeclaration if added
     def visitFunctionDeclaration(self, ctx: GreekBaseParser.FunctionDeclarationContext):
         print("[warn] Function support not implemented.")
+        # return NotImplementedError("[warn] Function support not implemented.")
+        return None
+    
     # Arithmetic
     def visitAddExpr(self, ctx: GreekBaseParser.AddExprContext):
-        return self.visit(ctx.expression(0)) + self.visit(ctx.expression(1))
+        left = self.visit(ctx.expression(0))
+        operator = '+'
+        right = self.visit(ctx.expression(1))
+        return ast.AdditionOperator(left, operator, right)
 
     def visitMinusExpr(self, ctx: GreekBaseParser.SubExprContext):
-        return self.visit(ctx.expression(0)) - self.visit(ctx.expression(1))
+        left = self.visit(ctx.expression(0))
+        operator = '-'
+        right = self.visit(ctx.expression(1))
+        return ast.AdditionOperator(left, operator, right)
 
     def visitMulExpr(self, ctx: GreekBaseParser.MulExprContext):
-        return self.visit(ctx.expression(0)) * self.visit(ctx.expression(1))
+        left = self.visit(ctx.expression(0))
+        operator = '*'
+        right = self.visit(ctx.expression(1))
+        return ast.MultiplicationOperator(left, operator, right)
 
     def visitDivExpr(self, ctx: GreekBaseParser.DivExprContext):
-        return self.visit(ctx.expression(0)) / self.visit(ctx.expression(1))
+        left = self.visit(ctx.expression(0))
+        operator = '/'
+        right = self.visit(ctx.expression(1))
+        return ast.MultiplicationOperator(left, operator, right)
 
     # Grouping
     def visitParensExpr(self, ctx: GreekBaseParser.ParensExprContext):
-        return self.visit(ctx.expression())
+        return ast.ParenthesisExpression(
+            self.visit(ctx.expression())
+        )
 
-    # Literals and identifiers
-    def visitIntExpr(self, ctx: GreekBaseParser.IntExprContext):
-        return int(ctx.LIT_INT().getText())
-
-    def visitFloatExpr(self, ctx: GreekBaseParser.FloatExprContext):
-        return float(ctx.LIT_FLOAT().getText())
-
-    def visitStringExpr(self, ctx: GreekBaseParser.StringExprContext):
-        return ctx.LIT_STRING().getText().strip('"')
-
-    def visitIdExpr(self, ctx: GreekBaseParser.IdExprContext):
-        var_name = ctx.IDENTIFIER().getText()
-        return self.memory.get(var_name, 0)
-
+    # Printing
     def visitPrintStatement(self, ctx:GreekBaseParser.PrintStatementContext):
-        text = self.visit(ctx.expression())
-        print(text)
-        return None
+        return ast.PrintStatement(
+            self.visit(ctx.expression())
+        )

@@ -54,8 +54,9 @@ OP_RBRACKET   : ']';
 // Literals
 LIT_INT       : [0-9]+;
 LIT_FLOAT     : [0-9]+ '.' [0-9]+;
-LIT_STRING    : '"' (~["\r\n])* '"';
-LIT_CHAR      : '\'' [a-zA-Z0-9] '\'';
+//LIT_STRING    : '"' (~["\r\n])* '"';
+LIT_STRING    : '"' .*? '"';
+LIT_CHAR      : '\'' . '\'';
 
 // Identifiers
 IDENTIFIER    : [a-zA-Z_] [a-zA-Z0-9_]*;

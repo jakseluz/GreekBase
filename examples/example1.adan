@@ -1,0 +1,10 @@
+x := 5;
+y := 10;
+
+if x < y then
+    x := x + 1;
+else y := y - 1;
+end if;
+
+print x;
+print y;

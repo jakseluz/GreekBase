@@ -1,7 +1,8 @@
 import sys, os
-from antlr4 import FileStream, CommonTokenStream, InputStream
+from antlr4 import FileStream, CommonTokenStream
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'antlr', 'generated')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'src')))
 
 from GreekBaseLexer import GreekBaseLexer
 from GreekBaseParser import GreekBaseParser
@@ -9,10 +10,9 @@ from ast_builder import GreekASTBuilder
 
 
 def main():
-    # input = FileStream("example.my")
-    input_stream = InputStream("x := 5; y := 10; if x < y then x := x + 1; else y := y - 1; end if; print x; print y;")
+    input_stream = FileStream(os.path.join(os.path.dirname(__file__), "examples", "example1.adan"))
 
-    lexer = GreekBaseLexer(input)
+    lexer = GreekBaseLexer(input_stream)
     token_stream = CommonTokenStream(lexer)
     parser = GreekBaseParser(token_stream)
 
