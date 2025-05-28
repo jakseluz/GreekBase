@@ -26,6 +26,9 @@ class Literal(Expression):
 class RelationOperator(ASTNode):
     pass
 
+class VariableType(ASTNode):
+    pass
+
 
 # LITERALS
 @dataclass
@@ -148,5 +151,6 @@ class Procedure(Statement):
 # variables
 @dataclass
 class VariableDeclaration(NonDeclarativeStatement):
-    varType: Literal
+    varType: VariableType
     id: Identifier
+    varValue : Literal

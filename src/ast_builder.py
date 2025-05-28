@@ -10,9 +10,26 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         return ast.Program(ctx.start.line, ctx.start.column, [self.visit(stmt) for stmt in ctx.statement()])
 
     def visitVariableDeclaration(self, ctx: GreekBaseParser.VariableDeclarationContext):
-        var_name = ctx.Identifier().getText()
-        var_type = self.visit(ctx.literal())
-        return ast.VariableDeclaration(ctx.start.line, ctx.start.column, var_type, var_name)
+        var_name = ctx.IDENTIFIER().getText()
+        var_type = self.visit(ctx.varType())
+        if ctx.expression():
+            var_value = self.visit(ctx.expression())
+        else:
+            var_value = None
+        return ast.VariableDeclaration(ctx.start.line, ctx.start.column, var_type, var_name, var_value)
+    
+    def visitVarType(self, ctx: GreekBaseParser.VarTypeContext):
+        if ctx.KW_INT():
+            return int
+        elif ctx.KW_FLOAT():
+            return float
+        elif ctx.KW_CHAR():
+            return str
+        elif ctx.KW_STRING():
+            return str
+        else:
+            return None
+
 
     def visitAssignment(self, ctx: GreekBaseParser.AssignmentContext):
         # Handles: IDENTIFIER := expression;

@@ -72,7 +72,7 @@ assignment
     ;
 
 variableDeclaration
-    : literal IDENTIFIER OP_SEMICOLON;
+    : IDENTIFIER OP_COLON varType (OP_ASSIGN expression)? OP_SEMICOLON;
 
 
 // ----procedure specific things----
@@ -134,4 +134,11 @@ relop
     | OP_LESS_EQ
     | OP_GREATER
     | OP_GREATER_EQ
+    ;
+
+varType
+    : KW_INT
+    | KW_FLOAT
+    | KW_CHAR
+    | KW_STRING
     ;

@@ -22,8 +22,12 @@ KW_USE        : 'use';
 KW_WITH       : 'with';
 KW_NEW        : 'new';
 KW_PRINT      : 'print';
-KW_LCURL : '{';
-KW_RCURL : '}';
+KW_LCURL      : '{';
+KW_RCURL      : '}';
+KW_INT        : 'int';
+KW_FLOAT      : 'float';
+KW_CHAR       : 'char';
+KW_STRING     : 'string';
 
 // Symbols and operators
 OP_ASSIGN     : ':=';
