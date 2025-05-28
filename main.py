@@ -7,6 +7,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__
 from GreekBaseLexer import GreekBaseLexer
 from GreekBaseParser import GreekBaseParser
 from ast_builder import GreekASTBuilder
+from semantic_checker import SemanticChecker
 
 
 def main():
@@ -22,6 +23,10 @@ def main():
     ast = ast_builder.visit(tree)
 
     print(ast)
+
+    checker = SemanticChecker()
+    checker.analyze(ast)
+    checker.finalise()
 
 
 if __name__ == '__main__':
