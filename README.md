@@ -21,7 +21,9 @@ GreekBase
 │       └── GreekBaseParserVisitor.py ← generated visitor (used by AST tree builder)
 ├── src/
 │   ├── ast_builder.py                ← used for generating AST tree from ANTLR tree
-│   └── astGreek.py                   ← AST tree node classes
+│   ├── astGreek.py                   ← AST tree node classes
+│   ├── semantic_checker.py           ← semantic errors handling etc.
+│   └──
 ├── examples/                         ← example source files
 ├── output/                           ← generated C source files
 ├── run.sh                            ← bash script for generating ANTLR files
@@ -40,6 +42,7 @@ GreekBase
 in order to generate the parser and its tools needed later.
 
 For now, printing the AST tree is possible.
+To do so, please run [main.py](./main.py).
 
 ### 3. Example #1
 1. Source file:
@@ -57,5 +60,5 @@ print y;
 ```
 2. AST tree:
 ```python
-Program(statements=[Assignment(id='x', value=IntLiteral(value=5)), Assignment(id='y', value=IntLiteral(value=10)), IfStatement(condition=Condition(left=Identifier(value='x'), operator='<', right=Identifier(value='y')), then_branch=[Assignment(id='x', value=AdditionOperator(left=Identifier(value='x'), operator='+', right=IntLiteral(value=1)))], else_branch=[Assignment(id='y', value=IntLiteral(value=1))]), PrintStatement(value=Identifier(value='x')), PrintStatement(value=Identifier(value='y'))])
+Program(line=1, column=0, statements=[Assignment(line=1, column=0, id='x', value=IntLiteral(line=1, column=5, value=5)), Assignment(line=2, column=0, id='y', value=IntLiteral(line=2, column=5, value=10)), IfStatement(line=4, column=0, condition=Condition(line=4, column=3, left=Identifier(line=4, column=3, value='x'), operator='<', right=Identifier(line=4, column=7, value='y')), then_branch=[Assignment(line=5, column=4, id='x', value=AdditionOperator(line=5, column=9, left=Identifier(line=5, column=9, value='x'), operator='+', right=IntLiteral(line=5, column=13, value=1)))], else_branch=[Assignment(line=6, column=5, id='y', value=AdditionOperator(line=6, column=10, left=Identifier(line=6, column=10, value='y'), operator='-', right=IntLiteral(line=6, column=14, value=1)))]), PrintStatement(line=9, column=0, value=Identifier(line=9, column=6, value='x')), PrintStatement(line=10, column=0, value=Identifier(line=10, column=6, value='y'))])
 ```

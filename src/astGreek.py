@@ -2,8 +2,10 @@ from dataclasses import dataclass
 from typing import List
 
 
+@dataclass
 class ASTNode:
-    pass
+    line: int
+    column: int
 
 class Statement(ASTNode):
     pass
