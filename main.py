@@ -8,6 +8,7 @@ from GreekBaseLexer import GreekBaseLexer
 from GreekBaseParser import GreekBaseParser
 from ast_builder import GreekASTBuilder
 from semantic_checker import SemanticChecker
+from codegen import CGenerator
 
 
 def main():
@@ -25,8 +26,14 @@ def main():
     print(ast)
 
     checker = SemanticChecker()
-    checker.analyze(ast)
+    tab = checker.analyze(ast)
     checker.finalise()
+
+    codegen = CGenerator(tab)
+    code = codegen.generate(ast)
+    
+    with open("output/example1.c", "w") as filehandler:
+        filehandler.write(code)
 
 
 if __name__ == '__main__':

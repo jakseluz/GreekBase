@@ -35,6 +35,7 @@ class SemanticChecker:
         # Undoubtedly the first node. Here the fun starts.
         for statement in node.statements:
             self.analyze(statement)
+        return self.symbol_table
     
     def analyze_VariableDeclaration(self, node: ast.VariableDeclaration):
         if(node.id in self.symbol_table):
@@ -44,6 +45,8 @@ class SemanticChecker:
                 self.errors[f"{self.RED}[Error]: {self.WHITE}Variable {node.id} redeclared with a different type than earlier ({node.varType} instead of {self.symbol_table[node.id][0]}) {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
         else:
             self.symbol_table[node.id] = (node.varType, node.varValue)
+        if(node.varValue):
+            node.varValue.type = node.varType.__name__
     
     def analyze_Assignment(self, node: ast.Assignment):
         # node_type = self.analyze(node.value)
@@ -71,6 +74,7 @@ class SemanticChecker:
     def analyze_Identifier(self, node: ast.Identifier):
         if(node.value in self.symbol_table):
             ident_val_type = self.symbol_table[node.value][0]
+            node.type = ident_val_type.__name__
             return ident_val_type
         else:
             self.errors[f"{self.RED}[ERROR]: {self.WHITE}Unknown identifier reference: {node.value} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1

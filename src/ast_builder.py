@@ -45,7 +45,7 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         
     def visitIdExpr(self, ctx: GreekBaseParser.IdExprContext):
         if ctx.IDENTIFIER():
-            return ast.Identifier(ctx.start.line, ctx.start.column, ctx.IDENTIFIER().getText())
+            return ast.Identifier(ctx.start.line, ctx.start.column, ctx.IDENTIFIER().getText(), None)
 
     def visitLiteral(self, ctx: GreekBaseParser.LiteralContext):
         if ctx.LIT_INT():

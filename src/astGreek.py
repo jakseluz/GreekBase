@@ -76,6 +76,7 @@ class ParenthesisExpression(Expression):
 @dataclass
 class Identifier(Expression):
     value: str
+    type: str
 
 
 # NON-DECLARATIVE STATEMENTS
@@ -83,7 +84,7 @@ class Identifier(Expression):
 class IfStatement(NonDeclarativeStatement):
     condition: Condition
     then_branch : List[NonDeclarativeStatement]
-    else_branch: List[NonDeclarativeStatement]
+    else_branch: List[NonDeclarativeStatement] | None
 
 @dataclass
 class LoopStatement(NonDeclarativeStatement):
@@ -98,6 +99,7 @@ class Assignment(NonDeclarativeStatement):
 @dataclass
 class PrintStatement(NonDeclarativeStatement):
     value: Expression
+    # id: str | None # TODO
 
 
 # RELATION OPERATORS
@@ -153,4 +155,4 @@ class Procedure(Statement):
 class VariableDeclaration(NonDeclarativeStatement):
     varType: VariableType
     id: Identifier
-    varValue : Literal
+    varValue : Literal | None

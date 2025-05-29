@@ -1,7 +1,6 @@
 x : int := 5;
 y : int := 10;
 x : int;
-z := 5.5;
 
 if x < y then
     x := x + 1;

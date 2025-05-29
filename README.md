@@ -23,7 +23,7 @@ GreekBase
 │   ├── ast_builder.py                ← used for generating AST tree from ANTLR tree
 │   ├── astGreek.py                   ← AST tree node classes
 │   ├── semantic_checker.py           ← semantic errors handling etc.
-│   └──
+│   └── codegen.py                    ← C (from AST) code generator
 ├── examples/                         ← example source files
 ├── output/                           ← generated C source files
 ├── run.sh                            ← bash script for generating ANTLR files
@@ -41,7 +41,8 @@ GreekBase
 	./[run.sh](./run.sh)
 in order to generate the parser and its tools needed later.
 
-For now, printing the AST tree is possible, as well as receiving semantic errors and warnings.
+For now, printing the AST tree is possible, as well as receiving semantic errors and warnings in the console.
+Output C source file is saved to ./[output/](./output/) directory if there are now [Error]s. 
 
 2. To do so, please run [main.py](./main.py).
 
@@ -51,7 +52,6 @@ For now, printing the AST tree is possible, as well as receiving semantic errors
 x : int := 5;
 y : int := 10;
 x : int;
-z := 5.5;
 
 if x < y then
     x := x + 1;
@@ -63,8 +63,26 @@ print y;
 ```
 2. AST tree:
 ```python
-Program(line=1, column=0, statements=[VariableDeclaration(line=1, column=0, varType=<class 'int'>, id='x', varValue=IntLiteral(line=1, column=11, value=5)), VariableDeclaration(line=2, column=0, varType=<class 'int'>, id='y', varValue=IntLiteral(line=2, column=11, value=10)), VariableDeclaration(line=3, column=0, varType=<class 'int'>, id='x', varValue=None), Assignment(line=4, column=0, id='z', value=FloatLiteral(line=4, column=5, value=5.5)), IfStatement(line=6, column=0, condition=Condition(line=6, column=3, left=Identifier(line=6, column=3, value='x'), operator='<', right=Identifier(line=6, column=7, value='y')), then_branch=[Assignment(line=7, column=4, id='x', value=AdditionOperator(line=7, column=9, left=Identifier(line=7, column=9, value='x'), operator='+', right=IntLiteral(line=7, column=13, value=1)))], else_branch=[Assignment(line=8, column=5, id='y', value=AdditionOperator(line=8, column=10, left=Identifier(line=8, column=10, value='y'), operator='-', right=IntLiteral(line=8, column=14, value=1)))]), PrintStatement(line=11, column=0, value=Identifier(line=11, column=6, value='x')), PrintStatement(line=12, column=0, value=Identifier(line=12, column=6, value='y'))])
+Program(line=1, column=0, statements=[VariableDeclaration(line=1, column=0, varType=<class 'int'>, id='x', varValue=IntLiteral(line=1, column=11, value=5)), VariableDeclaration(line=2, column=0, varType=<class 'int'>, id='y', varValue=IntLiteral(line=2, column=11, value=10)), VariableDeclaration(line=3, column=0, varType=<class 'int'>, id='x', varValue=None), IfStatement(line=5, column=0, condition=Condition(line=5, column=3, left=Identifier(line=5, column=3, value='x', type=None), operator='<', right=Identifier(line=5, column=7, value='y', type=None)), then_branch=[Assignment(line=6, column=4, id='x', value=AdditionOperator(line=6, column=9, left=Identifier(line=6, column=9, value='x', type=None), operator='+', right=IntLiteral(line=6, column=13, value=1)))], else_branch=[Assignment(line=7, column=5, id='y', value=AdditionOperator(line=7, column=10, left=Identifier(line=7, column=10, value='y', type=None), operator='-', right=IntLiteral(line=7, column=14, value=1)))]), PrintStatement(line=10, column=0, value=Identifier(line=10, column=6, value='x', type=None)), PrintStatement(line=11, column=0, value=Identifier(line=11, column=6, value='y', type=None))])
 ```
 3. Semantic check:
 
-![](./img/example1_semantic.png)
+![](./img/example1_semantic1.png)
+
+4. Code in C:
+```C
+#include <stdio.h>
+int main(){
+int x = 5;
+int y = 10;
+int x;
+if(x < y){
+x = x + 1;
+}else{ 
+y = y - 1;
+}
+printf("%d", x);
+printf("%d", y);
+return 0;
+}
+```
