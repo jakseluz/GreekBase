@@ -4,6 +4,6 @@ b : float := 2;
 print b;
 c : char := 'a';
 print c;
-d : string := 'ala';
+d : string := "ala";
 print d;
 
