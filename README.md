@@ -39,15 +39,20 @@ GreekBase
 ### 2. Tutorial
 1. Please run
 	./[run.sh](./run.sh)
-in order to generate the parser and its tools needed later.
+in order to generate the parser and its tools needed later, but they should be already generated in ./[antlr/generated/](./antlr/generated/).
 
+Example input files are in ./[inputs](./inputs) directory and they have .gb extension. 
 For now, printing the AST tree is possible, as well as receiving semantic errors and warnings in the console.
-Output C source file is saved to ./[output/](./output/) directory if there are now [Error]s. 
+Output C source file is (by default) saved to ./[output/](./output/) directory if there are no [Error]s. 
 
-2. To do so, please run [main.py](./main.py).
+2. You can run
+```
+python main.py --help
+```
+for more specific information.
 
 ### 3. Example #1
-1. Source file:
+1. Source file (.gb):
 ```ada
 x : int := 5;
 y : int := 10;

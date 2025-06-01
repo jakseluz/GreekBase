@@ -8,6 +8,10 @@ x = x + 1;
 }else{ 
 y = y - 1;
 }
+while(x < y){
+printf("%d", x);
+x = x + 1;
+}
 printf("%d", x);
 printf("%d", y);
 return 0;

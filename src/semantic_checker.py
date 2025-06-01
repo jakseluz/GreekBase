@@ -15,7 +15,6 @@ class SemanticChecker:
     
     def finalise(self):
         # should be called after program analyzing
-        print("\n".join([message for message in self.errors.keys()]))
         if(1 in self.errors.values()):
             exit(1)
     
@@ -35,7 +34,9 @@ class SemanticChecker:
         # Undoubtedly the first node. Here the fun starts.
         for statement in node.statements:
             self.analyze(statement)
-        return self.symbol_table
+        
+        errors_and_warnings =  "\n".join([message for message in self.errors.keys()])
+        return self.symbol_table, errors_and_warnings
     
     def analyze_VariableDeclaration(self, node: ast.VariableDeclaration):
         if(node.id in self.symbol_table):
