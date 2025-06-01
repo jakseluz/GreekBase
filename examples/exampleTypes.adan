@@ -1,6 +1,9 @@
-KW_INT        : 'int';
-KW_FLOAT      : 'float';
-KW_CHAR       : 'char';
-KW_STRING     : 'string';
-
 a : int := 1;
+print a;
+b : float := 2;
+print b;
+c : char := 'a';
+print c;
+d : string := 'ala';
+print d;
+
