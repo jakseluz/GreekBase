@@ -77,7 +77,7 @@ variableDeclaration
 
 // ----procedure specific things----
 
-//TODO: our procedure declaration doesn't have declarative part yet e.g. you have to declare temporary values in body of the procedure
+//TODO (or not TODO, that is the question...): our procedure declaration doesn't have declarative part yet e.g. you have to declare temporary values in body of the procedure
 
 //formal parameter part is for defining in and out variables
 formalParameterPart
@@ -114,8 +114,7 @@ functionDeclaration
 condition
     : expression relop expression;
 
-//without labels #addExpr, #subExpr, #mulExpr, #divExpr you'd have to check what's in ctx, now you can 
-//use method such as visitAddExpr, visitIdExpr, etc., these are not comments don't change them or delete them
+
 expression
     : expression OP_MUL expression     # mulExpr
     | expression OP_DIV expression     # divExpr

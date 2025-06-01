@@ -7,7 +7,7 @@
 * Own programming language „GreekBase”.
 * The aim for this project is to create an experimental programming language inspired by [Ada](https://www.adacore.com/about-ada)'s rules and syntax for [*Compilation Theory and Compilers*](https://sylabusy.agh.edu.pl/pl/1/2/19/1/4/16/140#nav-tab-10) classes. We want to change it a bit and make it more convenient, for example with built-in list operations and some other enhancements.
 * Implemented in **Python** using [ANTLR4](https://www.antlr.org).
-* Language compiled to **C** (exact features: TBA).
+* Language compiled to **C** (exact features: TBA, probably at the end of the main development, just around the time of the project evaluation).
 
 ## Project structure
 ```
@@ -24,7 +24,7 @@ GreekBase
 │   ├── astGreek.py                   ← AST tree node classes
 │   ├── semantic_checker.py           ← semantic errors handling etc.
 │   └── codegen.py                    ← C (from AST) code generator
-├── examples/                         ← example source files
+├── inputs/                           ← example source files
 ├── output/                           ← generated C source files
 ├── run.sh                            ← bash script for generating ANTLR files
 └── main.py                           ← main file that starts the compiler
@@ -42,14 +42,23 @@ GreekBase
 in order to generate the parser and its tools needed later, but they should be already generated in ./[antlr/generated/](./antlr/generated/).
 
 Example input files are in ./[inputs](./inputs) directory and they have .gb extension. 
-For now, printing the AST tree is possible, as well as receiving semantic errors and warnings in the console.
+For now, printing the Abstract Syntax Tree is possible, as well as receiving semantic errors and warnings in the console.
 Output C source file is (by default) saved to ./[output/](./output/) directory if there are no [Error]s. 
 
-2. You can run
+2. For more specific information, you can run:
 ```
 python main.py --help
 ```
-for more specific information.
+
+3. Compile the GreekBase language source file by typing its name as the first argument:
+```
+python main.py example.gb
+```
+
+4. There is an option: -o output_path:
+```
+python main.py example.gb -o my_path/my_name.c
+```
 
 ### 3. Example #1
 1. Source file (.gb):

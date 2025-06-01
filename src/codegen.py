@@ -6,7 +6,6 @@ class CGenerator:
 
     def generate(self, node: ast.ASTNode):
         method = f'gen_{type(node).__name__}'
-        # print("\nteraz: ", method) # for debugging
         if method:
             return getattr(self, method)(node)
     
@@ -83,7 +82,6 @@ class CGenerator:
         )
     
     def gen_Assignment(self, node: ast.Assignment):
-        # self.symbol_table[node.id] = self.generate(node.value)
         return f"{node.id} = {self.generate(node.value)};"
     
     def gen_PrintStatement(self, node: ast.PrintStatement): # TODO
@@ -98,6 +96,4 @@ class CGenerator:
         return f"printf({value});"
     
     def gen_VariableDeclaration(self, node: ast.VariableDeclaration):
-        #if(node.varValue is not None):
-        #    self.symbol_table[node.id] = self.generate(node.varValue)
         return f"{node.varType.__name__} {node.id}" + ((f" = {node.varValue.value}") if node.varValue is not None else '') + ';'
