@@ -1,0 +1,6 @@
+KW_INT        : 'int';
+KW_FLOAT      : 'float';
+KW_CHAR       : 'char';
+KW_STRING     : 'string';
+
+a : int := 1;

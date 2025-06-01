@@ -1,0 +1,11 @@
+-- do one line comments work? .. -- ? () [] {}
+/** 
+
+do multiline comments work ? -- *** """" 
+
+**/
+
+/** do they? **/
+
+-- uncomment variable in test if you decide not to allow empty programs in grammar (currently we do allow it)
+-- x : int := 5;
