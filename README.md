@@ -29,6 +29,7 @@ GreekBase
 ├── run.sh                            ← bash script for generating ANTLR files
 ├── run.bat                           ← bat (Windows) script for generating ANTLR files
 ├── gui.py                            ← Graphic interface for compiler
+├── compiler_core.py                  ← Logic of compiler used in main and gui
 └── main.py                           ← main file that starts the compiler
 ```
 ## Details
