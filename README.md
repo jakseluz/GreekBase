@@ -27,6 +27,8 @@ GreekBase
 ├── inputs/                           ← example source files
 ├── output/                           ← generated C source files
 ├── run.sh                            ← bash script for generating ANTLR files
+├── run.bat                           ← bat (Windows) script for generating ANTLR files
+├── gui.py                            ← Graphic interface for compiler
 └── main.py                           ← main file that starts the compiler
 ```
 ## Details
