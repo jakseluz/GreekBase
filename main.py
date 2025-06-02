@@ -1,5 +1,8 @@
 import sys, os
 from antlr4 import FileStream, CommonTokenStream
+
+#GUI
+from gui import gui
 from pathlib import Path
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'antlr', 'generated')))
@@ -10,7 +13,6 @@ from GreekBaseParser import GreekBaseParser
 from ast_builder import GreekASTBuilder
 from semantic_checker import SemanticChecker
 from codegen import CGenerator
-
 
 def main():
     if len(sys.argv) < 2 or sys.argv[1] == "--help":
@@ -66,3 +68,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    gui = gui()
+    gui.run()
