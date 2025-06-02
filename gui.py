@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 
+from antlr4 import InputStream
+from antlr.generated import GreekBaseLexer
+from compiler_core import compile_code
 class TextLineNumbers(tk.Canvas):
     def __init__(self, master, text_widget, **kwargs):
         super().__init__(master, width=30, **kwargs)
@@ -80,7 +83,7 @@ class gui:
 
     def load_file(self):
         file_path = filedialog.askopenfilename(title="Wybierz plik",
-                                               filetypes=[("Pliki tekstowe", "*.txt"), ("Wszystkie pliki", "*.*"), ("Pliki adan", "*.adan")])
+                                               filetypes=[("Wszystkie pliki", "*.*"), ("Pliki tekstowe", "*.txt"),  ("Pliki adan", "*.adan"), ("Pliki greekBase", "*.gb")])
         if file_path:
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
@@ -96,17 +99,25 @@ class gui:
         if not input_content:
             messagebox.showinfo("Info", "Pole tekstowe po lewej jest puste!")
             return
-        # TODO : Tutaj trzeba przekazać do logiki kompilatora
-        processed = input_content.upper()
+        # Logika kompilacji
+        processed, errors_and_warnings = compile_code_from_gui(input_content)
 
         self.output_text.config(state=tk.NORMAL)
         self.output_text.delete("1.0", tk.END)
         self.output_text.insert(tk.END, processed)
+        self.log_text.insert(tk.END, errors_and_warnings + "\n")
         self.output_text.config(state=tk.DISABLED)
         self.output_text.event_generate("<<Change>>")
 
     def run(self):
         self.root.mainloop()
+
+# This function is used to compile code from the GUI input
+# It takes the GreekBase code as a string, processes it, and returns the generated C code and any errors or warnings
+def compile_code_from_gui(GBcode: str) -> tuple[str, str]:
+    input_stream = InputStream(GBcode)
+    lexer = GreekBaseLexer(input_stream)
+    return compile_code(lexer)
 
 
 if __name__ == "__main__":

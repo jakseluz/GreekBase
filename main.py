@@ -1,20 +1,17 @@
 import sys, os
-from antlr4 import FileStream, CommonTokenStream
+from antlr4 import FileStream
 
-#GUI
-from gui import gui
+
 from pathlib import Path
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'antlr', 'generated')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'src')))
 
 from GreekBaseLexer import GreekBaseLexer
-from GreekBaseParser import GreekBaseParser
-from ast_builder import GreekASTBuilder
-from semantic_checker import SemanticChecker
-from codegen import CGenerator
-
-def main():
+from compiler_core import compile_code
+#GUI
+from gui import gui
+def compile_code_from_IDE():
     if len(sys.argv) < 2 or sys.argv[1] == "--help":
         print(
             """
@@ -30,27 +27,9 @@ def main():
         input_stream = FileStream(sys.argv[1])
     except:
         print("Please provide a proper source file path!")
-
     lexer = GreekBaseLexer(input_stream)
-    token_stream = CommonTokenStream(lexer)
-    parser = GreekBaseParser(token_stream)
-
-    tree = parser.program()
-
-    ast_builder = GreekASTBuilder()
-    ast = ast_builder.visit(tree)
-
-    print(ast)
-
-    checker = SemanticChecker()
-    tab, errors_and_warnings = checker.analyze(ast)
+    code, errors_and_warnings = compile_code(lexer)
     print(errors_and_warnings)
-    checker.finalise()
-
-    codegen = CGenerator(tab)
-    code = codegen.generate(ast)
-    
-
     if len(sys.argv) > 2 and sys.argv[2] == "-o":
         try:
             output_path_str = sys.argv[3]
@@ -66,7 +45,9 @@ def main():
         filehandler.write(code)
 
 
+def main():
+        #compile_code_from_IDE()  # Uncomment this line to run the compilation directly from the IDE
+        app = gui()
+        app.run()
 if __name__ == '__main__':
     main()
-    gui = gui()
-    gui.run()
