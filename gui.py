@@ -4,36 +4,14 @@ from tkinter import filedialog, messagebox
 from antlr4 import InputStream
 from antlr.generated import GreekBaseLexer
 from compiler_core import compile_code
-class TextLineNumbers(tk.Canvas):
-    def __init__(self, master, text_widget, **kwargs):
-        super().__init__(master, width=30, **kwargs)
-        self.text_widget = None
-    # Funkcja do podłączenia z numerami linii do widgetu tekstowego
-    def attach(self, text_widget):
-        self.text_widget = text_widget
-        self.text_widget.bind("<<Change>>", self.redraw)
-        self.text_widget.bind("<Configure>", self.redraw)
-        self.text_widget.bind("<KeyRelease>", self.redraw)
-    def redraw(self, event=None):
-        self.delete("all")
-        i = self.text_widget.index("@0,0")
-        while True:
-            dline = self.text_widget.dlineinfo(i)
-            if dline is None:
-                break
-            y = dline[1]
-            linenum = str(i).split(".")[0]
-            self.create_text(2, y, anchor="nw", text=linenum)
-            i = self.text_widget.index(f"{i}+1line")
 
 
-class CustomText(tk.Text):
-    def __init__(self, master=None, **kwargs):
-        super().__init__(master, **kwargs)
-        self.bind("<KeyRelease>", self.on_change)
-
-    def on_change(self, event):
-        self.event_generate("<<Change>>")
+#C code highlighting
+from pygments import lex
+from pygments.lexers import CLexer
+from pygments.token import Token
+# For colouring GreekBase we WILL use AdaLexer since syntax is very simillar
+from pygments.lexers import AdaLexer
 
 
 class gui:
@@ -101,10 +79,11 @@ class gui:
             return
         # Logika kompilacji
         processed, errors_and_warnings = compile_code_from_gui(input_content)
-
+        #Debug
+        print("Errors and warnings: " + errors_and_warnings)
         self.output_text.config(state=tk.NORMAL)
         self.output_text.delete("1.0", tk.END)
-        self.output_text.insert(tk.END, processed)
+        highlight_c_code(self.output_text, processed)
         self.log_text.insert(tk.END, errors_and_warnings + "\n")
         self.output_text.config(state=tk.DISABLED)
         self.output_text.event_generate("<<Change>>")
@@ -112,13 +91,110 @@ class gui:
     def run(self):
         self.root.mainloop()
 
+# klasa do numerowania linii w polu tekstowym
+class TextLineNumbers(tk.Canvas):
+    def __init__(self, master, text_widget, **kwargs):
+        super().__init__(master, width=30, **kwargs)
+        self.text_widget = None
+    # Funkcja do podłączenia z numerami linii do widgetu tekstowego
+    def attach(self, text_widget):
+        self.text_widget = text_widget
+        self.text_widget.bind("<<Change>>", self.redraw)
+        self.text_widget.bind("<Configure>", self.redraw)
+        self.text_widget.bind("<KeyRelease>", self.redraw)
+
+    # Odświeżanie numeracji linii jak się coś zmeiniło
+    def redraw(self, event=None):
+        self.delete("all")
+        i = self.text_widget.index("@0,0")
+        while True:
+            dline = self.text_widget.dlineinfo(i)
+            if dline is None:
+                break
+            y = dline[1]
+            linenum = str(i).split(".")[0]
+            self.create_text(2, y, anchor="nw", text=linenum)
+            i = self.text_widget.index(f"{i}+1line")
+
+
+class CustomText(tk.Text):
+    def __init__(self, master=None, **kwargs):
+        super().__init__(master, **kwargs)
+        self.bind("<KeyRelease>", self.on_change)
+
+    def on_change(self, event):
+        self.event_generate("<<Change>>")
+
+
 # This function is used to compile code from the GUI input
 # It takes the GreekBase code as a string, processes it, and returns the generated C code and any errors or warnings
 def compile_code_from_gui(GBcode: str) -> tuple[str, str]:
     input_stream = InputStream(GBcode)
     lexer = GreekBaseLexer(input_stream)
     return compile_code(lexer)
+# this function uses pygments to hihglight output code written in C language
 
 
+def highlight_c_code(text_widget: tk.Text, code: str):
+    # Wyczyść poprzednie tagi
+    text_widget.tag_delete(*text_widget.tag_names())
+    
+    # Tokenizacja kodu
+    for token_type, token_value in lex(code, CLexer()):
+        start_index = text_widget.index(tk.INSERT)
+        text_widget.insert(tk.INSERT, token_value)
+
+        end_index = text_widget.index(tk.INSERT)
+        tag_name = str(token_type)
+
+        # Dodaj tag do tekstu
+        text_widget.tag_add(tag_name, start_index, end_index)
+
+        # Stylizacja tagów (na razie tylko kilka przykładów)
+        if token_type in Token.Keyword:
+            text_widget.tag_config(tag_name, foreground="blue")
+        elif token_type in Token.String:
+            text_widget.tag_config(tag_name, foreground="green")
+        elif token_type in Token.Comment:
+            text_widget.tag_config(tag_name, foreground="gray")
+        elif token_type in Token.Number:
+            text_widget.tag_config(tag_name, foreground="purple")
+        elif token_type in Token.Operator:
+            text_widget.tag_config(tag_name, foreground="orange")
+        elif token_type in Token.Name.Function:
+            text_widget.tag_config(tag_name, foreground="darkgreen")
+        # Dodać więcej jeśli będzie trzeba
+#TODO: Tkinter ma problem z kolorowaniem pojedynczych tokenów
+# i chat sugeruje żeby za każdym razem kolorować cały kod, da się to na pewno zrobić wydajniej na razie nie używam tego
+def highlight_ada_code(text_widget: tk.Text, code: str):
+    # Wyczyść poprzednie tagi
+    text_widget.tag_delete(*text_widget.tag_names())
+    
+    # Tokenizacja kodu
+    for token_type, token_value in lex(code, AdaLexer()):
+        start_index = text_widget.index(tk.INSERT)
+        text_widget.insert(tk.INSERT, token_value)
+
+        end_index = text_widget.index(tk.INSERT)
+        tag_name = str(token_type)
+
+        # Dodaj tag do tekstu
+        text_widget.tag_add(tag_name, start_index, end_index)
+
+        # Stylizacja tagów (na razie tylko kilka przykładów)
+        if token_type in Token.Keyword:
+            text_widget.tag_config(tag_name, foreground="blue")
+        elif token_type in Token.String:
+            text_widget.tag_config(tag_name, foreground="green")
+        elif token_type in Token.Comment:
+            text_widget.tag_config(tag_name, foreground="gray")
+        elif token_type in Token.Literal.Number:
+            text_widget.tag_config(tag_name, foreground="purple")
+        elif token_type in Token.Operator:
+            text_widget.tag_config(tag_name, foreground="orange")
+        elif token_type in Token.Name.Function:
+            text_widget.tag_config(tag_name, foreground="darkgreen")
+        elif token_type in Token.Name.Class:
+            text_widget.tag_config(tag_name, foreground="darkblue")
 if __name__ == "__main__":
     gui().run()

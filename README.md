@@ -32,6 +32,16 @@ GreekBase
 ├── compiler_core.py                  ← Logic of compiler used in main and gui
 └── main.py                           ← main file that starts the compiler
 ```
+## Reguirements
+Project was built using python 3.12.10 but other versions may also be compatibile. 
+Project uses tkinter you can install it using pip or other tool
+```bash
+pip install tk
+```
+Project uses pygments 2.19.1 for syntax coloring, install it using pip or other tool
+```bash
+pip install pygments==2.19.1
+```
 ## Details
 
 ### 1. Grammar
