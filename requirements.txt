@@ -1,1 +1,5 @@
-# to be specified if needed
+# GUI
+tk
+
+# colours in GUI
+pygments==2.19.1

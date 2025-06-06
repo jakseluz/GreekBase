@@ -1,30 +1,39 @@
-import astGreek as ast
+from src import ast
+
 
 class CGenerator:
+    
     def __init__(self, table: dict):
         self.symbol_table = table
+
 
     def generate(self, node: ast.ASTNode):
         method = f'gen_{type(node).__name__}'
         if method:
             return getattr(self, method)(node)
-    
+
+
     def gen_Program(self, node : ast.ASTNode):
         body = "\n".join([self.generate(statement) for statement in node.statements])
         return f'#include <stdio.h>\nint main(){{\n{body}\nreturn 0;\n}}'
 
+
     def gen_IntLiteral(self, node: ast.IntLiteral):
         return str(node.value)
-    
+
+
     def gen_FloatLiteral(self, node: ast.FloatLiteral):
         return str(node.value)
-    
+
+
     def gen_CharLiteral(self, node: ast.CharLiteral):
         return '\'' + node.value + '\''
-    
+
+
     def gen_StringLiteral(self, node: ast.StringLiteral):
         return "\"" + node.value + "\""
-    
+
+
     def gen_Condition(self, node: ast.Condition):
         return " ".join(
             [
@@ -33,7 +42,8 @@ class CGenerator:
                 self.generate(node.right)
             ]
         )
-    
+
+
     def gen_MultiplicationOperator(self, node: ast.MultiplicationOperator):
         return " ".join(
             [
@@ -42,7 +52,8 @@ class CGenerator:
                 self.generate(node.right)
             ]
         )
-    
+
+
     def gen_AdditionOperator(self, node: ast.AdditionOperator):
         return " ".join(
             [
@@ -51,13 +62,16 @@ class CGenerator:
                 self.generate(node.right)
             ]
         )
-    
+
+
     def gen_ParenthesisExpression(self, node: ast.ParenthesisExpression):
         return f"( {self.generate(node.value)} )"
-    
+
+
     def gen_Identifier(self, node: ast.Identifier):
         return node.value
-    
+
+
     def gen_IfStatement(self, node: ast.IfStatement):
         return "\n".join(
             [
@@ -71,7 +85,8 @@ class CGenerator:
                 "}"
             ]
         )
-    
+
+
     def gen_LoopStatement(self, node: ast.LoopStatement):
         return "\n".join(
             [
@@ -80,10 +95,12 @@ class CGenerator:
                 '}'
             ]
         )
-    
+
+
     def gen_Assignment(self, node: ast.Assignment):
         return f"{node.id} = {self.generate(node.value)};"
-    
+
+
     def gen_PrintStatement(self, node: ast.PrintStatement): # TODO
         value_type = self.symbol_table[node.value.value][0]
         if(value_type == int):
@@ -94,6 +111,7 @@ class CGenerator:
             value = f"\"%s\", {node.value.value}"
 
         return f"printf({value});"
-    
+
+
     def gen_VariableDeclaration(self, node: ast.VariableDeclaration):
         return f"{node.varType.__name__} {node.id}" + ((f" = {node.varValue.value}") if node.varValue is not None else '') + ';'

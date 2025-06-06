@@ -1,13 +1,12 @@
-import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'antlr', 'generated')))
-from GreekBaseParserVisitor import GreekBaseParserVisitor
-from GreekBaseParser import GreekBaseParser
-import astGreek as ast
+from antlr.generated import GreekBaseParser, GreekBaseParserVisitor
+from src import ast
+
 
 class GreekASTBuilder(GreekBaseParserVisitor):
     def visitProgram(self, ctx: GreekBaseParser.ProgramContext):
         # Visit all statements in the program
         return ast.Program(ctx.start.line, ctx.start.column, [self.visit(stmt) for stmt in ctx.statement()])
+
 
     def visitVariableDeclaration(self, ctx: GreekBaseParser.VariableDeclarationContext):
         var_name = ctx.IDENTIFIER().getText()
@@ -17,7 +16,8 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         else:
             var_value = None
         return ast.VariableDeclaration(ctx.start.line, ctx.start.column, var_type, var_name, var_value)
-    
+
+
     def visitVarType(self, ctx: GreekBaseParser.VarTypeContext):
         if ctx.KW_INT():
             return int
@@ -42,10 +42,12 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         token = ctx.IDENTIFIER
         if ctx.literal():
             return self.visit(ctx.literal())
-        
+
+
     def visitIdExpr(self, ctx: GreekBaseParser.IdExprContext):
         if ctx.IDENTIFIER():
             return ast.Identifier(ctx.start.line, ctx.start.column, ctx.IDENTIFIER().getText(), None)
+
 
     def visitLiteral(self, ctx: GreekBaseParser.LiteralContext):
         if ctx.LIT_INT():
@@ -57,6 +59,7 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         elif ctx.LIT_CHAR():
             return ast.CharLiteral(ctx.start.line, ctx.start.column, ctx.LIT_CHAR().getText().strip("'")[0])
 
+
     def visitIfStatement(self, ctx: GreekBaseParser.IfStatementContext):
         # note that there are two possibilities of IF "scoping"
         # Handles if <cond> then {statements} [else {statements}] end if;
@@ -65,11 +68,13 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         else_branch = [self.visit(nondecl_stmt) for nondecl_stmt in ctx.elseBranch] if ctx.elseBranch else []
         return ast.IfStatement(ctx.start.line, ctx.start.column, condition, then_branch, else_branch)
 
+
     def visitLoopStatement(self, ctx: GreekBaseParser.LoopStatementContext):
         # Handles while <cond> loop {statements} end loop;
         condition = self.visit(ctx.condition())
         then = [self.visit(nondecl_stmt) for nondecl_stmt in ctx.nonDeclarativeStatement()]
         return ast.LoopStatement(ctx.start.line, ctx.start.column, condition, then)
+
 
     def visitCondition(self, ctx: GreekBaseParser.ConditionContext):
         # Handles condition: expr <relop> expr
@@ -92,7 +97,8 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         print("[warn] Function support not implemented.")
         # return NotImplementedError("[warn] Function support not implemented.")
         return None
-    
+
+
     # Arithmetic
     def visitAddExpr(self, ctx: GreekBaseParser.AddExprContext):
         left = self.visit(ctx.expression(0))
@@ -100,11 +106,13 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         right = self.visit(ctx.expression(1))
         return ast.AdditionOperator(ctx.start.line, ctx.start.column, left, operator, right)
 
+
     def visitSubExpr(self, ctx: GreekBaseParser.SubExprContext):
         left = self.visit(ctx.expression(0))
         operator = '-'
         right = self.visit(ctx.expression(1))
         return ast.AdditionOperator(ctx.start.line, ctx.start.column, left, operator, right)
+
 
     def visitMulExpr(self, ctx: GreekBaseParser.MulExprContext):
         left = self.visit(ctx.expression(0))
@@ -112,11 +120,13 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         right = self.visit(ctx.expression(1))
         return ast.MultiplicationOperator(ctx.start.line, ctx.start.column, left, operator, right)
 
+
     def visitDivExpr(self, ctx: GreekBaseParser.DivExprContext):
         left = self.visit(ctx.expression(0))
         operator = '/'
         right = self.visit(ctx.expression(1))
         return ast.MultiplicationOperator(ctx.start.line, ctx.start.column, left, operator, right)
+
 
     # Grouping
     def visitParensExpr(self, ctx: GreekBaseParser.ParensExprContext):
@@ -124,6 +134,7 @@ class GreekASTBuilder(GreekBaseParserVisitor):
             ctx.start.line, ctx.start.column, 
             self.visit(ctx.expression())
         )
+
 
     # Printing
     def visitPrintStatement(self, ctx:GreekBaseParser.PrintStatementContext):

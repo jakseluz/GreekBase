@@ -23,24 +23,20 @@ GreekBase
 │   ├── ast_builder.py                ← used for generating AST tree from ANTLR tree
 │   ├── astGreek.py                   ← AST tree node classes
 │   ├── semantic_checker.py           ← semantic errors handling etc.
-│   └── codegen.py                    ← C (from AST) code generator
+│   ├── codegen.py                    ← C (from AST) code generator
+│   ├── compiler_core.py              ← logic of compiler used in main and gui
+│   └── gui.py                        ← graphic interface for compiler
 ├── inputs/                           ← example source files
 ├── output/                           ← generated C source files
-├── run.sh                            ← bash script for generating ANTLR files
-├── run.bat                           ← bat (Windows) script for generating ANTLR files
-├── gui.py                            ← Graphic interface for compiler
-├── compiler_core.py                  ← Logic of compiler used in main and gui
+├── run.sh                            ← bash (Linux etc.) script for generating ANTLR files
+├── run.bat                           ← bat (Windows) equivalent of the above one
 └── main.py                           ← main file that starts the compiler
 ```
 ## Reguirements
-Project was built using python 3.12.10 but other versions may also be compatibile. 
-Project uses tkinter you can install it using pip or other tool
+Project uses python packages e.g. for GUI and colouring.
+They can be installed (or overviewed: ./[requirements.txt](./requirements.txt)):
 ```bash
-pip install tk
-```
-Project uses pygments 2.19.1 for syntax coloring, install it using pip or other tool
-```bash
-pip install pygments==2.19.1
+pip install -r ./requirements.txt
 ```
 ## Details
 
@@ -58,17 +54,19 @@ Example input files are in ./[inputs](./inputs) directory and they have .gb exte
 For now, printing the Abstract Syntax Tree is possible, as well as receiving semantic errors and warnings in the console.
 Output C source file is (by default) saved to ./[output/](./output/) directory if there are no [Error]s. 
 
-2. For more specific information, you can run:
+2. You can use the graphical interface by running the ./[main.py](./main.py) file without any arguments. 
+
+3. For specific information about the compiler usage in command line interface, you can run:
 ```
 python main.py --help
 ```
 
-3. Compile the GreekBase language source file by typing its name as the first argument:
+4. Compile the GreekBase language source file by typing its path as the first argument:
 ```
 python main.py example.gb
 ```
 
-4. There is an option: -o output_path:
+5. There is an option: -o output_path:
 ```
 python main.py example.gb -o my_path/my_name.c
 ```

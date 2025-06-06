@@ -1,6 +1,6 @@
 * GUI!
 * Errors and warnings colours implementation compatibility (now supports only ANSI colours).
-* String type generation!
+* String type generation! (firstly memory allocating and then arrays...)
 * Make procedure and function working!
 * Variable scopes implementation.
 * Improve print statement.
