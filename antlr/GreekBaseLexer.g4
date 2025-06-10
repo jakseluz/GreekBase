@@ -28,6 +28,7 @@ KW_INT        : 'int';
 KW_FLOAT      : 'float';
 KW_CHAR       : 'char';
 KW_STRING     : 'string';
+KW_BOOL       : 'bool';
 
 // Symbols and operators
 OP_ASSIGN     : ':=';
@@ -61,6 +62,7 @@ LIT_FLOAT     : [0-9]+ '.' [0-9]+;
 //LIT_STRING    : '"' (~["\r\n])* '"';
 LIT_STRING    : '"' .*? '"';
 LIT_CHAR      : '\'' . '\'';
+LIT_BOOL      : 'True' | 'False';
 
 // Identifiers
 IDENTIFIER    : [a-zA-Z_] [a-zA-Z0-9_]*;

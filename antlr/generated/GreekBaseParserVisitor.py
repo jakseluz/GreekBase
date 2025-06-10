@@ -79,8 +79,18 @@ class GreekBaseParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by GreekBaseParser#functionCall.
+    def visitFunctionCall(self, ctx:GreekBaseParser.FunctionCallContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by GreekBaseParser#condition.
     def visitCondition(self, ctx:GreekBaseParser.ConditionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by GreekBaseParser#modExpr.
+    def visitModExpr(self, ctx:GreekBaseParser.ModExprContext):
         return self.visitChildren(ctx)
 
 

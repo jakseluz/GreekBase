@@ -13,6 +13,7 @@ literal
     | LIT_FLOAT
     | LIT_CHAR
     | LIT_STRING
+    | LIT_BOOL
     ;
 
 // Statement can be either a non-declarative statement or a procedure declaration
@@ -106,18 +107,26 @@ procedureDeclaration
 
 // function declaration
 functionDeclaration
-    : KW_FUNCTION IDENTIFIER OP_LPAREN (IDENTIFIER (OP_COMMA IDENTIFIER)*)? OP_RPAREN
-      OP_COLON IDENTIFIER
-      KW_IS KW_BEGIN statement* KW_END KW_FUNCTION OP_SEMICOLON
+    : KW_FUNCTION IDENTIFIER OP_LPAREN (IDENTIFIER OP_COLON literal (OP_COMMA IDENTIFIER OP_COLON literal)*)? OP_RPAREN KW_RETURN literal
+      (KW_IS KW_BEGIN statement* KW_END KW_FUNCTION OP_SEMICOLON)
+      |
+      (KW_LCURL statement* KW_RCURL)
     ;
 
+functionCall
+    : IDENTIFIER OP_LPAREN (IDENTIFIER (OP_COMMA IDENTIFIER)*)? OP_RPAREN OP_SEMICOLON;
+
 condition
-    : expression relop expression;
+    : expression relop expression
+    | condition OP_OR condition
+    | condition OP_AND condition
+    ;
 
 
 expression
     : expression OP_MUL expression     # mulExpr
     | expression OP_DIV expression     # divExpr
+    | expression OP_MOD expression     # modExpr
     | expression OP_ADD expression     # addExpr
     | expression OP_SUB expression     # subExpr
     | OP_LPAREN expression OP_RPAREN   # parensExpr
@@ -140,4 +149,5 @@ varType
     | KW_FLOAT
     | KW_CHAR
     | KW_STRING
+    | KW_BOOL
     ;
