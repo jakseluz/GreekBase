@@ -4,7 +4,7 @@ from src import GreekASTBuilder, CGenerator, SemanticChecker
 
 
 # Called by both - the GUI and the CLI
-def compile_code(input_stream) -> tuple[str, str]:
+def compile_code(input_stream) -> tuple[str, str, bool]:
 
     lexer = GreekBaseLexer(input_stream)
     token_stream = CommonTokenStream(lexer)
@@ -19,10 +19,10 @@ def compile_code(input_stream) -> tuple[str, str]:
 
     checker = SemanticChecker()
     tab, errors_and_warnings = checker.analyze(ast)
-    checker.finalise()
+    success = checker.finalise()
 
     codegen = CGenerator(tab)
     # Generate C code from the AST
     code = codegen.generate(ast)
     
-    return code, errors_and_warnings
+    return code, errors_and_warnings, success

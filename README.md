@@ -71,28 +71,32 @@ python main.py example.gb
 python main.py example.gb -o my_path/my_name.c
 ```
 
-### 3. Example #1
+### 3. Example
 1. Source file (.gb):
 ```ada
 x : int := 5;
 y : int := 10;
-x : int;
 
 if x < y then
     x := x + 1;
 else y := y - 1;
 end if;
 
+while x < y {
+    print x;
+    x := x + 1;
+}
+
 print x;
 print y;
 ```
 2. AST tree:
 ```python
-Program(line=1, column=0, statements=[VariableDeclaration(line=1, column=0, varType=<class 'int'>, id='x', varValue=IntLiteral(line=1, column=11, value=5)), VariableDeclaration(line=2, column=0, varType=<class 'int'>, id='y', varValue=IntLiteral(line=2, column=11, value=10)), VariableDeclaration(line=3, column=0, varType=<class 'int'>, id='x', varValue=None), IfStatement(line=5, column=0, condition=Condition(line=5, column=3, left=Identifier(line=5, column=3, value='x', type=None), operator='<', right=Identifier(line=5, column=7, value='y', type=None)), then_branch=[Assignment(line=6, column=4, id='x', value=AdditionOperator(line=6, column=9, left=Identifier(line=6, column=9, value='x', type=None), operator='+', right=IntLiteral(line=6, column=13, value=1)))], else_branch=[Assignment(line=7, column=5, id='y', value=AdditionOperator(line=7, column=10, left=Identifier(line=7, column=10, value='y', type=None), operator='-', right=IntLiteral(line=7, column=14, value=1)))]), PrintStatement(line=10, column=0, value=Identifier(line=10, column=6, value='x', type=None)), PrintStatement(line=11, column=0, value=Identifier(line=11, column=6, value='y', type=None))])
+Program(line=1, column=0, statements=[VariableDeclaration(line=1, column=0, varType=<class 'int'>, id='x', varValue=IntLiteral(line=1, column=11, value=5)), VariableDeclaration(line=2, column=0, varType=<class 'int'>, id='y', varValue=IntLiteral(line=2, column=11, value=10)), IfStatement(line=4, column=0, condition=Condition(line=4, column=3, left=Identifier(line=4, column=3, value='x', type=None), operator='<', right=Identifier(line=4, column=7, value='y', type=None)), then_branch=[Assignment(line=5, column=4, id='x', value=AdditionOperator(line=5, column=9, left=Identifier(line=5, column=9, value='x', type=None), operator='+', right=IntLiteral(line=5, column=13, value=1)))], else_branch=[Assignment(line=6, column=5, id='y', value=AdditionOperator(line=6, column=10, left=Identifier(line=6, column=10, value='y', type=None), operator='-', right=IntLiteral(line=6, column=14, value=1)))]), LoopStatement(line=9, column=0, condition=Condition(line=9, column=6, left=Identifier(line=9, column=6, value='x', type=None), operator='<', right=Identifier(line=9, column=10, value='y', type=None)), then=[PrintStatement(line=10, column=4, value=Identifier(line=10, column=10, value='x', type=None)), Assignment(line=11, column=4, id='x', value=AdditionOperator(line=11, column=9, left=Identifier(line=11, column=9, value='x', type=None), operator='+', right=IntLiteral(line=11, column=13, value=1)))]), PrintStatement(line=14, column=0, value=Identifier(line=14, column=6, value='x', type=None)), PrintStatement(line=15, column=0, value=Identifier(line=15, column=6, value='y', type=None))])
 ```
 3. Semantic check:
 
-![](./img/example1_semantic1.png)
+![](./img/example1_semantic.png) (not for this example, here everything is fine)
 
 4. Code in C:
 ```C
@@ -100,14 +104,18 @@ Program(line=1, column=0, statements=[VariableDeclaration(line=1, column=0, varT
 int main(){
 int x = 5;
 int y = 10;
-int x;
 if(x < y){
 x = x + 1;
 }else{ 
 y = y - 1;
 }
+while(x < y){
+printf("%d", x);
+x = x + 1;
+}
 printf("%d", x);
 printf("%d", y);
 return 0;
 }
+
 ```

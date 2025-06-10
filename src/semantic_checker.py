@@ -14,10 +14,12 @@ class SemanticChecker:
         self.errors = {} # not to exit after one error
 
 
-    def finalise(self):
+    def finalise(self) -> bool:
         # should be called after program analyzing
         if(1 in self.errors.values()):
-            exit(1)
+            return False
+        else:
+            return True
 
 
     def analyze(self, node: ast.ASTNode):
@@ -55,7 +57,7 @@ class SemanticChecker:
     def analyze_VariableDeclaration(self, node: ast.VariableDeclaration):
         if(node.id in self.symbol_table):
             if(node.varType == self.symbol_table[node.id][0]):
-                self.errors[f"{self.YELLOW}[Warning]: {self.WHITE}Variable {node.id} redeclared {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}."] = 0
+                self.errors[f"{self.RED}[Error]: {self.WHITE}Variable {node.id} redeclared {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}."] = 1
             else:
                 self.errors[f"{self.RED}[Error]: {self.WHITE}Variable {node.id} redeclared with a different type than earlier ({node.varType} instead of {self.symbol_table[node.id][0]}) {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
         else:

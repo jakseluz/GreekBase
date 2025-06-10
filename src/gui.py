@@ -79,15 +79,24 @@ class gui:
             messagebox.showinfo("Info", "Pole tekstowe po lewej jest puste!")
             return
         # Compilation logic
-        processed, errors_and_warnings = compile_code_from_gui(input_content)
+        processed, errors_and_warnings, success = compile_code_from_gui(input_content)
         # Debug
         print("Errors and warnings: " + errors_and_warnings)
-        self.output_text.config(state=tk.NORMAL)
-        self.output_text.delete("1.0", tk.END)
-        highlight_c_code(self.output_text, processed)
-        self.log_text.insert(tk.END, errors_and_warnings + "\n")
-        self.output_text.config(state=tk.DISABLED)
-        self.output_text.event_generate("<<Change>>")
+        """
+        scrollbar = tk.Scrollbar(self.log_text)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        label = tk.Label(self.log_text, text = errors_and_warnings, font = ("Arial", 14), bg = "lightgray", height=10)
+        scrollbar.config(command=self.log_text.yview)
+        label.pack()
+        """
+
+        if success:
+            self.output_text.config(state=tk.NORMAL)
+            self.output_text.delete("1.0", tk.END)
+            highlight_c_code(self.output_text, processed)
+            self.log_text.insert(tk.END, errors_and_warnings + "\n")
+            self.output_text.config(state=tk.DISABLED)
+            self.output_text.event_generate("<<Change>>")
 
 
     def run(self):

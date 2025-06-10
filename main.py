@@ -18,8 +18,11 @@ class Main:
             print("Please provide a proper source file path!")
             return False
 
-        code, errors_and_warnings = compile_code(input_stream)
+        code, errors_and_warnings, success = compile_code(input_stream)
         print(errors_and_warnings)
+
+        if not success:
+            exit(1)
 
         output_file = Path(output_path_str)
         output_file.parent.mkdir(exist_ok = True, parents = True)
