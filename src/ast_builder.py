@@ -25,6 +25,8 @@ class GreekASTBuilder(GreekBaseParserVisitor):
             return float
         elif ctx.KW_CHAR():
             return str
+        elif ctx.KW_BOOL():
+            return bool
         elif ctx.KW_STRING():
             return str
         else:
@@ -78,9 +80,9 @@ class GreekASTBuilder(GreekBaseParserVisitor):
 
     def visitCondition(self, ctx: GreekBaseParser.ConditionContext):
         # Handles condition: expr <relop> expr
-        left = self.visit(ctx.expression(0))
-        operator = ctx.relop().getText()
-        right = self.visit(ctx.expression(1))
+        left = self.visit(ctx.left_expr()) if ctx.left_expr() else (None if ctx.negated() else (self.visit(ctx.condition(0))))
+        operator = ctx.relop().getText() if ctx.relop() else (ctx.OP_OR().getText() if ctx.OP_OR() else (ctx.OP_AND().getText() if ctx.OP_AND() else (ctx.OP_NOT().getText() if ctx.OP_NOT() else None)))
+        right = self.visit(ctx.right_expr()) if ctx.left_expr() else (self.visit(ctx.negated()) if ctx.negated() else (self.visit(ctx.condition(1))))
         return ast.Condition(ctx.start.line, ctx.start.column, left, operator, right)
 
 
@@ -92,11 +94,22 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         return ast.Procedure(ctx.start.line, ctx.start.column, name, formalParameterPart, body)
 
 
-    # Optional: stub for functionDeclaration if added
+    # functions
     def visitFunctionDeclaration(self, ctx: GreekBaseParser.FunctionDeclarationContext):
-        print("[warn] Function support not implemented.")
-        # return NotImplementedError("[warn] Function support not implemented.")
-        return None
+        name = ctx.IDENTIFIER().getText()
+        type = self.visit(ctx.varType())
+        parameter_decl = [self.visit(decl) for decl in ctx.variableDeclaration()]
+        statements = [self.visit(stmt) for stmt in ctx.statement()]
+        return ast.FuntionDeclaration(ctx.start.line, ctx.start.column, name, parameter_decl, type, statements)
+    
+
+    def visitFunctionCallExpr(self, ctx: GreekBaseParser.FunctionCallExprContext):
+        self.visit(ctx.functionCall())
+
+    def visitFunctionCall(self, ctx: GreekBaseParser.FunctionCallContext):
+        name = ctx.call_name.getText()
+        parameters = [self.visit(param) for param in ctx.params()]
+        return ast.FunctionCall(ctx.start.line, ctx.start.column, name, parameters)
 
 
     # Arithmetic

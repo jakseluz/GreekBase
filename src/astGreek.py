@@ -156,3 +156,17 @@ class VariableDeclaration(NonDeclarativeStatement):
     varType: VariableType
     id: Identifier
     varValue : Literal | None
+
+
+# functions
+@dataclass
+class FuntionDeclaration(Statement):
+    name: Identifier
+    parameters: List[VariableDeclaration]
+    return_type: VariableType | None
+    statements: List[Statement]
+
+@dataclass
+class FunctionCall(Expression):
+    name: Identifier
+    parameters: List[Identifier]

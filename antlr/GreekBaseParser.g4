@@ -20,6 +20,7 @@ literal
 statement
     : nonDeclarativeStatement
     | procedureDeclaration
+    | functionDeclaration
     ;
 
 //statements that explicitly do not allow making declarations of functions or procedures
@@ -107,19 +108,20 @@ procedureDeclaration
 
 // function declaration
 functionDeclaration
-    : KW_FUNCTION IDENTIFIER OP_LPAREN (IDENTIFIER OP_COLON literal (OP_COMMA IDENTIFIER OP_COLON literal)*)? OP_RPAREN KW_RETURN literal
+    : KW_FUNCTION IDENTIFIER OP_LPAREN (variableDeclaration (OP_COMMA variableDeclaration)*)? OP_RPAREN (KW_RETURN varType)
       (KW_IS KW_BEGIN statement* KW_END KW_FUNCTION OP_SEMICOLON)
       |
       (KW_LCURL statement* KW_RCURL)
     ;
 
 functionCall
-    : IDENTIFIER OP_LPAREN (IDENTIFIER (OP_COMMA IDENTIFIER)*)? OP_RPAREN OP_SEMICOLON;
+    : call_name=IDENTIFIER OP_LPAREN (params+=IDENTIFIER (OP_COMMA params+=IDENTIFIER)*)? OP_RPAREN OP_SEMICOLON;
 
 condition
-    : expression relop expression
+    : left_expr=expression relop right_expr=expression
     | condition OP_OR condition
     | condition OP_AND condition
+    | OP_NOT negated=condition
     ;
 
 
@@ -132,6 +134,7 @@ expression
     | OP_LPAREN expression OP_RPAREN   # parensExpr
     | IDENTIFIER                       # idExpr
     | literal                          # typeExpression
+    | functionCall                     # functionCallExpr
     ;
 
 

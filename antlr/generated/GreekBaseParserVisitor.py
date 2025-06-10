@@ -99,6 +99,11 @@ class GreekBaseParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by GreekBaseParser#functionCallExpr.
+    def visitFunctionCallExpr(self, ctx:GreekBaseParser.FunctionCallExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by GreekBaseParser#mulExpr.
     def visitMulExpr(self, ctx:GreekBaseParser.MulExprContext):
         return self.visitChildren(ctx)

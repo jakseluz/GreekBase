@@ -37,8 +37,8 @@ class CGenerator:
     def gen_Condition(self, node: ast.Condition):
         return " ".join(
             [
-                self.generate(node.left),
-                "==" if node.operator == '=' else ("!=" if node.operator == "/=" else node.operator),
+                self.generate(node.left) if node.left else "",
+                "==" if node.operator == '=' else ("!=" if node.operator == "/=" else ("||" if node.operator == 'or' else ("&&" if node.operator == "and" else ("!" if node.operator == "not" else node.operator)))),
                 self.generate(node.right)
             ]
         )
