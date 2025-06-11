@@ -10,8 +10,9 @@ class CGenerator:
 
     def generate(self, node: ast.ASTNode):
         method = f'gen_{type(node).__name__}'
-        if method:
+        if method and type(node).__name__ != "NoneType":
             return getattr(self, method)(node)
+        return "" # be aware of it, please...
 
 
     def gen_Program(self, node : ast.ASTNode):
@@ -131,6 +132,8 @@ class CGenerator:
             echo = f"\"%d\", {value}"
         elif(value_type == float):
             echo = f"\"%lf\", {value}"
+        elif(value_type == "char"):
+            echo = f"\"%c\", {value}"
         elif(value_type == str):
             echo = f"\"%s\", {value}"
         elif(value_type == bool):
@@ -140,6 +143,10 @@ class CGenerator:
 
 
     def gen_VariableDeclaration(self, node: ast.VariableDeclaration):
+        if node.varType == "char":
+            return f"char {node.id}" + ((f" = \'{node.varValue.value}\'") if node.varValue is not None else '') + ';'
+        elif node.varType == str:
+            return f"char {node.id}[]" + ((f" = \"{node.varValue.value}\"") if node.varValue is not None else '') + ';'
         return f"{node.varType.__name__} {node.id}" + ((f" = {node.varValue.value}") if node.varValue is not None else '') + ';'
     
 
@@ -159,4 +166,4 @@ class CGenerator:
     
 
     def gen_FunctionCall(self, node: ast.FunctionCall):
-        return f"{node.name}({", ".join([self.generate(param) for param in node.parameters] if node.parameters else [])});"
+        return f"{node.name}({", ".join([self.generate(param) for param in node.parameters] if len(node.parameters) > 0 else [])});"

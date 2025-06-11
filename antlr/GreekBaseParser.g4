@@ -33,6 +33,7 @@ nonDeclarativeStatement
     | assignment
     | printStatement
     | variableDeclaration
+    | expressionStatement
     ;
 
 expressionStatement
@@ -126,7 +127,7 @@ functionDeclaration
     ;
 
 functionCall
-    : call_name+=IDENTIFIER OP_LPAREN (params+=expression (OP_COMMA params+=expression)*)? OP_RPAREN;
+    : IDENTIFIER OP_LPAREN (expression (OP_COMMA expression)*)? OP_RPAREN;
 
 /*
 condition

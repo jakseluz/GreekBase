@@ -63,7 +63,8 @@ class SemanticChecker:
         else:
             self.symbol_table[node.id] = (node.varType, node.varValue)
         if(node.varValue):
-            node.varValue.type = node.varType.__name__
+            if(node.varType != "char"):
+                node.varValue.type = node.varType.__name__
 
 
     def analyze_Assignment(self, node: ast.Assignment):
@@ -167,3 +168,8 @@ class SemanticChecker:
         
         if len(node.parameters) > 0:
             for param in node.parameters: self.analyze(param)
+
+
+    def analyze_PrintStatement(self, node: ast.PrintStatement):
+        self.analyze(node.value)
+    
