@@ -1,11 +1,11 @@
 from antlr4 import CommonTokenStream
 from antlr.generated import GreekBaseLexer, GreekBaseParser
-from src import GreekASTBuilder, CGenerator, SemanticChecker
+from src import GreekASTBuilder, CGenerator, SemanticChecker, ast
 from .error_listener import GreekErrorListener
 
 
 # Called by both - the GUI and the CLI
-def compile_code(input_stream) -> tuple[str, str, bool]:
+def compile_code(input_stream) -> tuple[str, str, bool, ast.Program]:
 
     lexer = GreekBaseLexer(input_stream)
     token_stream = CommonTokenStream(lexer)
@@ -22,8 +22,6 @@ def compile_code(input_stream) -> tuple[str, str, bool]:
     ast_builder = GreekASTBuilder()
     ast = ast_builder.visit(tree)
 
-    print(ast)
-
     checker = SemanticChecker()
     tab, errors_and_warnings = checker.analyze(ast)
     all_errors = "\n".join(error_listener.syntax_errors) + "\n" + errors_and_warnings
@@ -36,4 +34,4 @@ def compile_code(input_stream) -> tuple[str, str, bool]:
     else:
         code = ""
     
-    return code, all_errors, success
+    return code, all_errors, success, ast

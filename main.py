@@ -18,8 +18,11 @@ class Main:
             print("Please provide a proper source file path!")
             return False
 
-        code, errors_and_warnings, success = compile_code(input_stream)
+        code, errors_and_warnings, success, ast = compile_code(input_stream)
         print(errors_and_warnings)
+
+        if "--ast" in sys.argv:
+            print(ast, '\n')
 
         if not success:
             exit(1)
@@ -33,7 +36,7 @@ class Main:
         return True
 
 
-    def handle_arguments(self) -> str | bool:
+    def handle_arguments(self) -> str | bool | None:
 
         if len(sys.argv) < 2 or sys.argv[1] == "--help":
             print(
@@ -43,6 +46,7 @@ class Main:
                 * --help                                                    -> print this info
                 * inputs/example1.gb                                        -> compile example1.gb to output/example1.c
                 * inputs/example1.gb -o custom_catalogue/custom_file.c      -> specify output path
+                *  --ast                                                    -> additionaly print AST tree structure in the console if any GB source file is provided
                 """
             )
             exit(0)

@@ -17,7 +17,6 @@ class SemanticChecker:
     def finalise(self) -> bool:
         # should be called after program analyzing
         if(1 in self.errors.values()):
-            print(self.errors)
             return False
         else:
             return True
@@ -26,7 +25,6 @@ class SemanticChecker:
     def analyze(self, node: ast.ASTNode):
         # main method of the class, starts AST traversal
         method = getattr(self, f'analyze_{type(node).__name__}', None)
-        print(method)
         if method:
             return method(node)
         #else:

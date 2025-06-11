@@ -1,8 +1,8 @@
 #include <stdio.h>
+
 int main(){
 int x = 5;
 int y = 10;
-int x;
 if(x < y){
 x = x + 1;
 }else{ 
