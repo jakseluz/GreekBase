@@ -1,0 +1,22 @@
+x : int := 5;
+y : int := 10;
+
+function Dodaj()
+is
+begin
+    print y;
+end function;
+
+if x < y then
+    x := x + 1;
+else y := y - 1;
+end if;
+
+while x < y {
+    print x;
+    x := x + 1;
+    --Dodaj();
+}
+Dodaj();
+print x;
+print y;
