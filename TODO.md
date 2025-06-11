@@ -1,6 +1,3 @@
-* GUI! -> saving the file (both separately: GB and C)
-* errors and warnings colours implementation in GUI
-
 * make variable usages inside function verified if valid (declared)
 
 * string type generation! -> postponed (partially)
