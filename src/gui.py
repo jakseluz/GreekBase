@@ -47,17 +47,17 @@ class gui:
         btn_width = 10
         #TODO: reconstruct the grid, do not rely on padx because its not scalable at all
         self.load_btn = tk.Button(self.frame, text="Wczytaj plik", command=self.load_file, )
-        self.load_btn.grid(row=1, column=1, pady=5, padx=(0, 130))
+        self.load_btn.grid(row=1, column=1, pady=5, padx=(0, 240))
 
         self.save_input_btn = tk.Button(self.frame, text="Zapisz plik", command=self.save_input_file)
-        self.save_input_btn.grid(row=1, column=1, pady=5,  padx=(20, 0))
+        self.save_input_btn.grid(row=1, column=1, pady=5,  padx=(150, 0))
 
 
         self.compile_btn = tk.Button(self.frame, text="Compile", command=self.compile_text)
-        self.compile_btn.grid(row=1, column=3, pady=5, padx=(100, 0))
+        self.compile_btn.grid(row=1, column=3, pady=5, padx=(210, 0))
 
         self.save_output_btn = tk.Button(self.frame, text="Zapisz C", command=self.save_output_file)
-        self.save_output_btn.grid(row=1, column=3, pady=5, padx=(0, 20))
+        self.save_output_btn.grid(row=1, column=3, pady=5, padx=(0, 150))
 
         # Stretching the grid
         self.frame.columnconfigure(1, weight=1)
