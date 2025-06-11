@@ -29,8 +29,11 @@ def compile_code(input_stream) -> tuple[str, str, bool]:
     all_errors = "\n".join(error_listener.syntax_errors) + "\n" + errors_and_warnings
     success = checker.finalise()
 
-    codegen = CGenerator(tab)
-    # Generate C code from the AST
-    code = codegen.generate(ast)
+    if success:
+        codegen = CGenerator(tab)
+        # Generate C code from the AST
+        code = codegen.generate(ast)
+    else:
+        code = ""
     
     return code, all_errors, success

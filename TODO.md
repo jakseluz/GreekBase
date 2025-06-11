@@ -1,5 +1,3 @@
-* make variable usages inside function verified if valid (declared)
-
 * string type generation! -> postponed (partially)
 * simple type conversion, (float + int) etc. -> postponed or not to be implemented at all
 

@@ -17,6 +17,7 @@ class SemanticChecker:
     def finalise(self) -> bool:
         # should be called after program analyzing
         if(1 in self.errors.values()):
+            print(self.errors)
             return False
         else:
             return True
@@ -25,6 +26,7 @@ class SemanticChecker:
     def analyze(self, node: ast.ASTNode):
         # main method of the class, starts AST traversal
         method = getattr(self, f'analyze_{type(node).__name__}', None)
+        print(method)
         if method:
             return method(node)
         #else:
@@ -65,6 +67,8 @@ class SemanticChecker:
         if(node.varValue):
             if(node.varType != "char"):
                 node.varValue.type = node.varType.__name__
+            else:
+                node.varValue.type = "char"
 
 
     def analyze_Assignment(self, node: ast.Assignment):
@@ -99,7 +103,7 @@ class SemanticChecker:
             node.type = ident_val_type.__name__
             return ident_val_type
         else:
-            self.errors[f"{self.RED}[ERROR]: {self.WHITE}Unknown identifier reference: {node.value} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
+            self.errors[f"{self.RED}[Error]: {self.WHITE}Unknown identifier reference: {node.value} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
 
 
     def analyze_IntLiteral(self, node: ast.IntLiteral) -> type:
@@ -158,18 +162,19 @@ class SemanticChecker:
         if(node.name in self.symbol_table):
             params = node.parameters
             if(len(params) != len(self.symbol_table[node.value][0])):
-                self.errors[f"{self.RED}[ERROR]: {self.WHITE}Wrong number of parameters in function call: {node.name} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
+                self.errors[f"{self.RED}[Error]: {self.WHITE}Wrong number of parameters in function call: {node.name} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
             else:
                 for i, param in enumerate(params):
                     if(param.varValue != self.symbol_table[node.name][1][i]):
-                        self.errors[f"{self.RED}[ERROR]: {self.WHITE}Different parameter type: {param} {self.PURPLE}in line {param.line}, column {param.column}{self.WHITE}!"] = 1
+                        self.errors[f"{self.RED}[Error]: {self.WHITE}Different parameter type: {param} {self.PURPLE}in line {param.line}, column {param.column}{self.WHITE}!"] = 1
         else:
-            self.errors[f"{self.RED}[ERROR]: {self.WHITE}Unknown identifier reference: {node.value} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
+            self.errors[f"{self.RED}[Error]: {self.WHITE}Unknown identifier reference: {node.value} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
         
         if len(node.parameters) > 0:
             for param in node.parameters: self.analyze(param)
 
 
     def analyze_PrintStatement(self, node: ast.PrintStatement):
-        self.analyze(node.value)
+        if isinstance(node, ast.Identifier):
+            self.analyze(node.value)
     
