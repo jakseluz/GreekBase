@@ -12,6 +12,10 @@ from pygments.token import Token
 from pygments.lexers import AdaLexer
 
 
+
+#regex for removing ANSI escape sequences and colouring log text
+import re
+
 class gui:
 
     def __init__(self):
@@ -93,8 +97,26 @@ class gui:
         self.output_text.delete("1.0", tk.END)
         if success: highlight_c_code(self.output_text, processed)
         self.log_text.config(state=tk.NORMAL)
+        # colours for the log text
         self.log_text.delete("1.0", tk.END)
-        self.log_text.insert(tk.END, errors_and_warnings + "\n")
+        self.log_text.tag_config("error", foreground="red")
+        self.log_text.tag_config("warning", foreground="#b58900")
+        self.log_text.tag_config("location", foreground="purple")
+        # inseting errors into the bar
+        self.log_text.insert(tk.END, remove_ansi_escape_sequences(errors_and_warnings))
+
+        content = self.log_text.get("1.0", tk.END)
+        
+        #colouring the log text
+        for match in re.finditer(r"\[Error\]", content):
+            self.log_text.tag_add("error", f"1.0 + {match.start()}c", f"1.0 + {match.end()}c")
+        for match in re.finditer(r"\[Warning\]", content):
+            self.log_text.tag_add("warning", f"1.0 + {match.start()}c", f"1.0 + {match.end()}c")
+        for match in re.finditer(r"in line \d+, column \d+", content):
+            self.log_text.tag_add("location", f"1.0 + {match.start()}c", f"1.0 + {match.end()}c")
+
+
+
         self.output_text.config(state=tk.DISABLED)
         self.output_text.event_generate("<<Change>>")
 
@@ -219,3 +241,10 @@ def highlight_ada_code(text_widget: tk.Text, code: str):
 
 if __name__ == "__main__":
     gui().run()
+
+
+#Function for removing ansi escape sequences from a string
+# note: more robust solution would be to not fetch ansi codes in the first place
+def remove_ansi_escape_sequences(text: str) -> str:
+    ansi_escape = re.compile(r'\x1B\[[0-?]*[ -/]*[@-~]')
+    return ansi_escape.sub('', text)
