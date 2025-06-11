@@ -1,6 +1,7 @@
 from antlr4 import CommonTokenStream
 from antlr.generated import GreekBaseLexer, GreekBaseParser
 from src import GreekASTBuilder, CGenerator, SemanticChecker
+from .error_listener import GreekErrorListener
 
 
 # Called by both - the GUI and the CLI
@@ -9,6 +10,12 @@ def compile_code(input_stream) -> tuple[str, str, bool]:
     lexer = GreekBaseLexer(input_stream)
     token_stream = CommonTokenStream(lexer)
     parser = GreekBaseParser(token_stream)
+
+    lexer.removeErrorListeners()
+    parser.removeErrorListeners()
+    error_listener = GreekErrorListener()
+    lexer.addErrorListener(error_listener)
+    parser.addErrorListener(error_listener)
 
     tree = parser.program()
 
@@ -19,10 +26,11 @@ def compile_code(input_stream) -> tuple[str, str, bool]:
 
     checker = SemanticChecker()
     tab, errors_and_warnings = checker.analyze(ast)
+    all_errors = "\n".join(error_listener.syntax_errors) + "\n" + errors_and_warnings
     success = checker.finalise()
 
     codegen = CGenerator(tab)
     # Generate C code from the AST
     code = codegen.generate(ast)
     
-    return code, errors_and_warnings, success
+    return code, all_errors, success

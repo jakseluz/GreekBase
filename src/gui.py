@@ -96,6 +96,7 @@ class gui:
         self.log_text.delete("1.0", tk.END)
         self.log_text.tag_config("error", foreground="red")
         self.log_text.tag_config("warning", foreground="#b58900")
+        self.log_text.tag_config("syntax error", foreground="#c90faa")
         self.log_text.tag_config("location", foreground="purple")
         # inseting errors into the bar
         self.log_text.insert(tk.END, remove_ansi_escape_sequences(errors_and_warnings))
@@ -107,6 +108,8 @@ class gui:
             self.log_text.tag_add("error", f"1.0 + {match.start()}c", f"1.0 + {match.end()}c")
         for match in re.finditer(r"\[Warning\]", content):
             self.log_text.tag_add("warning", f"1.0 + {match.start()}c", f"1.0 + {match.end()}c")
+        for match in re.finditer(r"\[Syntax error\]", content):
+            self.log_text.tag_add("syntax error", f"1.0 + {match.start()}c", f"1.0 + {match.end()}c")
         for match in re.finditer(r"in line \d+, column \d+", content):
             self.log_text.tag_add("location", f"1.0 + {match.start()}c", f"1.0 + {match.end()}c")
 
