@@ -44,11 +44,20 @@ class gui:
         self.output_text.grid(row=0, column=3, sticky="nsew")
 
         # Przyciski pod odpowiednimi polami
-        self.load_btn = tk.Button(self.frame, text="Wczytaj plik", command=self.load_file)
-        self.load_btn.grid(row=1, column=1, pady=5)
+        btn_width = 10
+        #TODO: reconstruct the grid, do not rely on padx because its not scalable at all
+        self.load_btn = tk.Button(self.frame, text="Wczytaj plik", command=self.load_file, )
+        self.load_btn.grid(row=1, column=1, pady=5, padx=(0, 130))
+
+        self.save_input_btn = tk.Button(self.frame, text="Zapisz plik", command=self.save_input_file)
+        self.save_input_btn.grid(row=1, column=1, pady=5,  padx=(20, 0))
+
 
         self.compile_btn = tk.Button(self.frame, text="Compile", command=self.compile_text)
-        self.compile_btn.grid(row=1, column=3, pady=5)
+        self.compile_btn.grid(row=1, column=3, pady=5, padx=(100, 0))
+
+        self.save_output_btn = tk.Button(self.frame, text="Zapisz C", command=self.save_output_file)
+        self.save_output_btn.grid(row=1, column=3, pady=5, padx=(0, 20))
 
         # Stretching the grid
         self.frame.columnconfigure(1, weight=1)
@@ -61,20 +70,6 @@ class gui:
 
         self.log_text = CustomText(self.down_frame, width=100, height=10, state=tk.DISABLED)
         self.log_text.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
-
-
-    def load_file(self):
-        file_path = filedialog.askopenfilename(title="Wybierz plik",
-                                               filetypes=[("Wszystkie pliki", "*.*"), ("Pliki tekstowe", "*.txt"),  ("Pliki adan", "*.adan"), ("Pliki greekBase", "*.gb")])
-        if file_path:
-            try:
-                with open(file_path, "r", encoding="utf-8") as f:
-                    content = f.read()
-                self.input_text.delete("1.0", tk.END)
-                self.input_text.insert(tk.END, content)
-                self.input_text.event_generate("<<Change>>")
-            except Exception as e:
-                messagebox.showerror("Błąd", f"Nie udało się wczytać pliku:\n{e}")
 
 
     def compile_text(self):
@@ -106,7 +101,7 @@ class gui:
         self.log_text.insert(tk.END, remove_ansi_escape_sequences(errors_and_warnings))
 
         content = self.log_text.get("1.0", tk.END)
-        
+
         #colouring the log text
         for match in re.finditer(r"\[Error\]", content):
             self.log_text.tag_add("error", f"1.0 + {match.start()}c", f"1.0 + {match.end()}c")
@@ -123,6 +118,54 @@ class gui:
 
     def run(self):
         self.root.mainloop()
+
+
+
+# functions for saving and loading files   
+    def load_file(self):
+        file_path = filedialog.askopenfilename(title="Wybierz plik",
+                                               filetypes=[("Wszystkie pliki", "*.*"), ("Pliki tekstowe", "*.txt"),  ("Pliki adan", "*.adan"), ("Pliki greekBase", "*.gb")])
+        if file_path:
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                self.input_text.delete("1.0", tk.END)
+                self.input_text.insert(tk.END, content)
+                self.input_text.event_generate("<<Change>>")
+            except Exception as e:
+                messagebox.showerror("Błąd", f"Nie udało się wczytać pliku:\n{e}")
+    def save_input_file(self):
+        content = self.input_text.get("1.0", tk.END).strip()
+        if not content:
+            messagebox.showerror("Błąd", "Pole tekstowe po lewej jest puste! Nie można zapisać.")
+            return
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".gb",
+            filetypes=[("GreekBase files", "*.gb"), ("Wszystkie pliki", "*.*")],
+            title="Zapisz plik .gb"
+        )
+        if file_path:
+            try:
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(content)
+            except Exception as e:
+                messagebox.showerror("Błąd", f"Nie udało się zapisać pliku:\n{e}")
+    def save_output_file(self):
+        content = self.output_text.get("1.0", tk.END).strip()
+        if not content:
+            messagebox.showerror("Błąd", "Pole wynikowe jest puste! Nie można zapisać.")
+            return
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".c",
+            filetypes=[("C files", "*.c"), ("Wszystkie pliki", "*.*")],
+            title="Zapisz wygenerowany kod C"
+        )
+        if file_path:
+            try:
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(content)
+            except Exception as e:
+                messagebox.showerror("Błąd", f"Nie udało się zapisać pliku:\n{e}")
 
 
 
@@ -248,3 +291,5 @@ if __name__ == "__main__":
 def remove_ansi_escape_sequences(text: str) -> str:
     ansi_escape = re.compile(r'\x1B\[[0-?]*[ -/]*[@-~]')
     return ansi_escape.sub('', text)
+
+
