@@ -5,12 +5,12 @@
 
 ## Project description:
 * Own programming language „GreekBase”.
-* The aim for this project is to create an experimental programming language inspired by [Ada](https://www.adacore.com/about-ada)'s rules and syntax for [*Compilation Theory and Compilers*](https://sylabusy.agh.edu.pl/pl/1/2/19/1/4/16/140#nav-tab-10) classes. We want to change it a bit and make it more convenient, for example with built-in list operations and some other enhancements.
+* The aim for this project is to create an experimental programming language inspired by [Ada](https://www.adacore.com/about-ada)'s rules and syntax for [*Compilation Theory and Compilers*](https://sylabusy.agh.edu.pl/pl/1/2/19/1/4/16/140#nav-tab-10) classes. We want to change it a bit and make it more convenient with some small enhancements.
 * Implemented in **Python** using [ANTLR4](https://www.antlr.org).
-* Language compiled to **C** (exact features: TBA, probably at the end of the main development, just around the time of the project evaluation).
+* Language compiled to **C**.
 
 ## Target group
-* This project aims to cater to people who are interested in Ada, want a quick setup with simple gui. The only thing you need is a prior knowledge of C language, so it's an interesting programming trivia for example for people on 2 semester of **ISI on AGH**. You can explore ada examples that are stored in example folder :)
+* This project aims to cater to people who are interested in Ada, want a quick setup with simple GUI. The only thing you need is a prior knowledge of C language (or just how to compile it further), so it's an interesting programming trivia for example for people on the second semester of **ISI on AGH**. You can explore GB examples that are stored in inputs folder :)
 
 ## Project structure
 ```
@@ -25,12 +25,14 @@ GreekBase
 ├── src/
 │   ├── ast_builder.py                ← used for generating AST tree from ANTLR tree
 │   ├── astGreek.py                   ← AST tree node classes
+│   ├── error_listener.py             ← syntax ANTLR errors handling etc.
 │   ├── semantic_checker.py           ← semantic errors handling etc.
 │   ├── codegen.py                    ← C (from AST) code generator
 │   ├── compiler_core.py              ← logic of compiler used in main and gui
 │   └── gui.py                        ← graphic interface for compiler
 ├── inputs/                           ← example source files
 ├── output/                           ← generated C source files
+├── requirements.txt                  ← list of packages required to run the compiler (compatible with pip)
 ├── run.sh                            ← bash (Linux etc.) script for generating ANTLR files
 ├── run.bat                           ← bat (Windows) equivalent of the above one
 └── main.py                           ← main file that starts the compiler
@@ -53,25 +55,30 @@ pip install -r ./requirements.txt
 	./[run.sh](./run.sh)
 in order to generate the parser and its tools needed later, but they should be already generated in ./[antlr/generated/](./antlr/generated/).
 
-Example input files are in ./[inputs](./inputs) directory and they have .gb extension. 
-For now, printing the Abstract Syntax Tree is possible, as well as receiving semantic errors and warnings in the console.
+Example input files are in ./[inputs](./inputs) directory and they have .gb extension (.adan also supported to honor the archetype). 
+For now, printing the Abstract Syntax Tree is possible, as well as receiving syntax errors, semantic errors and warnings in the console or GUI.
 Output C source file is (by default) saved to ./[output/](./output/) directory if there are no [Error]s. 
 
-2. You can use the graphical interface by running the ./[main.py](./main.py) file without any arguments. 
+2. You can use the graphical interface by running the ./[main.py](./main.py) file without any command arguments. 
 
-3. For specific information about the compiler usage in command line interface, you can run:
-```
+3. For specific information about the compiler usage in the command line interface, you can run:
+```bash
 python main.py --help
 ```
 
 4. Compile the GreekBase language source file by typing its path as the first argument:
-```
+```bash
 python main.py example.gb
 ```
 
 5. There is an option: -o output_path:
-```
+```bash
 python main.py example.gb -o my_path/my_name.c
+```
+
+6. If there is a need for an abstract syntax tree program object print:
+```bash
+python main.py example.gb -o my_path/my_name.c --ast
 ```
 
 ### 3. Example
@@ -140,3 +147,14 @@ return 0;
 }
 
 ```
+
+### 4. Features:
+* bulit-in types: int, float, char, simplified string, bool
+* if conditions
+* built-in arithmetic: multiplication, division, modulo, addition, substraction, bracketing
+* variables and their declarations
+* loops (while)
+* assignments
+* print statements
+* functions
+* etc.

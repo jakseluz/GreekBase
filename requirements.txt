@@ -2,4 +2,4 @@
 tk
 
 # colours in GUI
-pygments==2.19.1
+pygments
