@@ -9,6 +9,9 @@
 * Implemented in **Python** using [ANTLR4](https://www.antlr.org).
 * Language compiled to **C** (exact features: TBA, probably at the end of the main development, just around the time of the project evaluation).
 
+## Target group
+* This project aims to cater to people who are interested in Ada, want a quick setup with simple gui. The only thing you need is a prior knowledge of C language, so it's an interesting programming trivia for example for people on 2 semester of **ISI on AGH**. You can explore ada examples that are stored in example folder :)
+
 ## Project structure
 ```
 GreekBase
