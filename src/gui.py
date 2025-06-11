@@ -89,14 +89,14 @@ class gui:
         scrollbar.config(command=self.log_text.yview)
         label.pack()
         """
-
-        if success:
-            self.output_text.config(state=tk.NORMAL)
-            self.output_text.delete("1.0", tk.END)
-            highlight_c_code(self.output_text, processed)
-            self.log_text.insert(tk.END, errors_and_warnings + "\n")
-            self.output_text.config(state=tk.DISABLED)
-            self.output_text.event_generate("<<Change>>")
+        self.output_text.config(state=tk.NORMAL)
+        self.output_text.delete("1.0", tk.END)
+        if success: highlight_c_code(self.output_text, processed)
+        self.log_text.config(state=tk.NORMAL)
+        self.log_text.delete("1.0", tk.END)
+        self.log_text.insert(tk.END, errors_and_warnings + "\n")
+        self.output_text.config(state=tk.DISABLED)
+        self.output_text.event_generate("<<Change>>")
 
 
     def run(self):

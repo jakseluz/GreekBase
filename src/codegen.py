@@ -5,6 +5,7 @@ class CGenerator:
     
     def __init__(self, table: dict):
         self.symbol_table = table
+        self.functions = list()
 
 
     def generate(self, node: ast.ASTNode):
@@ -15,7 +16,11 @@ class CGenerator:
 
     def gen_Program(self, node : ast.ASTNode):
         body = "\n".join([self.generate(statement) for statement in node.statements])
-        return f'#include <stdio.h>\nint main(){{\n{body}\nreturn 0;\n}}'
+        return (
+            f'#include <stdio.h>\n'
+            + "\n".join(self.functions)
+            + f'\nint main(){{\n{body}\nreturn 0;\n}}'
+        )
 
 
     def gen_IntLiteral(self, node: ast.IntLiteral):
@@ -28,6 +33,10 @@ class CGenerator:
 
     def gen_CharLiteral(self, node: ast.CharLiteral):
         return '\'' + node.value + '\''
+    
+
+    def gen_BoolLiteral(self, node: ast.BoolLiteral):
+        return node.value
 
 
     def gen_StringLiteral(self, node: ast.StringLiteral):
@@ -38,8 +47,8 @@ class CGenerator:
         return " ".join(
             [
                 self.generate(node.left) if node.left else "",
-                "==" if node.operator == '=' else ("!=" if node.operator == "/=" else ("||" if node.operator == 'or' else ("&&" if node.operator == "and" else ("!" if node.operator == "not" else node.operator)))),
-                self.generate(node.right)
+                "==" if node.operator == '=' else ("!=" if node.operator == "/=" else ("||" if node.operator == 'or' else ("&&" if node.operator == "and" else ("!" if node.operator == "not" else (node.operator if node.operator else ""))))),
+                self.generate(node.right) if node.right else ""
             ]
         )
 
@@ -102,16 +111,52 @@ class CGenerator:
 
 
     def gen_PrintStatement(self, node: ast.PrintStatement): # TODO
-        value_type = self.symbol_table[node.value.value][0]
-        if(value_type == int):
-            value = f"\"%d\", {node.value.value}"
-        elif(value_type == float):
-            value = f"\"%lf\", {node.value.value}"
-        elif(value_type == str):
-            value = f"\"%s\", {node.value.value}"
+        value_type = int
+        value = 5
+        if isinstance(node.value, ast.Identifier):
+            value_type = self.symbol_table[node.value.value][0]
+            value = node.value.value
+        elif isinstance(node.value, ast.Literal):
+            value_type = self.symbol_table[node.value.value][0]
+            value = node.value.value
+        elif isinstance(node.value, ast.FunctionCall):
+            value_type = self.symbol_table[node.value.name][0]
+            value = self.generate(node.value)
+        else:
+            value_type = self.symbol_table[node.value][0]
+            value = node.value
 
-        return f"printf({value});"
+        
+        if(value_type == int):
+            echo = f"\"%d\", {value}"
+        elif(value_type == float):
+            echo = f"\"%lf\", {value}"
+        elif(value_type == str):
+            echo = f"\"%s\", {value}"
+        elif(value_type == bool):
+            echo = f"\"%d\", {value}"
+
+        return f"printf({echo});"
 
 
     def gen_VariableDeclaration(self, node: ast.VariableDeclaration):
         return f"{node.varType.__name__} {node.id}" + ((f" = {node.varValue.value}") if node.varValue is not None else '') + ';'
+    
+
+    def gen_FunctionDeclaration(self, node: ast.FunctionDeclaration):
+        self.functions.append("\n".join(
+            [
+                (node.return_type if node.return_type != None else "void")
+                    + " " + node.name
+                    + "("
+                    + ", ".join([self.generate(param) for param in node.parameters])
+                    + "){",
+                *[self.generate(statement) for statement in node.statements],
+                "}"
+            ]
+        ))
+        return ""
+    
+
+    def gen_FunctionCall(self, node: ast.FunctionCall):
+        return f"{node.name}({", ".join([self.generate(param) for param in node.parameters] if node.parameters else [])});"

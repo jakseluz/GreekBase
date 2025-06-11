@@ -12,7 +12,10 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         var_name = ctx.IDENTIFIER().getText()
         var_type = self.visit(ctx.varType())
         if ctx.expression():
-            var_value = self.visit(ctx.expression())
+            if ctx.expression():
+                var_value = self.visit(ctx.expression())
+            elif ctx.condition():
+                var_value = self.visit(ctx.condition())
         else:
             var_value = None
         return ast.VariableDeclaration(ctx.start.line, ctx.start.column, var_type, var_name, var_value)
@@ -41,14 +44,7 @@ class GreekASTBuilder(GreekBaseParserVisitor):
 
 
     def visitExpression(self, ctx: GreekBaseParser.ExpressionContext):
-        token = ctx.IDENTIFIER
-        if ctx.literal():
-            return self.visit(ctx.literal())
-
-
-    def visitIdExpr(self, ctx: GreekBaseParser.IdExprContext):
-        if ctx.IDENTIFIER():
-            return ast.Identifier(ctx.start.line, ctx.start.column, ctx.IDENTIFIER().getText(), None)
+        return self.visit(ctx.addExpr())
 
 
     def visitLiteral(self, ctx: GreekBaseParser.LiteralContext):
@@ -56,6 +52,8 @@ class GreekASTBuilder(GreekBaseParserVisitor):
             return ast.IntLiteral(ctx.start.line, ctx.start.column, int(ctx.LIT_INT().getText()))
         elif ctx.LIT_FLOAT():
             return ast.FloatLiteral(ctx.start.line, ctx.start.column, float(ctx.LIT_FLOAT().getText()))
+        elif ctx.LIT_BOOL():
+            return ast.BoolLiteral(ctx.start.line, ctx.start.column, ctx.LIT_BOOL().getText())
         elif ctx.LIT_STRING():
             return ast.StringLiteral(ctx.start.line, ctx.start.column, ctx.LIT_STRING().getText().strip('"'))
         elif ctx.LIT_CHAR():
@@ -77,13 +75,81 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         then = [self.visit(nondecl_stmt) for nondecl_stmt in ctx.nonDeclarativeStatement()]
         return ast.LoopStatement(ctx.start.line, ctx.start.column, condition, then)
 
-
+    """
     def visitCondition(self, ctx: GreekBaseParser.ConditionContext):
         # Handles condition: expr <relop> expr
-        left = self.visit(ctx.left_expr()) if ctx.left_expr() else (None if ctx.negated() else (self.visit(ctx.condition(0))))
-        operator = ctx.relop().getText() if ctx.relop() else (ctx.OP_OR().getText() if ctx.OP_OR() else (ctx.OP_AND().getText() if ctx.OP_AND() else (ctx.OP_NOT().getText() if ctx.OP_NOT() else None)))
-        right = self.visit(ctx.right_expr()) if ctx.left_expr() else (self.visit(ctx.negated()) if ctx.negated() else (self.visit(ctx.condition(1))))
+        left = self.visit(ctx.left_expr)\
+            if ctx.left_expr\
+              else (None if ctx.negated\
+                    else (self.visit(ctx.condition(0))))
+        operator = ctx.relop().getText()\
+            if ctx.relop()\
+                else (ctx.OP_OR().getText() if ctx.OP_OR()\
+                      else (ctx.OP_AND().getText() if ctx.OP_AND()\
+                            else (ctx.OP_NOT().getText() if ctx.OP_NOT()\
+                                  else None)))
+        right = self.visit(ctx.right_expr) if ctx.left_expr\
+            else (self.visit(ctx.negated) if ctx.negated\
+                  else (self.visit(ctx.condition(1))))
         return ast.Condition(ctx.start.line, ctx.start.column, left, operator, right)
+    """
+    def visitCondition(self, ctx):
+        return self.visit(ctx.conditionOr())
+
+    def visitConditionOr(self, ctx: GreekBaseParser.ConditionOrContext):
+        terms = [self.visit(term) for term in ctx.conditionAnd()]
+        if len(terms) == 1:
+            return terms[0]
+        
+        astnode = terms[0]
+        for i, right in enumerate(terms[1:], start = 1):
+            operator = ctx.OP_OR()[i - 1].getText()
+            node = ast.Condition(
+                line = ctx.start.line,
+                column = ctx.start.column,
+                left = node,
+                operator = operator,
+                right = right
+            )
+        return node
+
+
+    def visitConditionAnd(self, ctx: GreekBaseParser.ConditionAndContext):
+        factors = [self.visit(factor) for factor in ctx.conditionNot()]
+        if len(factors) == 1:
+            return factors[0]
+        
+        astnode = factors[0]
+        for i, right in enumerate(factors[1:], start = 1):
+            operator = ctx.OP_AND()[i - 1].getText()
+            node = ast.Condition(
+                line = ctx.start.line,
+                column = ctx.start.column,
+                left = node,
+                operator = operator,
+                right = right
+            )
+        return node
+    
+    def visitConditionNot(self, ctx: GreekBaseParser.ConditionNotContext):
+        if ctx.OP_NOT():
+            operator = ctx.OP_NOT().getText()  
+            right = self.visit(ctx.conditionNot())  
+            return ast.Condition(ctx.start.line, ctx.start.column, None, operator, right)
+        else:
+            return self.visit(ctx.conditionAtom())
+    
+
+    def visitConditionAtom(self, ctx):
+        if ctx.relop():
+            left = self.visit(ctx.expression(0))
+            operator = ctx.relop().getText()
+            right = self.visit(ctx.expression(1))
+            return ast.Condition(ctx.start.line, ctx.start.column, left, operator, right)
+        elif ctx.OP_LPAREN():
+            return self.visit(ctx.condition())
+
+
 
 
     def visitProcedureDeclaration(self, ctx: GreekBaseParser.ProcedureDeclarationContext):
@@ -97,61 +163,70 @@ class GreekASTBuilder(GreekBaseParserVisitor):
     # functions
     def visitFunctionDeclaration(self, ctx: GreekBaseParser.FunctionDeclarationContext):
         name = ctx.IDENTIFIER().getText()
-        type = self.visit(ctx.varType())
+        type = self.visit(ctx.varType()) if ctx.varType() else None
         parameter_decl = [self.visit(decl) for decl in ctx.variableDeclaration()]
         statements = [self.visit(stmt) for stmt in ctx.statement()]
-        return ast.FuntionDeclaration(ctx.start.line, ctx.start.column, name, parameter_decl, type, statements)
+        return ast.FunctionDeclaration(ctx.start.line, ctx.start.column, name, parameter_decl, type, statements)
     
 
-    def visitFunctionCallExpr(self, ctx: GreekBaseParser.FunctionCallExprContext):
-        self.visit(ctx.functionCall())
-
     def visitFunctionCall(self, ctx: GreekBaseParser.FunctionCallContext):
-        name = ctx.call_name.getText()
-        parameters = [self.visit(param) for param in ctx.params()]
+        name = ctx.call_name[0].text
+        parameters = [self.visit(param) for param in ctx.expression()] if ctx.expression() else None
         return ast.FunctionCall(ctx.start.line, ctx.start.column, name, parameters)
 
 
-    # Arithmetic
+    # Arithmetic and not only
     def visitAddExpr(self, ctx: GreekBaseParser.AddExprContext):
-        left = self.visit(ctx.expression(0))
-        operator = '+'
-        right = self.visit(ctx.expression(1))
-        return ast.AdditionOperator(ctx.start.line, ctx.start.column, left, operator, right)
-
-
-    def visitSubExpr(self, ctx: GreekBaseParser.SubExprContext):
-        left = self.visit(ctx.expression(0))
-        operator = '-'
-        right = self.visit(ctx.expression(1))
+        if len(ctx.mulExpr()) == 1:
+            return self.visit(ctx.mulExpr(0))
+        
+        left = self.visit(ctx.mulExpr(0))
+        operator = ctx.OP_ADD()[0].getText()\
+            if ctx.OP_ADD()\
+                else (ctx.OP_SUB()[0].getText() if ctx.OP_SUB()\
+                      else None)
+        right = self.visit(ctx.mulExpr(1)) if ctx.mulExpr(1) else None
         return ast.AdditionOperator(ctx.start.line, ctx.start.column, left, operator, right)
 
 
     def visitMulExpr(self, ctx: GreekBaseParser.MulExprContext):
-        left = self.visit(ctx.expression(0))
-        operator = '*'
-        right = self.visit(ctx.expression(1))
+        if len(ctx.atom()) == 1:
+            return self.visit(ctx.atom(0))
+        
+        left = self.visit(ctx.atom(0))
+        operator = ctx.OP_MUL()[0].getText()\
+            if ctx.OP_MUL()\
+                else (ctx.OP_DIV()[0].getText() if ctx.OP_DIV()\
+                      else (ctx.OP_MOD()[0].getText() if ctx.OP_MOD()\
+                            else None))
+        right = self.visit(ctx.atom(1)) if ctx.atom(1) else None
         return ast.MultiplicationOperator(ctx.start.line, ctx.start.column, left, operator, right)
+    
 
-
-    def visitDivExpr(self, ctx: GreekBaseParser.DivExprContext):
-        left = self.visit(ctx.expression(0))
-        operator = '/'
-        right = self.visit(ctx.expression(1))
-        return ast.MultiplicationOperator(ctx.start.line, ctx.start.column, left, operator, right)
-
-
-    # Grouping
-    def visitParensExpr(self, ctx: GreekBaseParser.ParensExprContext):
-        return ast.ParenthesisExpression(
-            ctx.start.line, ctx.start.column, 
-            self.visit(ctx.expression())
-        )
+    def visitAtom(self, ctx: GreekBaseParser.AtomContext):
+        if ctx.functionCall():
+            return self.visit(ctx.functionCall())
+        elif ctx.IDENTIFIER():
+            return ast.Identifier(ctx.start.line, ctx.start.column, ctx.IDENTIFIER().getText(), None)
+        elif ctx.literal():
+            return self.visit(ctx.literal())
+        elif ctx.expression() and ctx.OP_LPAREN() and ctx.OP_RPAREN():
+            return ast.ParenthesisExpression(
+                ctx.start.line, ctx.start.column, 
+                self.visit(ctx.expression())
+            )
 
 
     # Printing
     def visitPrintStatement(self, ctx:GreekBaseParser.PrintStatementContext):
+        if ctx.IDENTIFIER():
+            value = ctx.IDENTIFIER().getText()
+        elif ctx.literal():
+            value = self.visit(ctx.literal())
+        elif ctx.functionCall():
+            value = self.visit(ctx.functionCall())
+
         return ast.PrintStatement(
-            ctx.start.line, ctx.start.column, 
-            self.visit(ctx.expression())
+            ctx.start.line, ctx.start.column,
+            value
         )

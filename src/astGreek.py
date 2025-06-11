@@ -29,6 +29,9 @@ class RelationOperator(ASTNode):
 class VariableType(ASTNode):
     pass
 
+class Atom(ASTNode):
+    pass
+
 
 # LITERALS
 @dataclass
@@ -38,6 +41,10 @@ class IntLiteral(Literal):
 @dataclass
 class FloatLiteral(Literal):
     value: float
+
+@dataclass
+class BoolLiteral(Literal):
+    value: bool
 
 @dataclass
 class CharLiteral(Literal):
@@ -59,24 +66,46 @@ class Condition(ASTNode):
 # EXPRESSIONS
 @dataclass
 class MultiplicationOperator(Expression):
-    left: Expression
-    operator: str                 # multiplication or divison
-    right: Expression
+    left: Atom
+    operator: str
+    right: Atom
 
 @dataclass
 class AdditionOperator(Expression):
-    left: Expression
-    operator: str                 # addition or substraction
-    right: Expression
+    left: MultiplicationOperator
+    operator: str
+    right: MultiplicationOperator
 
 @dataclass
-class ParenthesisExpression(Expression):
+class ParenthesisExpression(Atom):
     value: Expression
 
 @dataclass
 class Identifier(Expression):
     value: str
     type: str
+
+
+# variables
+@dataclass
+class VariableDeclaration(NonDeclarativeStatement):
+    varType: VariableType
+    id: Identifier
+    varValue : Literal | None
+
+
+# functions
+@dataclass
+class FunctionDeclaration(Statement):
+    name: Identifier
+    parameters: List[VariableDeclaration]
+    return_type: VariableType | None
+    statements: List[Statement]
+
+@dataclass
+class FunctionCall(Atom):
+    name: Identifier
+    parameters: List[Expression]
 
 
 # NON-DECLARATIVE STATEMENTS
@@ -98,7 +127,7 @@ class Assignment(NonDeclarativeStatement):
 
 @dataclass
 class PrintStatement(NonDeclarativeStatement):
-    value: Expression
+    value: Identifier | Literal | FunctionCall
     # id: str | None # TODO
 
 
@@ -150,23 +179,4 @@ class Procedure(Statement):
     body: List[NonDeclarativeStatement]
 
 
-# variables
-@dataclass
-class VariableDeclaration(NonDeclarativeStatement):
-    varType: VariableType
-    id: Identifier
-    varValue : Literal | None
 
-
-# functions
-@dataclass
-class FuntionDeclaration(Statement):
-    name: Identifier
-    parameters: List[VariableDeclaration]
-    return_type: VariableType | None
-    statements: List[Statement]
-
-@dataclass
-class FunctionCall(Expression):
-    name: Identifier
-    parameters: List[Identifier]

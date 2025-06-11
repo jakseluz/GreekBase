@@ -10,111 +10,126 @@ else:
 
 def serializedATN():
     return [
-        4,1,62,295,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,62,338,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
-        2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,1,0,5,0,40,8,0,
-        10,0,12,0,43,9,0,1,0,1,0,1,1,1,1,1,2,1,2,1,2,3,2,52,8,2,1,3,1,3,
-        1,3,1,3,1,3,3,3,59,8,3,1,4,1,4,1,4,1,4,5,4,65,8,4,10,4,12,4,68,9,
-        4,1,4,1,4,5,4,72,8,4,10,4,12,4,75,9,4,3,4,77,8,4,1,4,1,4,1,4,1,4,
-        1,4,5,4,84,8,4,10,4,12,4,87,9,4,1,4,1,4,5,4,91,8,4,10,4,12,4,94,
-        9,4,3,4,96,8,4,1,4,3,4,99,8,4,1,5,1,5,1,5,1,5,5,5,105,8,5,10,5,12,
-        5,108,9,5,1,5,1,5,1,5,1,5,1,5,5,5,115,8,5,10,5,12,5,118,9,5,1,5,
-        3,5,121,8,5,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,
-        1,8,3,8,137,8,8,1,8,1,8,1,9,1,9,1,9,1,9,5,9,145,8,9,10,9,12,9,148,
-        9,9,1,9,1,9,1,10,1,10,1,10,5,10,155,8,10,10,10,12,10,158,9,10,1,
-        10,1,10,1,10,1,10,1,11,1,11,1,11,1,11,3,11,168,8,11,1,12,1,12,1,
-        12,3,12,173,8,12,1,12,1,12,1,12,5,12,178,8,12,10,12,12,12,181,9,
-        12,1,12,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,13,5,13,193,8,
-        13,10,13,12,13,196,9,13,3,13,198,8,13,1,13,1,13,1,13,1,13,1,13,1,
-        13,1,13,5,13,207,8,13,10,13,12,13,210,9,13,1,13,1,13,1,13,1,13,1,
-        13,1,13,5,13,218,8,13,10,13,12,13,221,9,13,1,13,3,13,224,8,13,1,
-        14,1,14,1,14,1,14,1,14,5,14,231,8,14,10,14,12,14,234,9,14,3,14,236,
-        8,14,1,14,1,14,1,14,1,15,1,15,1,15,1,15,1,15,1,15,1,15,3,15,248,
-        8,15,1,15,1,15,1,15,1,15,1,15,1,15,5,15,256,8,15,10,15,12,15,259,
-        9,15,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,16,269,8,16,1,16,
-        1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,
-        1,16,5,16,286,8,16,10,16,12,16,289,9,16,1,17,1,17,1,18,1,18,1,18,
-        0,2,30,32,19,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,
-        0,3,1,0,54,58,1,0,31,36,1,0,25,29,317,0,41,1,0,0,0,2,46,1,0,0,0,
-        4,51,1,0,0,0,6,58,1,0,0,0,8,60,1,0,0,0,10,100,1,0,0,0,12,122,1,0,
-        0,0,14,126,1,0,0,0,16,131,1,0,0,0,18,140,1,0,0,0,20,151,1,0,0,0,
-        22,167,1,0,0,0,24,169,1,0,0,0,26,223,1,0,0,0,28,225,1,0,0,0,30,247,
-        1,0,0,0,32,268,1,0,0,0,34,290,1,0,0,0,36,292,1,0,0,0,38,40,3,4,2,
-        0,39,38,1,0,0,0,40,43,1,0,0,0,41,39,1,0,0,0,41,42,1,0,0,0,42,44,
-        1,0,0,0,43,41,1,0,0,0,44,45,5,0,0,1,45,1,1,0,0,0,46,47,7,0,0,0,47,
-        3,1,0,0,0,48,52,3,6,3,0,49,52,3,24,12,0,50,52,3,26,13,0,51,48,1,
-        0,0,0,51,49,1,0,0,0,51,50,1,0,0,0,52,5,1,0,0,0,53,59,3,8,4,0,54,
-        59,3,10,5,0,55,59,3,14,7,0,56,59,3,12,6,0,57,59,3,16,8,0,58,53,1,
-        0,0,0,58,54,1,0,0,0,58,55,1,0,0,0,58,56,1,0,0,0,58,57,1,0,0,0,59,
-        7,1,0,0,0,60,61,5,3,0,0,61,98,3,30,15,0,62,66,5,4,0,0,63,65,3,6,
-        3,0,64,63,1,0,0,0,65,68,1,0,0,0,66,64,1,0,0,0,66,67,1,0,0,0,67,76,
-        1,0,0,0,68,66,1,0,0,0,69,73,5,5,0,0,70,72,3,6,3,0,71,70,1,0,0,0,
-        72,75,1,0,0,0,73,71,1,0,0,0,73,74,1,0,0,0,74,77,1,0,0,0,75,73,1,
-        0,0,0,76,69,1,0,0,0,76,77,1,0,0,0,77,78,1,0,0,0,78,79,5,2,0,0,79,
-        80,5,3,0,0,80,99,5,47,0,0,81,85,5,23,0,0,82,84,3,6,3,0,83,82,1,0,
-        0,0,84,87,1,0,0,0,85,83,1,0,0,0,85,86,1,0,0,0,86,95,1,0,0,0,87,85,
-        1,0,0,0,88,92,5,5,0,0,89,91,3,6,3,0,90,89,1,0,0,0,91,94,1,0,0,0,
-        92,90,1,0,0,0,92,93,1,0,0,0,93,96,1,0,0,0,94,92,1,0,0,0,95,88,1,
-        0,0,0,95,96,1,0,0,0,96,97,1,0,0,0,97,99,5,24,0,0,98,62,1,0,0,0,98,
-        81,1,0,0,0,99,9,1,0,0,0,100,101,5,7,0,0,101,120,3,30,15,0,102,106,
-        5,6,0,0,103,105,3,6,3,0,104,103,1,0,0,0,105,108,1,0,0,0,106,104,
-        1,0,0,0,106,107,1,0,0,0,107,109,1,0,0,0,108,106,1,0,0,0,109,110,
-        5,2,0,0,110,111,5,6,0,0,111,121,5,47,0,0,112,116,5,23,0,0,113,115,
-        3,6,3,0,114,113,1,0,0,0,115,118,1,0,0,0,116,114,1,0,0,0,116,117,
-        1,0,0,0,117,119,1,0,0,0,118,116,1,0,0,0,119,121,5,24,0,0,120,102,
-        1,0,0,0,120,112,1,0,0,0,121,11,1,0,0,0,122,123,5,22,0,0,123,124,
-        3,32,16,0,124,125,5,47,0,0,125,13,1,0,0,0,126,127,5,59,0,0,127,128,
-        5,30,0,0,128,129,3,32,16,0,129,130,5,47,0,0,130,15,1,0,0,0,131,132,
-        5,59,0,0,132,133,5,46,0,0,133,136,3,36,18,0,134,135,5,30,0,0,135,
-        137,3,32,16,0,136,134,1,0,0,0,136,137,1,0,0,0,137,138,1,0,0,0,138,
-        139,5,47,0,0,139,17,1,0,0,0,140,141,5,50,0,0,141,146,3,20,10,0,142,
-        143,5,47,0,0,143,145,3,20,10,0,144,142,1,0,0,0,145,148,1,0,0,0,146,
-        144,1,0,0,0,146,147,1,0,0,0,147,149,1,0,0,0,148,146,1,0,0,0,149,
-        150,5,51,0,0,150,19,1,0,0,0,151,156,5,59,0,0,152,153,5,48,0,0,153,
-        155,5,59,0,0,154,152,1,0,0,0,155,158,1,0,0,0,156,154,1,0,0,0,156,
-        157,1,0,0,0,157,159,1,0,0,0,158,156,1,0,0,0,159,160,5,46,0,0,160,
-        161,3,22,11,0,161,162,3,2,1,0,162,21,1,0,0,0,163,168,5,9,0,0,164,
-        168,5,10,0,0,165,166,5,9,0,0,166,168,5,10,0,0,167,163,1,0,0,0,167,
-        164,1,0,0,0,167,165,1,0,0,0,168,23,1,0,0,0,169,170,5,12,0,0,170,
-        172,5,59,0,0,171,173,3,18,9,0,172,171,1,0,0,0,172,173,1,0,0,0,173,
-        174,1,0,0,0,174,175,5,14,0,0,175,179,5,1,0,0,176,178,3,6,3,0,177,
-        176,1,0,0,0,178,181,1,0,0,0,179,177,1,0,0,0,179,180,1,0,0,0,180,
-        182,1,0,0,0,181,179,1,0,0,0,182,183,5,2,0,0,183,184,5,12,0,0,184,
-        185,5,47,0,0,185,25,1,0,0,0,186,187,5,13,0,0,187,188,5,59,0,0,188,
-        197,5,50,0,0,189,194,3,16,8,0,190,191,5,48,0,0,191,193,3,16,8,0,
-        192,190,1,0,0,0,193,196,1,0,0,0,194,192,1,0,0,0,194,195,1,0,0,0,
-        195,198,1,0,0,0,196,194,1,0,0,0,197,189,1,0,0,0,197,198,1,0,0,0,
-        198,199,1,0,0,0,199,200,5,51,0,0,200,201,5,11,0,0,201,202,3,36,18,
-        0,202,203,1,0,0,0,203,204,5,14,0,0,204,208,5,1,0,0,205,207,3,4,2,
-        0,206,205,1,0,0,0,207,210,1,0,0,0,208,206,1,0,0,0,208,209,1,0,0,
-        0,209,211,1,0,0,0,210,208,1,0,0,0,211,212,5,2,0,0,212,213,5,13,0,
-        0,213,214,5,47,0,0,214,224,1,0,0,0,215,219,5,23,0,0,216,218,3,4,
-        2,0,217,216,1,0,0,0,218,221,1,0,0,0,219,217,1,0,0,0,219,220,1,0,
-        0,0,220,222,1,0,0,0,221,219,1,0,0,0,222,224,5,24,0,0,223,186,1,0,
-        0,0,223,215,1,0,0,0,224,27,1,0,0,0,225,226,5,59,0,0,226,235,5,50,
-        0,0,227,232,5,59,0,0,228,229,5,48,0,0,229,231,5,59,0,0,230,228,1,
-        0,0,0,231,234,1,0,0,0,232,230,1,0,0,0,232,233,1,0,0,0,233,236,1,
-        0,0,0,234,232,1,0,0,0,235,227,1,0,0,0,235,236,1,0,0,0,236,237,1,
-        0,0,0,237,238,5,51,0,0,238,239,5,47,0,0,239,29,1,0,0,0,240,241,6,
-        15,-1,0,241,242,3,32,16,0,242,243,3,34,17,0,243,244,3,32,16,0,244,
-        248,1,0,0,0,245,246,5,44,0,0,246,248,3,30,15,1,247,240,1,0,0,0,247,
-        245,1,0,0,0,248,257,1,0,0,0,249,250,10,3,0,0,250,251,5,43,0,0,251,
-        256,3,30,15,4,252,253,10,2,0,0,253,254,5,42,0,0,254,256,3,30,15,
-        3,255,249,1,0,0,0,255,252,1,0,0,0,256,259,1,0,0,0,257,255,1,0,0,
-        0,257,258,1,0,0,0,258,31,1,0,0,0,259,257,1,0,0,0,260,261,6,16,-1,
-        0,261,262,5,50,0,0,262,263,3,32,16,0,263,264,5,51,0,0,264,269,1,
-        0,0,0,265,269,5,59,0,0,266,269,3,2,1,0,267,269,3,28,14,0,268,260,
-        1,0,0,0,268,265,1,0,0,0,268,266,1,0,0,0,268,267,1,0,0,0,269,287,
-        1,0,0,0,270,271,10,9,0,0,271,272,5,39,0,0,272,286,3,32,16,10,273,
-        274,10,8,0,0,274,275,5,40,0,0,275,286,3,32,16,9,276,277,10,7,0,0,
-        277,278,5,41,0,0,278,286,3,32,16,8,279,280,10,6,0,0,280,281,5,37,
-        0,0,281,286,3,32,16,7,282,283,10,5,0,0,283,284,5,38,0,0,284,286,
-        3,32,16,6,285,270,1,0,0,0,285,273,1,0,0,0,285,276,1,0,0,0,285,279,
-        1,0,0,0,285,282,1,0,0,0,286,289,1,0,0,0,287,285,1,0,0,0,287,288,
-        1,0,0,0,288,33,1,0,0,0,289,287,1,0,0,0,290,291,7,1,0,0,291,35,1,
-        0,0,0,292,293,7,2,0,0,293,37,1,0,0,0,32,41,51,58,66,73,76,85,92,
-        95,98,106,116,120,136,146,156,167,172,179,194,197,208,219,223,232,
-        235,247,255,257,268,285,287
+        2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
+        7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
+        2,27,7,27,1,0,5,0,58,8,0,10,0,12,0,61,9,0,1,0,1,0,1,1,1,1,1,2,1,
+        2,1,2,1,2,1,2,3,2,72,8,2,1,3,1,3,1,3,1,3,1,3,3,3,79,8,3,1,4,1,4,
+        1,4,1,5,1,5,1,5,1,5,5,5,88,8,5,10,5,12,5,91,9,5,1,5,1,5,5,5,95,8,
+        5,10,5,12,5,98,9,5,3,5,100,8,5,1,5,1,5,1,5,1,5,1,5,5,5,107,8,5,10,
+        5,12,5,110,9,5,1,5,1,5,5,5,114,8,5,10,5,12,5,117,9,5,3,5,119,8,5,
+        1,5,3,5,122,8,5,1,6,1,6,1,6,1,6,5,6,128,8,6,10,6,12,6,131,9,6,1,
+        6,1,6,1,6,1,6,1,6,5,6,138,8,6,10,6,12,6,141,9,6,1,6,3,6,144,8,6,
+        1,7,1,7,1,7,1,7,3,7,150,8,7,1,7,1,7,1,8,1,8,1,8,1,8,1,8,1,9,1,9,
+        1,9,1,9,1,9,1,9,3,9,165,8,9,3,9,167,8,9,1,9,1,9,1,10,1,10,1,10,1,
+        10,1,11,1,11,1,11,1,11,5,11,179,8,11,10,11,12,11,182,9,11,1,11,1,
+        11,1,12,1,12,1,12,5,12,189,8,12,10,12,12,12,192,9,12,1,12,1,12,1,
+        12,1,12,1,13,1,13,1,13,1,13,3,13,202,8,13,1,14,1,14,1,14,3,14,207,
+        8,14,1,14,1,14,1,14,5,14,212,8,14,10,14,12,14,215,9,14,1,14,1,14,
+        1,14,1,14,1,15,1,15,1,15,1,15,1,15,1,15,5,15,227,8,15,10,15,12,15,
+        230,9,15,3,15,232,8,15,1,15,1,15,1,15,3,15,237,8,15,1,15,1,15,1,
+        15,5,15,242,8,15,10,15,12,15,245,9,15,1,15,1,15,1,15,1,15,1,15,5,
+        15,252,8,15,10,15,12,15,255,9,15,1,15,3,15,258,8,15,1,16,1,16,1,
+        16,1,16,1,16,5,16,265,8,16,10,16,12,16,268,9,16,3,16,270,8,16,1,
+        16,1,16,1,17,1,17,1,18,1,18,1,18,5,18,279,8,18,10,18,12,18,282,9,
+        18,1,19,1,19,1,19,5,19,287,8,19,10,19,12,19,290,9,19,1,20,1,20,1,
+        20,3,20,295,8,20,1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,21,3,21,305,
+        8,21,1,22,1,22,1,23,1,23,1,23,5,23,312,8,23,10,23,12,23,315,9,23,
+        1,24,1,24,1,24,5,24,320,8,24,10,24,12,24,323,9,24,1,25,1,25,1,25,
+        1,25,1,25,1,25,1,25,3,25,332,8,25,1,26,1,26,1,27,1,27,1,27,0,0,28,
+        0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,
+        46,48,50,52,54,0,5,1,0,54,58,1,0,37,38,1,0,39,41,1,0,31,36,1,0,25,
+        29,355,0,59,1,0,0,0,2,64,1,0,0,0,4,71,1,0,0,0,6,78,1,0,0,0,8,80,
+        1,0,0,0,10,83,1,0,0,0,12,123,1,0,0,0,14,145,1,0,0,0,16,153,1,0,0,
+        0,18,158,1,0,0,0,20,170,1,0,0,0,22,174,1,0,0,0,24,185,1,0,0,0,26,
+        201,1,0,0,0,28,203,1,0,0,0,30,220,1,0,0,0,32,259,1,0,0,0,34,273,
+        1,0,0,0,36,275,1,0,0,0,38,283,1,0,0,0,40,294,1,0,0,0,42,304,1,0,
+        0,0,44,306,1,0,0,0,46,308,1,0,0,0,48,316,1,0,0,0,50,331,1,0,0,0,
+        52,333,1,0,0,0,54,335,1,0,0,0,56,58,3,4,2,0,57,56,1,0,0,0,58,61,
+        1,0,0,0,59,57,1,0,0,0,59,60,1,0,0,0,60,62,1,0,0,0,61,59,1,0,0,0,
+        62,63,5,0,0,1,63,1,1,0,0,0,64,65,7,0,0,0,65,3,1,0,0,0,66,72,3,6,
+        3,0,67,72,3,28,14,0,68,72,3,30,15,0,69,72,3,8,4,0,70,72,3,20,10,
+        0,71,66,1,0,0,0,71,67,1,0,0,0,71,68,1,0,0,0,71,69,1,0,0,0,71,70,
+        1,0,0,0,72,5,1,0,0,0,73,79,3,10,5,0,74,79,3,12,6,0,75,79,3,16,8,
+        0,76,79,3,14,7,0,77,79,3,18,9,0,78,73,1,0,0,0,78,74,1,0,0,0,78,75,
+        1,0,0,0,78,76,1,0,0,0,78,77,1,0,0,0,79,7,1,0,0,0,80,81,3,44,22,0,
+        81,82,5,47,0,0,82,9,1,0,0,0,83,84,5,3,0,0,84,121,3,34,17,0,85,89,
+        5,4,0,0,86,88,3,6,3,0,87,86,1,0,0,0,88,91,1,0,0,0,89,87,1,0,0,0,
+        89,90,1,0,0,0,90,99,1,0,0,0,91,89,1,0,0,0,92,96,5,5,0,0,93,95,3,
+        6,3,0,94,93,1,0,0,0,95,98,1,0,0,0,96,94,1,0,0,0,96,97,1,0,0,0,97,
+        100,1,0,0,0,98,96,1,0,0,0,99,92,1,0,0,0,99,100,1,0,0,0,100,101,1,
+        0,0,0,101,102,5,2,0,0,102,103,5,3,0,0,103,122,5,47,0,0,104,108,5,
+        23,0,0,105,107,3,6,3,0,106,105,1,0,0,0,107,110,1,0,0,0,108,106,1,
+        0,0,0,108,109,1,0,0,0,109,118,1,0,0,0,110,108,1,0,0,0,111,115,5,
+        5,0,0,112,114,3,6,3,0,113,112,1,0,0,0,114,117,1,0,0,0,115,113,1,
+        0,0,0,115,116,1,0,0,0,116,119,1,0,0,0,117,115,1,0,0,0,118,111,1,
+        0,0,0,118,119,1,0,0,0,119,120,1,0,0,0,120,122,5,24,0,0,121,85,1,
+        0,0,0,121,104,1,0,0,0,122,11,1,0,0,0,123,124,5,7,0,0,124,143,3,34,
+        17,0,125,129,5,6,0,0,126,128,3,6,3,0,127,126,1,0,0,0,128,131,1,0,
+        0,0,129,127,1,0,0,0,129,130,1,0,0,0,130,132,1,0,0,0,131,129,1,0,
+        0,0,132,133,5,2,0,0,133,134,5,6,0,0,134,144,5,47,0,0,135,139,5,23,
+        0,0,136,138,3,6,3,0,137,136,1,0,0,0,138,141,1,0,0,0,139,137,1,0,
+        0,0,139,140,1,0,0,0,140,142,1,0,0,0,141,139,1,0,0,0,142,144,5,24,
+        0,0,143,125,1,0,0,0,143,135,1,0,0,0,144,13,1,0,0,0,145,149,5,22,
+        0,0,146,150,5,59,0,0,147,150,3,2,1,0,148,150,3,32,16,0,149,146,1,
+        0,0,0,149,147,1,0,0,0,149,148,1,0,0,0,150,151,1,0,0,0,151,152,5,
+        47,0,0,152,15,1,0,0,0,153,154,5,59,0,0,154,155,5,30,0,0,155,156,
+        3,44,22,0,156,157,5,47,0,0,157,17,1,0,0,0,158,159,5,59,0,0,159,160,
+        5,46,0,0,160,166,3,54,27,0,161,164,5,30,0,0,162,165,3,44,22,0,163,
+        165,3,34,17,0,164,162,1,0,0,0,164,163,1,0,0,0,165,167,1,0,0,0,166,
+        161,1,0,0,0,166,167,1,0,0,0,167,168,1,0,0,0,168,169,5,47,0,0,169,
+        19,1,0,0,0,170,171,5,11,0,0,171,172,3,2,1,0,172,173,5,47,0,0,173,
+        21,1,0,0,0,174,175,5,50,0,0,175,180,3,24,12,0,176,177,5,47,0,0,177,
+        179,3,24,12,0,178,176,1,0,0,0,179,182,1,0,0,0,180,178,1,0,0,0,180,
+        181,1,0,0,0,181,183,1,0,0,0,182,180,1,0,0,0,183,184,5,51,0,0,184,
+        23,1,0,0,0,185,190,5,59,0,0,186,187,5,48,0,0,187,189,5,59,0,0,188,
+        186,1,0,0,0,189,192,1,0,0,0,190,188,1,0,0,0,190,191,1,0,0,0,191,
+        193,1,0,0,0,192,190,1,0,0,0,193,194,5,46,0,0,194,195,3,26,13,0,195,
+        196,3,2,1,0,196,25,1,0,0,0,197,202,5,9,0,0,198,202,5,10,0,0,199,
+        200,5,9,0,0,200,202,5,10,0,0,201,197,1,0,0,0,201,198,1,0,0,0,201,
+        199,1,0,0,0,202,27,1,0,0,0,203,204,5,12,0,0,204,206,5,59,0,0,205,
+        207,3,22,11,0,206,205,1,0,0,0,206,207,1,0,0,0,207,208,1,0,0,0,208,
+        209,5,14,0,0,209,213,5,1,0,0,210,212,3,6,3,0,211,210,1,0,0,0,212,
+        215,1,0,0,0,213,211,1,0,0,0,213,214,1,0,0,0,214,216,1,0,0,0,215,
+        213,1,0,0,0,216,217,5,2,0,0,217,218,5,12,0,0,218,219,5,47,0,0,219,
+        29,1,0,0,0,220,221,5,13,0,0,221,222,5,59,0,0,222,231,5,50,0,0,223,
+        228,3,18,9,0,224,225,5,48,0,0,225,227,3,18,9,0,226,224,1,0,0,0,227,
+        230,1,0,0,0,228,226,1,0,0,0,228,229,1,0,0,0,229,232,1,0,0,0,230,
+        228,1,0,0,0,231,223,1,0,0,0,231,232,1,0,0,0,232,233,1,0,0,0,233,
+        236,5,51,0,0,234,235,5,11,0,0,235,237,3,54,27,0,236,234,1,0,0,0,
+        236,237,1,0,0,0,237,257,1,0,0,0,238,239,5,14,0,0,239,243,5,1,0,0,
+        240,242,3,4,2,0,241,240,1,0,0,0,242,245,1,0,0,0,243,241,1,0,0,0,
+        243,244,1,0,0,0,244,246,1,0,0,0,245,243,1,0,0,0,246,247,5,2,0,0,
+        247,248,5,13,0,0,248,258,5,47,0,0,249,253,5,23,0,0,250,252,3,4,2,
+        0,251,250,1,0,0,0,252,255,1,0,0,0,253,251,1,0,0,0,253,254,1,0,0,
+        0,254,256,1,0,0,0,255,253,1,0,0,0,256,258,5,24,0,0,257,238,1,0,0,
+        0,257,249,1,0,0,0,258,31,1,0,0,0,259,260,5,59,0,0,260,269,5,50,0,
+        0,261,266,3,44,22,0,262,263,5,48,0,0,263,265,3,44,22,0,264,262,1,
+        0,0,0,265,268,1,0,0,0,266,264,1,0,0,0,266,267,1,0,0,0,267,270,1,
+        0,0,0,268,266,1,0,0,0,269,261,1,0,0,0,269,270,1,0,0,0,270,271,1,
+        0,0,0,271,272,5,51,0,0,272,33,1,0,0,0,273,274,3,36,18,0,274,35,1,
+        0,0,0,275,280,3,38,19,0,276,277,5,43,0,0,277,279,3,38,19,0,278,276,
+        1,0,0,0,279,282,1,0,0,0,280,278,1,0,0,0,280,281,1,0,0,0,281,37,1,
+        0,0,0,282,280,1,0,0,0,283,288,3,40,20,0,284,285,5,42,0,0,285,287,
+        3,40,20,0,286,284,1,0,0,0,287,290,1,0,0,0,288,286,1,0,0,0,288,289,
+        1,0,0,0,289,39,1,0,0,0,290,288,1,0,0,0,291,292,5,44,0,0,292,295,
+        3,40,20,0,293,295,3,42,21,0,294,291,1,0,0,0,294,293,1,0,0,0,295,
+        41,1,0,0,0,296,297,3,44,22,0,297,298,3,52,26,0,298,299,3,44,22,0,
+        299,305,1,0,0,0,300,301,5,50,0,0,301,302,3,34,17,0,302,303,5,51,
+        0,0,303,305,1,0,0,0,304,296,1,0,0,0,304,300,1,0,0,0,305,43,1,0,0,
+        0,306,307,3,46,23,0,307,45,1,0,0,0,308,313,3,48,24,0,309,310,7,1,
+        0,0,310,312,3,48,24,0,311,309,1,0,0,0,312,315,1,0,0,0,313,311,1,
+        0,0,0,313,314,1,0,0,0,314,47,1,0,0,0,315,313,1,0,0,0,316,321,3,50,
+        25,0,317,318,7,2,0,0,318,320,3,50,25,0,319,317,1,0,0,0,320,323,1,
+        0,0,0,321,319,1,0,0,0,321,322,1,0,0,0,322,49,1,0,0,0,323,321,1,0,
+        0,0,324,332,3,32,16,0,325,332,5,59,0,0,326,332,3,2,1,0,327,328,5,
+        50,0,0,328,329,3,44,22,0,329,330,5,51,0,0,330,332,1,0,0,0,331,324,
+        1,0,0,0,331,325,1,0,0,0,331,326,1,0,0,0,331,327,1,0,0,0,332,51,1,
+        0,0,0,333,334,7,3,0,0,334,53,1,0,0,0,335,336,7,4,0,0,336,55,1,0,
+        0,0,36,59,71,78,89,96,99,108,115,118,121,129,139,143,149,164,166,
+        180,190,201,206,213,228,231,236,243,253,257,266,269,280,288,294,
+        304,313,321,331
     ]
 
 class GreekBaseParser ( Parser ):
@@ -157,27 +172,39 @@ class GreekBaseParser ( Parser ):
     RULE_literal = 1
     RULE_statement = 2
     RULE_nonDeclarativeStatement = 3
-    RULE_ifStatement = 4
-    RULE_loopStatement = 5
-    RULE_printStatement = 6
-    RULE_assignment = 7
-    RULE_variableDeclaration = 8
-    RULE_formalParameterPart = 9
-    RULE_parameterSpecification = 10
-    RULE_modeSpecifier = 11
-    RULE_procedureDeclaration = 12
-    RULE_functionDeclaration = 13
-    RULE_functionCall = 14
-    RULE_condition = 15
-    RULE_expression = 16
-    RULE_relop = 17
-    RULE_varType = 18
+    RULE_expressionStatement = 4
+    RULE_ifStatement = 5
+    RULE_loopStatement = 6
+    RULE_printStatement = 7
+    RULE_assignment = 8
+    RULE_variableDeclaration = 9
+    RULE_returnStatement = 10
+    RULE_formalParameterPart = 11
+    RULE_parameterSpecification = 12
+    RULE_modeSpecifier = 13
+    RULE_procedureDeclaration = 14
+    RULE_functionDeclaration = 15
+    RULE_functionCall = 16
+    RULE_condition = 17
+    RULE_conditionOr = 18
+    RULE_conditionAnd = 19
+    RULE_conditionNot = 20
+    RULE_conditionAtom = 21
+    RULE_expression = 22
+    RULE_addExpr = 23
+    RULE_mulExpr = 24
+    RULE_atom = 25
+    RULE_relop = 26
+    RULE_varType = 27
 
     ruleNames =  [ "program", "literal", "statement", "nonDeclarativeStatement", 
-                   "ifStatement", "loopStatement", "printStatement", "assignment", 
-                   "variableDeclaration", "formalParameterPart", "parameterSpecification", 
+                   "expressionStatement", "ifStatement", "loopStatement", 
+                   "printStatement", "assignment", "variableDeclaration", 
+                   "returnStatement", "formalParameterPart", "parameterSpecification", 
                    "modeSpecifier", "procedureDeclaration", "functionDeclaration", 
-                   "functionCall", "condition", "expression", "relop", "varType" ]
+                   "functionCall", "condition", "conditionOr", "conditionAnd", 
+                   "conditionNot", "conditionAtom", "expression", "addExpr", 
+                   "mulExpr", "atom", "relop", "varType" ]
 
     EOF = Token.EOF
     KW_BEGIN=1
@@ -288,17 +315,17 @@ class GreekBaseParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 41
+            self.state = 59
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752316018824) != 0):
-                self.state = 38
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 1136033006008416392) != 0):
+                self.state = 56
                 self.statement()
-                self.state = 43
+                self.state = 61
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 44
+            self.state = 62
             self.match(GreekBaseParser.EOF)
         except RecognitionException as re:
             localctx.exception = re
@@ -350,7 +377,7 @@ class GreekBaseParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 46
+            self.state = 64
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 558446353793941504) != 0)):
                 self._errHandler.recoverInline(self)
@@ -385,6 +412,14 @@ class GreekBaseParser ( Parser ):
             return self.getTypedRuleContext(GreekBaseParser.FunctionDeclarationContext,0)
 
 
+        def expressionStatement(self):
+            return self.getTypedRuleContext(GreekBaseParser.ExpressionStatementContext,0)
+
+
+        def returnStatement(self):
+            return self.getTypedRuleContext(GreekBaseParser.ReturnStatementContext,0)
+
+
         def getRuleIndex(self):
             return GreekBaseParser.RULE_statement
 
@@ -402,26 +437,39 @@ class GreekBaseParser ( Parser ):
         localctx = GreekBaseParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_statement)
         try:
-            self.state = 51
+            self.state = 71
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [3, 7, 22, 59]:
+            la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
+            if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 48
+                self.state = 66
                 self.nonDeclarativeStatement()
                 pass
-            elif token in [12]:
+
+            elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 49
+                self.state = 67
                 self.procedureDeclaration()
                 pass
-            elif token in [13, 23]:
+
+            elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 50
+                self.state = 68
                 self.functionDeclaration()
                 pass
-            else:
-                raise NoViableAltException(self)
+
+            elif la_ == 4:
+                self.enterOuterAlt(localctx, 4)
+                self.state = 69
+                self.expressionStatement()
+                pass
+
+            elif la_ == 5:
+                self.enterOuterAlt(localctx, 5)
+                self.state = 70
+                self.returnStatement()
+                pass
+
 
         except RecognitionException as re:
             localctx.exception = re
@@ -476,40 +524,85 @@ class GreekBaseParser ( Parser ):
         localctx = GreekBaseParser.NonDeclarativeStatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_nonDeclarativeStatement)
         try:
-            self.state = 58
+            self.state = 78
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 53
+                self.state = 73
                 self.ifStatement()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 54
+                self.state = 74
                 self.loopStatement()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 55
+                self.state = 75
                 self.assignment()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 56
+                self.state = 76
                 self.printStatement()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 57
+                self.state = 77
                 self.variableDeclaration()
                 pass
 
 
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ExpressionStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def expression(self):
+            return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,0)
+
+
+        def OP_SEMICOLON(self):
+            return self.getToken(GreekBaseParser.OP_SEMICOLON, 0)
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_expressionStatement
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitExpressionStatement" ):
+                return visitor.visitExpressionStatement(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def expressionStatement(self):
+
+        localctx = GreekBaseParser.ExpressionStatementContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 8, self.RULE_expressionStatement)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 80
+            self.expression()
+            self.state = 81
+            self.match(GreekBaseParser.OP_SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -579,91 +672,91 @@ class GreekBaseParser ( Parser ):
     def ifStatement(self):
 
         localctx = GreekBaseParser.IfStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_ifStatement)
+        self.enterRule(localctx, 10, self.RULE_ifStatement)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 60
+            self.state = 83
             self.match(GreekBaseParser.KW_IF)
-            self.state = 61
-            self.condition(0)
-            self.state = 98
+            self.state = 84
+            self.condition()
+            self.state = 121
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [4]:
-                self.state = 62
+                self.state = 85
                 self.match(GreekBaseParser.KW_THEN)
-                self.state = 66
+                self.state = 89
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752307617928) != 0):
-                    self.state = 63
+                    self.state = 86
                     localctx._nonDeclarativeStatement = self.nonDeclarativeStatement()
                     localctx.thenBranch.append(localctx._nonDeclarativeStatement)
-                    self.state = 68
+                    self.state = 91
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 76
+                self.state = 99
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==5:
-                    self.state = 69
+                    self.state = 92
                     self.match(GreekBaseParser.KW_ELSE)
-                    self.state = 73
+                    self.state = 96
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752307617928) != 0):
-                        self.state = 70
+                        self.state = 93
                         localctx._nonDeclarativeStatement = self.nonDeclarativeStatement()
                         localctx.elseBranch.append(localctx._nonDeclarativeStatement)
-                        self.state = 75
+                        self.state = 98
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
 
 
 
-                self.state = 78
+                self.state = 101
                 self.match(GreekBaseParser.KW_END)
-                self.state = 79
+                self.state = 102
                 self.match(GreekBaseParser.KW_IF)
-                self.state = 80
+                self.state = 103
                 self.match(GreekBaseParser.OP_SEMICOLON)
                 pass
             elif token in [23]:
-                self.state = 81
+                self.state = 104
                 self.match(GreekBaseParser.KW_LCURL)
-                self.state = 85
+                self.state = 108
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752307617928) != 0):
-                    self.state = 82
+                    self.state = 105
                     localctx._nonDeclarativeStatement = self.nonDeclarativeStatement()
                     localctx.thenBranch.append(localctx._nonDeclarativeStatement)
-                    self.state = 87
+                    self.state = 110
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 95
+                self.state = 118
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==5:
-                    self.state = 88
+                    self.state = 111
                     self.match(GreekBaseParser.KW_ELSE)
-                    self.state = 92
+                    self.state = 115
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752307617928) != 0):
-                        self.state = 89
+                        self.state = 112
                         localctx._nonDeclarativeStatement = self.nonDeclarativeStatement()
                         localctx.elseBranch.append(localctx._nonDeclarativeStatement)
-                        self.state = 94
+                        self.state = 117
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
 
 
 
-                self.state = 97
+                self.state = 120
                 self.match(GreekBaseParser.KW_RCURL)
                 pass
             else:
@@ -732,51 +825,51 @@ class GreekBaseParser ( Parser ):
     def loopStatement(self):
 
         localctx = GreekBaseParser.LoopStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_loopStatement)
+        self.enterRule(localctx, 12, self.RULE_loopStatement)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 100
+            self.state = 123
             self.match(GreekBaseParser.KW_WHILE)
-            self.state = 101
-            self.condition(0)
-            self.state = 120
+            self.state = 124
+            self.condition()
+            self.state = 143
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [6]:
-                self.state = 102
+                self.state = 125
                 self.match(GreekBaseParser.KW_LOOP)
-                self.state = 106
+                self.state = 129
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752307617928) != 0):
-                    self.state = 103
+                    self.state = 126
                     self.nonDeclarativeStatement()
-                    self.state = 108
+                    self.state = 131
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 109
+                self.state = 132
                 self.match(GreekBaseParser.KW_END)
-                self.state = 110
+                self.state = 133
                 self.match(GreekBaseParser.KW_LOOP)
-                self.state = 111
+                self.state = 134
                 self.match(GreekBaseParser.OP_SEMICOLON)
                 pass
             elif token in [23]:
-                self.state = 112
+                self.state = 135
                 self.match(GreekBaseParser.KW_LCURL)
-                self.state = 116
+                self.state = 139
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752307617928) != 0):
-                    self.state = 113
+                    self.state = 136
                     self.nonDeclarativeStatement()
-                    self.state = 118
+                    self.state = 141
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 119
+                self.state = 142
                 self.match(GreekBaseParser.KW_RCURL)
                 pass
             else:
@@ -801,12 +894,19 @@ class GreekBaseParser ( Parser ):
         def KW_PRINT(self):
             return self.getToken(GreekBaseParser.KW_PRINT, 0)
 
-        def expression(self):
-            return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,0)
-
-
         def OP_SEMICOLON(self):
             return self.getToken(GreekBaseParser.OP_SEMICOLON, 0)
+
+        def IDENTIFIER(self):
+            return self.getToken(GreekBaseParser.IDENTIFIER, 0)
+
+        def literal(self):
+            return self.getTypedRuleContext(GreekBaseParser.LiteralContext,0)
+
+
+        def functionCall(self):
+            return self.getTypedRuleContext(GreekBaseParser.FunctionCallContext,0)
+
 
         def getRuleIndex(self):
             return GreekBaseParser.RULE_printStatement
@@ -823,14 +923,31 @@ class GreekBaseParser ( Parser ):
     def printStatement(self):
 
         localctx = GreekBaseParser.PrintStatementContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_printStatement)
+        self.enterRule(localctx, 14, self.RULE_printStatement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 122
+            self.state = 145
             self.match(GreekBaseParser.KW_PRINT)
-            self.state = 123
-            self.expression(0)
-            self.state = 124
+            self.state = 149
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
+            if la_ == 1:
+                self.state = 146
+                self.match(GreekBaseParser.IDENTIFIER)
+                pass
+
+            elif la_ == 2:
+                self.state = 147
+                self.literal()
+                pass
+
+            elif la_ == 3:
+                self.state = 148
+                self.functionCall()
+                pass
+
+
+            self.state = 151
             self.match(GreekBaseParser.OP_SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -876,16 +993,16 @@ class GreekBaseParser ( Parser ):
     def assignment(self):
 
         localctx = GreekBaseParser.AssignmentContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_assignment)
+        self.enterRule(localctx, 16, self.RULE_assignment)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 126
+            self.state = 153
             self.match(GreekBaseParser.IDENTIFIER)
-            self.state = 127
+            self.state = 154
             self.match(GreekBaseParser.OP_ASSIGN)
-            self.state = 128
-            self.expression(0)
-            self.state = 129
+            self.state = 155
+            self.expression()
+            self.state = 156
             self.match(GreekBaseParser.OP_SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -923,6 +1040,10 @@ class GreekBaseParser ( Parser ):
             return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,0)
 
 
+        def condition(self):
+            return self.getTypedRuleContext(GreekBaseParser.ConditionContext,0)
+
+
         def getRuleIndex(self):
             return GreekBaseParser.RULE_variableDeclaration
 
@@ -938,27 +1059,89 @@ class GreekBaseParser ( Parser ):
     def variableDeclaration(self):
 
         localctx = GreekBaseParser.VariableDeclarationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 16, self.RULE_variableDeclaration)
+        self.enterRule(localctx, 18, self.RULE_variableDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 131
+            self.state = 158
             self.match(GreekBaseParser.IDENTIFIER)
-            self.state = 132
+            self.state = 159
             self.match(GreekBaseParser.OP_COLON)
-            self.state = 133
+            self.state = 160
             self.varType()
-            self.state = 136
+            self.state = 166
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==30:
-                self.state = 134
+                self.state = 161
                 self.match(GreekBaseParser.OP_ASSIGN)
-                self.state = 135
-                self.expression(0)
+                self.state = 164
+                self._errHandler.sync(self)
+                la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
+                if la_ == 1:
+                    self.state = 162
+                    self.expression()
+                    pass
+
+                elif la_ == 2:
+                    self.state = 163
+                    self.condition()
+                    pass
 
 
-            self.state = 138
+
+
+            self.state = 168
+            self.match(GreekBaseParser.OP_SEMICOLON)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ReturnStatementContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def KW_RETURN(self):
+            return self.getToken(GreekBaseParser.KW_RETURN, 0)
+
+        def literal(self):
+            return self.getTypedRuleContext(GreekBaseParser.LiteralContext,0)
+
+
+        def OP_SEMICOLON(self):
+            return self.getToken(GreekBaseParser.OP_SEMICOLON, 0)
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_returnStatement
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitReturnStatement" ):
+                return visitor.visitReturnStatement(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def returnStatement(self):
+
+        localctx = GreekBaseParser.ReturnStatementContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 20, self.RULE_returnStatement)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 170
+            self.match(GreekBaseParser.KW_RETURN)
+            self.state = 171
+            self.literal()
+            self.state = 172
             self.match(GreekBaseParser.OP_SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -1010,27 +1193,27 @@ class GreekBaseParser ( Parser ):
     def formalParameterPart(self):
 
         localctx = GreekBaseParser.FormalParameterPartContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 18, self.RULE_formalParameterPart)
+        self.enterRule(localctx, 22, self.RULE_formalParameterPart)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 140
+            self.state = 174
             self.match(GreekBaseParser.OP_LPAREN)
-            self.state = 141
+            self.state = 175
             self.parameterSpecification()
-            self.state = 146
+            self.state = 180
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==47:
-                self.state = 142
+                self.state = 176
                 self.match(GreekBaseParser.OP_SEMICOLON)
-                self.state = 143
+                self.state = 177
                 self.parameterSpecification()
-                self.state = 148
+                self.state = 182
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 149
+            self.state = 183
             self.match(GreekBaseParser.OP_RPAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1086,29 +1269,29 @@ class GreekBaseParser ( Parser ):
     def parameterSpecification(self):
 
         localctx = GreekBaseParser.ParameterSpecificationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 20, self.RULE_parameterSpecification)
+        self.enterRule(localctx, 24, self.RULE_parameterSpecification)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 151
+            self.state = 185
             self.match(GreekBaseParser.IDENTIFIER)
-            self.state = 156
+            self.state = 190
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==48:
-                self.state = 152
+                self.state = 186
                 self.match(GreekBaseParser.OP_COMMA)
-                self.state = 153
+                self.state = 187
                 self.match(GreekBaseParser.IDENTIFIER)
-                self.state = 158
+                self.state = 192
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 159
+            self.state = 193
             self.match(GreekBaseParser.OP_COLON)
-            self.state = 160
+            self.state = 194
             self.modeSpecifier()
-            self.state = 161
+            self.state = 195
             self.literal()
         except RecognitionException as re:
             localctx.exception = re
@@ -1147,28 +1330,28 @@ class GreekBaseParser ( Parser ):
     def modeSpecifier(self):
 
         localctx = GreekBaseParser.ModeSpecifierContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 22, self.RULE_modeSpecifier)
+        self.enterRule(localctx, 26, self.RULE_modeSpecifier)
         try:
-            self.state = 167
+            self.state = 201
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 163
+                self.state = 197
                 self.match(GreekBaseParser.KW_IN)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 164
+                self.state = 198
                 self.match(GreekBaseParser.KW_OUT)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 165
+                self.state = 199
                 self.match(GreekBaseParser.KW_IN)
-                self.state = 166
+                self.state = 200
                 self.match(GreekBaseParser.KW_OUT)
                 pass
 
@@ -1236,41 +1419,41 @@ class GreekBaseParser ( Parser ):
     def procedureDeclaration(self):
 
         localctx = GreekBaseParser.ProcedureDeclarationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 24, self.RULE_procedureDeclaration)
+        self.enterRule(localctx, 28, self.RULE_procedureDeclaration)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 169
+            self.state = 203
             self.match(GreekBaseParser.KW_PROCEDURE)
-            self.state = 170
+            self.state = 204
             self.match(GreekBaseParser.IDENTIFIER)
-            self.state = 172
+            self.state = 206
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==50:
-                self.state = 171
+                self.state = 205
                 self.formalParameterPart()
 
 
-            self.state = 174
+            self.state = 208
             self.match(GreekBaseParser.KW_IS)
-            self.state = 175
+            self.state = 209
             self.match(GreekBaseParser.KW_BEGIN)
-            self.state = 179
+            self.state = 213
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752307617928) != 0):
-                self.state = 176
+                self.state = 210
                 self.nonDeclarativeStatement()
-                self.state = 181
+                self.state = 215
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 182
+            self.state = 216
             self.match(GreekBaseParser.KW_END)
-            self.state = 183
+            self.state = 217
             self.match(GreekBaseParser.KW_PROCEDURE)
-            self.state = 184
+            self.state = 218
             self.match(GreekBaseParser.OP_SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
@@ -1303,6 +1486,13 @@ class GreekBaseParser ( Parser ):
         def OP_RPAREN(self):
             return self.getToken(GreekBaseParser.OP_RPAREN, 0)
 
+        def variableDeclaration(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GreekBaseParser.VariableDeclarationContext)
+            else:
+                return self.getTypedRuleContext(GreekBaseParser.VariableDeclarationContext,i)
+
+
         def KW_RETURN(self):
             return self.getToken(GreekBaseParser.KW_RETURN, 0)
 
@@ -1322,19 +1512,11 @@ class GreekBaseParser ( Parser ):
         def OP_SEMICOLON(self):
             return self.getToken(GreekBaseParser.OP_SEMICOLON, 0)
 
-        def variableDeclaration(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.VariableDeclarationContext)
-            else:
-                return self.getTypedRuleContext(GreekBaseParser.VariableDeclarationContext,i)
+        def KW_LCURL(self):
+            return self.getToken(GreekBaseParser.KW_LCURL, 0)
 
-
-        def statement(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.StatementContext)
-            else:
-                return self.getTypedRuleContext(GreekBaseParser.StatementContext,i)
-
+        def KW_RCURL(self):
+            return self.getToken(GreekBaseParser.KW_RCURL, 0)
 
         def OP_COMMA(self, i:int=None):
             if i is None:
@@ -1342,11 +1524,12 @@ class GreekBaseParser ( Parser ):
             else:
                 return self.getToken(GreekBaseParser.OP_COMMA, i)
 
-        def KW_LCURL(self):
-            return self.getToken(GreekBaseParser.KW_LCURL, 0)
+        def statement(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GreekBaseParser.StatementContext)
+            else:
+                return self.getTypedRuleContext(GreekBaseParser.StatementContext,i)
 
-        def KW_RCURL(self):
-            return self.getToken(GreekBaseParser.KW_RCURL, 0)
 
         def getRuleIndex(self):
             return GreekBaseParser.RULE_functionDeclaration
@@ -1363,84 +1546,87 @@ class GreekBaseParser ( Parser ):
     def functionDeclaration(self):
 
         localctx = GreekBaseParser.FunctionDeclarationContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_functionDeclaration)
+        self.enterRule(localctx, 30, self.RULE_functionDeclaration)
         self._la = 0 # Token type
         try:
-            self.state = 223
+            self.enterOuterAlt(localctx, 1)
+            self.state = 220
+            self.match(GreekBaseParser.KW_FUNCTION)
+            self.state = 221
+            self.match(GreekBaseParser.IDENTIFIER)
+            self.state = 222
+            self.match(GreekBaseParser.OP_LPAREN)
+            self.state = 231
             self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [13]:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 186
-                self.match(GreekBaseParser.KW_FUNCTION)
-                self.state = 187
-                self.match(GreekBaseParser.IDENTIFIER)
-                self.state = 188
-                self.match(GreekBaseParser.OP_LPAREN)
-                self.state = 197
+            _la = self._input.LA(1)
+            if _la==59:
+                self.state = 223
+                self.variableDeclaration()
+                self.state = 228
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==59:
-                    self.state = 189
+                while _la==48:
+                    self.state = 224
+                    self.match(GreekBaseParser.OP_COMMA)
+                    self.state = 225
                     self.variableDeclaration()
-                    self.state = 194
+                    self.state = 230
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
-                    while _la==48:
-                        self.state = 190
-                        self.match(GreekBaseParser.OP_COMMA)
-                        self.state = 191
-                        self.variableDeclaration()
-                        self.state = 196
-                        self._errHandler.sync(self)
-                        _la = self._input.LA(1)
 
 
 
-                self.state = 199
-                self.match(GreekBaseParser.OP_RPAREN)
-
-                self.state = 200
+            self.state = 233
+            self.match(GreekBaseParser.OP_RPAREN)
+            self.state = 236
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==11:
+                self.state = 234
                 self.match(GreekBaseParser.KW_RETURN)
-                self.state = 201
+                self.state = 235
                 self.varType()
 
-                self.state = 203
+
+            self.state = 257
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [14]:
+                self.state = 238
                 self.match(GreekBaseParser.KW_IS)
-                self.state = 204
+                self.state = 239
                 self.match(GreekBaseParser.KW_BEGIN)
-                self.state = 208
+                self.state = 243
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752316018824) != 0):
-                    self.state = 205
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & 1136033006008416392) != 0):
+                    self.state = 240
                     self.statement()
-                    self.state = 210
+                    self.state = 245
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 211
+                self.state = 246
                 self.match(GreekBaseParser.KW_END)
-                self.state = 212
+                self.state = 247
                 self.match(GreekBaseParser.KW_FUNCTION)
-                self.state = 213
+                self.state = 248
                 self.match(GreekBaseParser.OP_SEMICOLON)
                 pass
             elif token in [23]:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 215
+                self.state = 249
                 self.match(GreekBaseParser.KW_LCURL)
-                self.state = 219
+                self.state = 253
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                while (((_la) & ~0x3f) == 0 and ((1 << _la) & 576460752316018824) != 0):
-                    self.state = 216
+                while (((_la) & ~0x3f) == 0 and ((1 << _la) & 1136033006008416392) != 0):
+                    self.state = 250
                     self.statement()
-                    self.state = 221
+                    self.state = 255
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 222
+                self.state = 256
                 self.match(GreekBaseParser.KW_RCURL)
                 pass
             else:
@@ -1461,9 +1647,10 @@ class GreekBaseParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.call_name = None # Token
             self._IDENTIFIER = None # Token
-            self.params = list() # of Tokens
+            self.call_name = list() # of Tokens
+            self._expression = None # ExpressionContext
+            self.params = list() # of ExpressionContexts
 
         def OP_LPAREN(self):
             return self.getToken(GreekBaseParser.OP_LPAREN, 0)
@@ -1471,14 +1658,15 @@ class GreekBaseParser ( Parser ):
         def OP_RPAREN(self):
             return self.getToken(GreekBaseParser.OP_RPAREN, 0)
 
-        def OP_SEMICOLON(self):
-            return self.getToken(GreekBaseParser.OP_SEMICOLON, 0)
+        def IDENTIFIER(self):
+            return self.getToken(GreekBaseParser.IDENTIFIER, 0)
 
-        def IDENTIFIER(self, i:int=None):
+        def expression(self, i:int=None):
             if i is None:
-                return self.getTokens(GreekBaseParser.IDENTIFIER)
+                return self.getTypedRuleContexts(GreekBaseParser.ExpressionContext)
             else:
-                return self.getToken(GreekBaseParser.IDENTIFIER, i)
+                return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,i)
+
 
         def OP_COMMA(self, i:int=None):
             if i is None:
@@ -1501,40 +1689,39 @@ class GreekBaseParser ( Parser ):
     def functionCall(self):
 
         localctx = GreekBaseParser.FunctionCallContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_functionCall)
+        self.enterRule(localctx, 32, self.RULE_functionCall)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 225
-            localctx.call_name = self.match(GreekBaseParser.IDENTIFIER)
-            self.state = 226
+            self.state = 259
+            localctx._IDENTIFIER = self.match(GreekBaseParser.IDENTIFIER)
+            localctx.call_name.append(localctx._IDENTIFIER)
+            self.state = 260
             self.match(GreekBaseParser.OP_LPAREN)
-            self.state = 235
+            self.state = 269
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==59:
-                self.state = 227
-                localctx._IDENTIFIER = self.match(GreekBaseParser.IDENTIFIER)
-                localctx.params.append(localctx._IDENTIFIER)
-                self.state = 232
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 1136033006004207616) != 0):
+                self.state = 261
+                localctx._expression = self.expression()
+                localctx.params.append(localctx._expression)
+                self.state = 266
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==48:
-                    self.state = 228
+                    self.state = 262
                     self.match(GreekBaseParser.OP_COMMA)
-                    self.state = 229
-                    localctx._IDENTIFIER = self.match(GreekBaseParser.IDENTIFIER)
-                    localctx.params.append(localctx._IDENTIFIER)
-                    self.state = 234
+                    self.state = 263
+                    localctx._expression = self.expression()
+                    localctx.params.append(localctx._expression)
+                    self.state = 268
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 237
+            self.state = 271
             self.match(GreekBaseParser.OP_RPAREN)
-            self.state = 238
-            self.match(GreekBaseParser.OP_SEMICOLON)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1550,36 +1737,10 @@ class GreekBaseParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.left_expr = None # ExpressionContext
-            self.right_expr = None # ExpressionContext
-            self.negated = None # ConditionContext
 
-        def relop(self):
-            return self.getTypedRuleContext(GreekBaseParser.RelopContext,0)
+        def conditionOr(self):
+            return self.getTypedRuleContext(GreekBaseParser.ConditionOrContext,0)
 
-
-        def expression(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.ExpressionContext)
-            else:
-                return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,i)
-
-
-        def OP_NOT(self):
-            return self.getToken(GreekBaseParser.OP_NOT, 0)
-
-        def condition(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.ConditionContext)
-            else:
-                return self.getTypedRuleContext(GreekBaseParser.ConditionContext,i)
-
-
-        def OP_OR(self):
-            return self.getToken(GreekBaseParser.OP_OR, 0)
-
-        def OP_AND(self):
-            return self.getToken(GreekBaseParser.OP_AND, 0)
 
         def getRuleIndex(self):
             return GreekBaseParser.RULE_condition
@@ -1592,84 +1753,285 @@ class GreekBaseParser ( Parser ):
 
 
 
-    def condition(self, _p:int=0):
-        _parentctx = self._ctx
-        _parentState = self.state
-        localctx = GreekBaseParser.ConditionContext(self, self._ctx, _parentState)
-        _prevctx = localctx
-        _startState = 30
-        self.enterRecursionRule(localctx, 30, self.RULE_condition, _p)
+
+    def condition(self):
+
+        localctx = GreekBaseParser.ConditionContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 34, self.RULE_condition)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 247
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [50, 54, 55, 56, 57, 58, 59]:
-                self.state = 241
-                localctx.left_expr = self.expression(0)
-                self.state = 242
-                self.relop()
-                self.state = 243
-                localctx.right_expr = self.expression(0)
-                pass
-            elif token in [44]:
-                self.state = 245
-                self.match(GreekBaseParser.OP_NOT)
-                self.state = 246
-                localctx.negated = self.condition(1)
-                pass
+            self.state = 273
+            self.conditionOr()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ConditionOrContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def conditionAnd(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GreekBaseParser.ConditionAndContext)
             else:
-                raise NoViableAltException(self)
+                return self.getTypedRuleContext(GreekBaseParser.ConditionAndContext,i)
 
-            self._ctx.stop = self._input.LT(-1)
-            self.state = 257
+
+        def OP_OR(self, i:int=None):
+            if i is None:
+                return self.getTokens(GreekBaseParser.OP_OR)
+            else:
+                return self.getToken(GreekBaseParser.OP_OR, i)
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_conditionOr
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConditionOr" ):
+                return visitor.visitConditionOr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def conditionOr(self):
+
+        localctx = GreekBaseParser.ConditionOrContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 36, self.RULE_conditionOr)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 275
+            self.conditionAnd()
+            self.state = 280
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
-                    if self._parseListeners is not None:
-                        self.triggerExitRuleEvent()
-                    _prevctx = localctx
-                    self.state = 255
-                    self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
-                    if la_ == 1:
-                        localctx = GreekBaseParser.ConditionContext(self, _parentctx, _parentState)
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_condition)
-                        self.state = 249
-                        if not self.precpred(self._ctx, 3):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 3)")
-                        self.state = 250
-                        self.match(GreekBaseParser.OP_OR)
-                        self.state = 251
-                        self.condition(4)
-                        pass
-
-                    elif la_ == 2:
-                        localctx = GreekBaseParser.ConditionContext(self, _parentctx, _parentState)
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_condition)
-                        self.state = 252
-                        if not self.precpred(self._ctx, 2):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                        self.state = 253
-                        self.match(GreekBaseParser.OP_AND)
-                        self.state = 254
-                        self.condition(3)
-                        pass
-
-             
-                self.state = 259
+            _la = self._input.LA(1)
+            while _la==43:
+                self.state = 276
+                self.match(GreekBaseParser.OP_OR)
+                self.state = 277
+                self.conditionAnd()
+                self.state = 282
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
+                _la = self._input.LA(1)
 
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
             self._errHandler.recover(self, re)
         finally:
-            self.unrollRecursionContexts(_parentctx)
+            self.exitRule()
+        return localctx
+
+
+    class ConditionAndContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def conditionNot(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GreekBaseParser.ConditionNotContext)
+            else:
+                return self.getTypedRuleContext(GreekBaseParser.ConditionNotContext,i)
+
+
+        def OP_AND(self, i:int=None):
+            if i is None:
+                return self.getTokens(GreekBaseParser.OP_AND)
+            else:
+                return self.getToken(GreekBaseParser.OP_AND, i)
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_conditionAnd
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConditionAnd" ):
+                return visitor.visitConditionAnd(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def conditionAnd(self):
+
+        localctx = GreekBaseParser.ConditionAndContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 38, self.RULE_conditionAnd)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 283
+            self.conditionNot()
+            self.state = 288
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==42:
+                self.state = 284
+                self.match(GreekBaseParser.OP_AND)
+                self.state = 285
+                self.conditionNot()
+                self.state = 290
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ConditionNotContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def OP_NOT(self):
+            return self.getToken(GreekBaseParser.OP_NOT, 0)
+
+        def conditionNot(self):
+            return self.getTypedRuleContext(GreekBaseParser.ConditionNotContext,0)
+
+
+        def conditionAtom(self):
+            return self.getTypedRuleContext(GreekBaseParser.ConditionAtomContext,0)
+
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_conditionNot
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConditionNot" ):
+                return visitor.visitConditionNot(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def conditionNot(self):
+
+        localctx = GreekBaseParser.ConditionNotContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 40, self.RULE_conditionNot)
+        try:
+            self.state = 294
+            self._errHandler.sync(self)
+            token = self._input.LA(1)
+            if token in [44]:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 291
+                self.match(GreekBaseParser.OP_NOT)
+                self.state = 292
+                self.conditionNot()
+                pass
+            elif token in [50, 54, 55, 56, 57, 58, 59]:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 293
+                self.conditionAtom()
+                pass
+            else:
+                raise NoViableAltException(self)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class ConditionAtomContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def expression(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(GreekBaseParser.ExpressionContext)
+            else:
+                return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,i)
+
+
+        def relop(self):
+            return self.getTypedRuleContext(GreekBaseParser.RelopContext,0)
+
+
+        def OP_LPAREN(self):
+            return self.getToken(GreekBaseParser.OP_LPAREN, 0)
+
+        def condition(self):
+            return self.getTypedRuleContext(GreekBaseParser.ConditionContext,0)
+
+
+        def OP_RPAREN(self):
+            return self.getToken(GreekBaseParser.OP_RPAREN, 0)
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_conditionAtom
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitConditionAtom" ):
+                return visitor.visitConditionAtom(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def conditionAtom(self):
+
+        localctx = GreekBaseParser.ConditionAtomContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 42, self.RULE_conditionAtom)
+        try:
+            self.state = 304
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,32,self._ctx)
+            if la_ == 1:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 296
+                self.expression()
+                self.state = 297
+                self.relop()
+                self.state = 298
+                self.expression()
+                pass
+
+            elif la_ == 2:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 300
+                self.match(GreekBaseParser.OP_LPAREN)
+                self.state = 301
+                self.condition()
+                self.state = 302
+                self.match(GreekBaseParser.OP_RPAREN)
+                pass
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
         return localctx
 
 
@@ -1680,51 +2042,67 @@ class GreekBaseParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
+        def addExpr(self):
+            return self.getTypedRuleContext(GreekBaseParser.AddExprContext,0)
+
 
         def getRuleIndex(self):
             return GreekBaseParser.RULE_expression
 
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-    class ModExprContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expression(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.ExpressionContext)
-            else:
-                return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,i)
-
-        def OP_MOD(self):
-            return self.getToken(GreekBaseParser.OP_MOD, 0)
-
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitModExpr" ):
-                return visitor.visitModExpr(self)
+            if hasattr( visitor, "visitExpression" ):
+                return visitor.visitExpression(self)
             else:
                 return visitor.visitChildren(self)
 
 
-    class AddExprContext(ExpressionContext):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
 
-        def expression(self, i:int=None):
+    def expression(self):
+
+        localctx = GreekBaseParser.ExpressionContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 44, self.RULE_expression)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 306
+            self.addExpr()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class AddExprContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def mulExpr(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.ExpressionContext)
+                return self.getTypedRuleContexts(GreekBaseParser.MulExprContext)
             else:
-                return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,i)
+                return self.getTypedRuleContext(GreekBaseParser.MulExprContext,i)
 
-        def OP_ADD(self):
-            return self.getToken(GreekBaseParser.OP_ADD, 0)
+
+        def OP_ADD(self, i:int=None):
+            if i is None:
+                return self.getTokens(GreekBaseParser.OP_ADD)
+            else:
+                return self.getToken(GreekBaseParser.OP_ADD, i)
+
+        def OP_SUB(self, i:int=None):
+            if i is None:
+                return self.getTokens(GreekBaseParser.OP_SUB)
+            else:
+                return self.getToken(GreekBaseParser.OP_SUB, i)
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_addExpr
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitAddExpr" ):
@@ -1733,37 +2111,77 @@ class GreekBaseParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class FunctionCallExprContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def functionCall(self):
-            return self.getTypedRuleContext(GreekBaseParser.FunctionCallContext,0)
 
 
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFunctionCallExpr" ):
-                return visitor.visitFunctionCallExpr(self)
-            else:
-                return visitor.visitChildren(self)
+    def addExpr(self):
+
+        localctx = GreekBaseParser.AddExprContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 46, self.RULE_addExpr)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 308
+            self.mulExpr()
+            self.state = 313
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==37 or _la==38:
+                self.state = 309
+                _la = self._input.LA(1)
+                if not(_la==37 or _la==38):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 310
+                self.mulExpr()
+                self.state = 315
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
 
 
-    class MulExprContext(ExpressionContext):
+    class MulExprContext(ParserRuleContext):
+        __slots__ = 'parser'
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
 
-        def expression(self, i:int=None):
+        def atom(self, i:int=None):
             if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.ExpressionContext)
+                return self.getTypedRuleContexts(GreekBaseParser.AtomContext)
             else:
-                return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,i)
+                return self.getTypedRuleContext(GreekBaseParser.AtomContext,i)
 
-        def OP_MUL(self):
-            return self.getToken(GreekBaseParser.OP_MUL, 0)
+
+        def OP_MUL(self, i:int=None):
+            if i is None:
+                return self.getTokens(GreekBaseParser.OP_MUL)
+            else:
+                return self.getToken(GreekBaseParser.OP_MUL, i)
+
+        def OP_DIV(self, i:int=None):
+            if i is None:
+                return self.getTokens(GreekBaseParser.OP_DIV)
+            else:
+                return self.getToken(GreekBaseParser.OP_DIV, i)
+
+        def OP_MOD(self, i:int=None):
+            if i is None:
+                return self.getTokens(GreekBaseParser.OP_MOD)
+            else:
+                return self.getToken(GreekBaseParser.OP_MOD, i)
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_mulExpr
 
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitMulExpr" ):
@@ -1772,243 +2190,126 @@ class GreekBaseParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class DivExprContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expression(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.ExpressionContext)
-            else:
-                return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,i)
-
-        def OP_DIV(self):
-            return self.getToken(GreekBaseParser.OP_DIV, 0)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitDivExpr" ):
-                return visitor.visitDivExpr(self)
-            else:
-                return visitor.visitChildren(self)
 
 
-    class ParensExprContext(ExpressionContext):
+    def mulExpr(self):
 
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def OP_LPAREN(self):
-            return self.getToken(GreekBaseParser.OP_LPAREN, 0)
-        def expression(self):
-            return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,0)
-
-        def OP_RPAREN(self):
-            return self.getToken(GreekBaseParser.OP_RPAREN, 0)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitParensExpr" ):
-                return visitor.visitParensExpr(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class SubExprContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def expression(self, i:int=None):
-            if i is None:
-                return self.getTypedRuleContexts(GreekBaseParser.ExpressionContext)
-            else:
-                return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,i)
-
-        def OP_SUB(self):
-            return self.getToken(GreekBaseParser.OP_SUB, 0)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitSubExpr" ):
-                return visitor.visitSubExpr(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class IdExprContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def IDENTIFIER(self):
-            return self.getToken(GreekBaseParser.IDENTIFIER, 0)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitIdExpr" ):
-                return visitor.visitIdExpr(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class TypeExpressionContext(ExpressionContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a GreekBaseParser.ExpressionContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def literal(self):
-            return self.getTypedRuleContext(GreekBaseParser.LiteralContext,0)
-
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTypeExpression" ):
-                return visitor.visitTypeExpression(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-
-    def expression(self, _p:int=0):
-        _parentctx = self._ctx
-        _parentState = self.state
-        localctx = GreekBaseParser.ExpressionContext(self, self._ctx, _parentState)
-        _prevctx = localctx
-        _startState = 32
-        self.enterRecursionRule(localctx, 32, self.RULE_expression, _p)
+        localctx = GreekBaseParser.MulExprContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 48, self.RULE_mulExpr)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 268
+            self.state = 316
+            self.atom()
+            self.state = 321
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,29,self._ctx)
-            if la_ == 1:
-                localctx = GreekBaseParser.ParensExprContext(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-
-                self.state = 261
-                self.match(GreekBaseParser.OP_LPAREN)
-                self.state = 262
-                self.expression(0)
-                self.state = 263
-                self.match(GreekBaseParser.OP_RPAREN)
-                pass
-
-            elif la_ == 2:
-                localctx = GreekBaseParser.IdExprContext(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-                self.state = 265
-                self.match(GreekBaseParser.IDENTIFIER)
-                pass
-
-            elif la_ == 3:
-                localctx = GreekBaseParser.TypeExpressionContext(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-                self.state = 266
-                self.literal()
-                pass
-
-            elif la_ == 4:
-                localctx = GreekBaseParser.FunctionCallExprContext(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-                self.state = 267
-                self.functionCall()
-                pass
-
-
-            self._ctx.stop = self._input.LT(-1)
-            self.state = 287
-            self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,31,self._ctx)
-            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt==1:
-                    if self._parseListeners is not None:
-                        self.triggerExitRuleEvent()
-                    _prevctx = localctx
-                    self.state = 285
-                    self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,30,self._ctx)
-                    if la_ == 1:
-                        localctx = GreekBaseParser.MulExprContext(self, GreekBaseParser.ExpressionContext(self, _parentctx, _parentState))
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 270
-                        if not self.precpred(self._ctx, 9):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
-                        self.state = 271
-                        self.match(GreekBaseParser.OP_MUL)
-                        self.state = 272
-                        self.expression(10)
-                        pass
-
-                    elif la_ == 2:
-                        localctx = GreekBaseParser.DivExprContext(self, GreekBaseParser.ExpressionContext(self, _parentctx, _parentState))
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 273
-                        if not self.precpred(self._ctx, 8):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-                        self.state = 274
-                        self.match(GreekBaseParser.OP_DIV)
-                        self.state = 275
-                        self.expression(9)
-                        pass
-
-                    elif la_ == 3:
-                        localctx = GreekBaseParser.ModExprContext(self, GreekBaseParser.ExpressionContext(self, _parentctx, _parentState))
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 276
-                        if not self.precpred(self._ctx, 7):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 277
-                        self.match(GreekBaseParser.OP_MOD)
-                        self.state = 278
-                        self.expression(8)
-                        pass
-
-                    elif la_ == 4:
-                        localctx = GreekBaseParser.AddExprContext(self, GreekBaseParser.ExpressionContext(self, _parentctx, _parentState))
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 279
-                        if not self.precpred(self._ctx, 6):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 280
-                        self.match(GreekBaseParser.OP_ADD)
-                        self.state = 281
-                        self.expression(7)
-                        pass
-
-                    elif la_ == 5:
-                        localctx = GreekBaseParser.SubExprContext(self, GreekBaseParser.ExpressionContext(self, _parentctx, _parentState))
-                        self.pushNewRecursionContext(localctx, _startState, self.RULE_expression)
-                        self.state = 282
-                        if not self.precpred(self._ctx, 5):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 283
-                        self.match(GreekBaseParser.OP_SUB)
-                        self.state = 284
-                        self.expression(6)
-                        pass
-
-             
-                self.state = 289
+            _la = self._input.LA(1)
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & 3848290697216) != 0):
+                self.state = 317
+                _la = self._input.LA(1)
+                if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 3848290697216) != 0)):
+                    self._errHandler.recoverInline(self)
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
+                self.state = 318
+                self.atom()
+                self.state = 323
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,31,self._ctx)
+                _la = self._input.LA(1)
 
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
             self._errHandler.recover(self, re)
         finally:
-            self.unrollRecursionContexts(_parentctx)
+            self.exitRule()
+        return localctx
+
+
+    class AtomContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def functionCall(self):
+            return self.getTypedRuleContext(GreekBaseParser.FunctionCallContext,0)
+
+
+        def IDENTIFIER(self):
+            return self.getToken(GreekBaseParser.IDENTIFIER, 0)
+
+        def literal(self):
+            return self.getTypedRuleContext(GreekBaseParser.LiteralContext,0)
+
+
+        def OP_LPAREN(self):
+            return self.getToken(GreekBaseParser.OP_LPAREN, 0)
+
+        def expression(self):
+            return self.getTypedRuleContext(GreekBaseParser.ExpressionContext,0)
+
+
+        def OP_RPAREN(self):
+            return self.getToken(GreekBaseParser.OP_RPAREN, 0)
+
+        def getRuleIndex(self):
+            return GreekBaseParser.RULE_atom
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAtom" ):
+                return visitor.visitAtom(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+
+
+    def atom(self):
+
+        localctx = GreekBaseParser.AtomContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 50, self.RULE_atom)
+        try:
+            self.state = 331
+            self._errHandler.sync(self)
+            la_ = self._interp.adaptivePredict(self._input,35,self._ctx)
+            if la_ == 1:
+                self.enterOuterAlt(localctx, 1)
+                self.state = 324
+                self.functionCall()
+                pass
+
+            elif la_ == 2:
+                self.enterOuterAlt(localctx, 2)
+                self.state = 325
+                self.match(GreekBaseParser.IDENTIFIER)
+                pass
+
+            elif la_ == 3:
+                self.enterOuterAlt(localctx, 3)
+                self.state = 326
+                self.literal()
+                pass
+
+            elif la_ == 4:
+                self.enterOuterAlt(localctx, 4)
+                self.state = 327
+                self.match(GreekBaseParser.OP_LPAREN)
+                self.state = 328
+                self.expression()
+                self.state = 329
+                self.match(GreekBaseParser.OP_RPAREN)
+                pass
+
+
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
         return localctx
 
 
@@ -2052,11 +2353,11 @@ class GreekBaseParser ( Parser ):
     def relop(self):
 
         localctx = GreekBaseParser.RelopContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 34, self.RULE_relop)
+        self.enterRule(localctx, 52, self.RULE_relop)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 290
+            self.state = 333
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 135291469824) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2109,11 +2410,11 @@ class GreekBaseParser ( Parser ):
     def varType(self):
 
         localctx = GreekBaseParser.VarTypeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 36, self.RULE_varType)
+        self.enterRule(localctx, 54, self.RULE_varType)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 292
+            self.state = 335
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 1040187392) != 0)):
                 self._errHandler.recoverInline(self)
@@ -2128,48 +2429,6 @@ class GreekBaseParser ( Parser ):
             self.exitRule()
         return localctx
 
-
-
-    def sempred(self, localctx:RuleContext, ruleIndex:int, predIndex:int):
-        if self._predicates == None:
-            self._predicates = dict()
-        self._predicates[15] = self.condition_sempred
-        self._predicates[16] = self.expression_sempred
-        pred = self._predicates.get(ruleIndex, None)
-        if pred is None:
-            raise Exception("No predicate with index:" + str(ruleIndex))
-        else:
-            return pred(localctx, predIndex)
-
-    def condition_sempred(self, localctx:ConditionContext, predIndex:int):
-            if predIndex == 0:
-                return self.precpred(self._ctx, 3)
-         
-
-            if predIndex == 1:
-                return self.precpred(self._ctx, 2)
-         
-
-    def expression_sempred(self, localctx:ExpressionContext, predIndex:int):
-            if predIndex == 2:
-                return self.precpred(self._ctx, 9)
-         
-
-            if predIndex == 3:
-                return self.precpred(self._ctx, 8)
-         
-
-            if predIndex == 4:
-                return self.precpred(self._ctx, 7)
-         
-
-            if predIndex == 5:
-                return self.precpred(self._ctx, 6)
-         
-
-            if predIndex == 6:
-                return self.precpred(self._ctx, 5)
-         
 
 
 

@@ -109,6 +109,10 @@ class SemanticChecker:
         return float
 
 
+    def analyze_BoolLiteral(self, node: ast.BoolLiteral) -> type:
+        return bool
+
+
     def analyze_CharLiteral(self, node: ast.CharLiteral) -> type:
         return str
 
@@ -132,3 +136,34 @@ class SemanticChecker:
     def analyze_LoopStatement(self, node: ast.LoopStatement):
         self.analyze(node.condition)
         for statement in node.then: self.analyze(statement)
+
+    
+    def analyze_FunctionDeclaration(self, node: ast.FunctionDeclaration):
+        for decl in node.parameters: self.analyze(decl)
+        for stmt in node.statements: self.analyze(stmt)
+
+        if(node.name in self.symbol_table):
+            if(node.parameters == self.symbol_table[node.name][0]):
+                self.errors[f"{self.RED}[Error]: {self.WHITE}Function {node.name} redeclared {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}."] = 1
+            elif(node.return_type != self.symbol_table[node.name][1]):
+                self.errors[f"{self.RED}[Error]: {self.WHITE}Function {node.name} redeclared with a different type than earlier ({node.return_type} instead of {self.symbol_table[node.name][1]}) {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
+            else:
+                self.errors[f"{self.RED}[Error]: {self.WHITE}Function {node.name} redeclared with a different parameters than earlier ({node.parameters} instead of {self.symbol_table[node.name][0]}) {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
+        else:
+            self.symbol_table[node.name] = (node.parameters, node.return_type)
+    
+
+    def analyze_FuntionCall(self, node: ast.FunctionCall):
+        if(node.name in self.symbol_table):
+            params = node.parameters
+            if(len(params) != len(self.symbol_table[node.value][0])):
+                self.errors[f"{self.RED}[ERROR]: {self.WHITE}Wrong number of parameters in function call: {node.name} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
+            else:
+                for i, param in enumerate(params):
+                    if(param.varValue != self.symbol_table[node.name][1][i]):
+                        self.errors[f"{self.RED}[ERROR]: {self.WHITE}Different parameter type: {param} {self.PURPLE}in line {param.line}, column {param.column}{self.WHITE}!"] = 1
+        else:
+            self.errors[f"{self.RED}[ERROR]: {self.WHITE}Unknown identifier reference: {node.value} {self.PURPLE}in line {node.line}, column {node.column}{self.WHITE}!"] = 1
+        
+        if len(node.parameters) > 0:
+            for param in node.parameters: self.analyze(param)

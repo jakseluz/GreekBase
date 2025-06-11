@@ -21,6 +21,8 @@ statement
     : nonDeclarativeStatement
     | procedureDeclaration
     | functionDeclaration
+    | expressionStatement
+    | returnStatement
     ;
 
 //statements that explicitly do not allow making declarations of functions or procedures
@@ -32,6 +34,9 @@ nonDeclarativeStatement
     | printStatement
     | variableDeclaration
     ;
+
+expressionStatement
+    : expression OP_SEMICOLON;
 
 
 // ----statements----
@@ -66,7 +71,7 @@ loopStatement
 
 // print statement
 printStatement
-    : KW_PRINT expression OP_SEMICOLON
+    : KW_PRINT (IDENTIFIER | literal | functionCall) OP_SEMICOLON
     ;
 
 assignment
@@ -74,8 +79,12 @@ assignment
     ;
 
 variableDeclaration
-    : IDENTIFIER OP_COLON varType (OP_ASSIGN expression)? OP_SEMICOLON;
+    : IDENTIFIER OP_COLON varType (OP_ASSIGN (expression | condition))? OP_SEMICOLON;
 
+
+
+returnStatement
+    : KW_RETURN literal OP_SEMICOLON;
 
 // ----procedure specific things----
 
@@ -108,35 +117,62 @@ procedureDeclaration
 
 // function declaration
 functionDeclaration
-    : KW_FUNCTION IDENTIFIER OP_LPAREN (variableDeclaration (OP_COMMA variableDeclaration)*)? OP_RPAREN (KW_RETURN varType)
-      (KW_IS KW_BEGIN statement* KW_END KW_FUNCTION OP_SEMICOLON)
-      |
-      (KW_LCURL statement* KW_RCURL)
+    : KW_FUNCTION IDENTIFIER OP_LPAREN (variableDeclaration (OP_COMMA variableDeclaration)*)? OP_RPAREN (KW_RETURN varType)?
+    (
+        (KW_IS KW_BEGIN statement* KW_END KW_FUNCTION OP_SEMICOLON)
+        |
+        (KW_LCURL statement* KW_RCURL)
+    )
     ;
 
 functionCall
-    : call_name=IDENTIFIER OP_LPAREN (params+=IDENTIFIER (OP_COMMA params+=IDENTIFIER)*)? OP_RPAREN OP_SEMICOLON;
+    : call_name+=IDENTIFIER OP_LPAREN (params+=expression (OP_COMMA params+=expression)*)? OP_RPAREN;
 
+/*
 condition
     : left_expr=expression relop right_expr=expression
     | condition OP_OR condition
     | condition OP_AND condition
     | OP_NOT negated=condition
     ;
+*/
+condition : conditionOr;
 
-
-expression
-    : expression OP_MUL expression     # mulExpr
-    | expression OP_DIV expression     # divExpr
-    | expression OP_MOD expression     # modExpr
-    | expression OP_ADD expression     # addExpr
-    | expression OP_SUB expression     # subExpr
-    | OP_LPAREN expression OP_RPAREN   # parensExpr
-    | IDENTIFIER                       # idExpr
-    | literal                          # typeExpression
-    | functionCall                     # functionCallExpr
+conditionOr
+    : conditionAnd (OP_OR conditionAnd)*
     ;
 
+conditionAnd
+    : conditionNot (OP_AND conditionNot)*
+    ;
+
+conditionNot
+    : OP_NOT conditionNot
+    | conditionAtom
+    ;
+
+conditionAtom
+    : expression relop expression
+    | OP_LPAREN condition OP_RPAREN
+    ;
+
+
+expression : addExpr;
+
+addExpr
+    : mulExpr ( (OP_ADD | OP_SUB) mulExpr )*
+    ;
+
+mulExpr
+    : atom ( (OP_MUL | OP_DIV | OP_MOD) atom )*
+    ;
+
+atom
+    : functionCall
+    | IDENTIFIER
+    | literal
+    | OP_LPAREN expression OP_RPAREN
+    ;
 
 relop
     : OP_EQUAL
