@@ -27,7 +27,7 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         elif ctx.KW_FLOAT():
             return float
         elif ctx.KW_CHAR():
-            return str
+            return "char"
         elif ctx.KW_BOOL():
             return bool
         elif ctx.KW_STRING():
@@ -104,14 +104,14 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         astnode = terms[0]
         for i, right in enumerate(terms[1:], start = 1):
             operator = ctx.OP_OR()[i - 1].getText()
-            node = ast.Condition(
+            astnode = ast.Condition(
                 line = ctx.start.line,
                 column = ctx.start.column,
-                left = node,
+                left = astnode,
                 operator = operator,
                 right = right
             )
-        return node
+        return astnode
 
 
     def visitConditionAnd(self, ctx: GreekBaseParser.ConditionAndContext):
@@ -122,14 +122,14 @@ class GreekASTBuilder(GreekBaseParserVisitor):
         astnode = factors[0]
         for i, right in enumerate(factors[1:], start = 1):
             operator = ctx.OP_AND()[i - 1].getText()
-            node = ast.Condition(
+            astnode = ast.Condition(
                 line = ctx.start.line,
                 column = ctx.start.column,
-                left = node,
+                left = astnode,
                 operator = operator,
                 right = right
             )
-        return node
+        return astnode
     
     def visitConditionNot(self, ctx: GreekBaseParser.ConditionNotContext):
         if ctx.OP_NOT():
@@ -140,7 +140,7 @@ class GreekASTBuilder(GreekBaseParserVisitor):
             return self.visit(ctx.conditionAtom())
     
 
-    def visitConditionAtom(self, ctx):
+    def visitConditionAtom(self, ctx: GreekBaseParser.ConditionAtomContext):
         if ctx.relop():
             left = self.visit(ctx.expression(0))
             operator = ctx.relop().getText()
@@ -150,6 +150,8 @@ class GreekASTBuilder(GreekBaseParserVisitor):
             return self.visit(ctx.condition())
 
 
+    def visitExpressionStatement(self, ctx: GreekBaseParser.ExpressionStatementContext):
+        return self.visit(ctx.expression())
 
 
     def visitProcedureDeclaration(self, ctx: GreekBaseParser.ProcedureDeclarationContext):
@@ -170,8 +172,8 @@ class GreekASTBuilder(GreekBaseParserVisitor):
     
 
     def visitFunctionCall(self, ctx: GreekBaseParser.FunctionCallContext):
-        name = ctx.call_name[0].text
-        parameters = [self.visit(param) for param in ctx.expression()] if ctx.expression() else None
+        name = ctx.IDENTIFIER().getText()
+        parameters = [self.visit(param) for param in ctx.expression()] if ctx.expression() else []
         return ast.FunctionCall(ctx.start.line, ctx.start.column, name, parameters)
 
 

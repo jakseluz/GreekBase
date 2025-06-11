@@ -77,22 +77,34 @@ python main.py example.gb -o my_path/my_name.c
 x : int := 5;
 y : int := 10;
 
+function Dodaj()
+is
+begin
+    print y;
+end function;
+
 if x < y then
     x := x + 1;
 else y := y - 1;
 end if;
 
-while x < y {
+/* bezsensowna pętla - jak cały ten program
+- nie ma
+ABSOLUTNIE żadnego sensu
+*/
+while x < y and x /= y {
     print x;
     x := x + 1;
+    Dodaj();
+    --coś tutaj napisałem
 }
-
+Dodaj();
 print x;
 print y;
 ```
 2. AST tree:
 ```python
-Program(line=1, column=0, statements=[VariableDeclaration(line=1, column=0, varType=<class 'int'>, id='x', varValue=IntLiteral(line=1, column=11, value=5)), VariableDeclaration(line=2, column=0, varType=<class 'int'>, id='y', varValue=IntLiteral(line=2, column=11, value=10)), IfStatement(line=4, column=0, condition=Condition(line=4, column=3, left=Identifier(line=4, column=3, value='x', type=None), operator='<', right=Identifier(line=4, column=7, value='y', type=None)), then_branch=[Assignment(line=5, column=4, id='x', value=AdditionOperator(line=5, column=9, left=Identifier(line=5, column=9, value='x', type=None), operator='+', right=IntLiteral(line=5, column=13, value=1)))], else_branch=[Assignment(line=6, column=5, id='y', value=AdditionOperator(line=6, column=10, left=Identifier(line=6, column=10, value='y', type=None), operator='-', right=IntLiteral(line=6, column=14, value=1)))]), LoopStatement(line=9, column=0, condition=Condition(line=9, column=6, left=Identifier(line=9, column=6, value='x', type=None), operator='<', right=Identifier(line=9, column=10, value='y', type=None)), then=[PrintStatement(line=10, column=4, value=Identifier(line=10, column=10, value='x', type=None)), Assignment(line=11, column=4, id='x', value=AdditionOperator(line=11, column=9, left=Identifier(line=11, column=9, value='x', type=None), operator='+', right=IntLiteral(line=11, column=13, value=1)))]), PrintStatement(line=14, column=0, value=Identifier(line=14, column=6, value='x', type=None)), PrintStatement(line=15, column=0, value=Identifier(line=15, column=6, value='y', type=None))])
+Program(line=1, column=0, statements=[VariableDeclaration(line=1, column=0, varType=<class 'int'>, id='x', varValue=IntLiteral(line=1, column=11, value=5)), VariableDeclaration(line=2, column=0, varType=<class 'int'>, id='y', varValue=IntLiteral(line=2, column=11, value=10)), FunctionDeclaration(line=4, column=0, name='Dodaj', parameters=[], return_type=None, statements=[PrintStatement(line=7, column=4, value='y')]), IfStatement(line=10, column=0, condition=Condition(line=10, column=3, left=Identifier(line=10, column=3, value='x', type=None), operator='<', right=Identifier(line=10, column=7, value='y', type=None)), then_branch=[Assignment(line=11, column=4, id='x', value=AdditionOperator(line=11, column=9, left=Identifier(line=11, column=9, value='x', type=None), operator='+', right=IntLiteral(line=11, column=13, value=1)))], else_branch=[Assignment(line=12, column=5, id='y', value=AdditionOperator(line=12, column=10, left=Identifier(line=12, column=10, value='y', type=None), operator='-', right=IntLiteral(line=12, column=14, value=1)))]), LoopStatement(line=19, column=0, condition=Condition(line=19, column=6, left=Condition(line=19, column=6, left=Identifier(line=19, column=6, value='x', type=None), operator='<', right=Identifier(line=19, column=10, value='y', type=None)), operator='and', right=Condition(line=19, column=16, left=Identifier(line=19, column=16, value='x', type=None), operator='/=', right=Identifier(line=19, column=21, value='y', type=None))), then=[PrintStatement(line=20, column=4, value='x'), Assignment(line=21, column=4, id='x', value=AdditionOperator(line=21, column=9, left=Identifier(line=21, column=9, value='x', type=None), operator='+', right=IntLiteral(line=21, column=13, value=1))), FunctionCall(line=22, column=4, name='Dodaj', parameters=[])]), FunctionCall(line=25, column=0, name='Dodaj', parameters=[]), PrintStatement(line=26, column=0, value='x'), PrintStatement(line=27, column=0, value='y')])
 ```
 3. Semantic check:
 
@@ -101,18 +113,24 @@ Program(line=1, column=0, statements=[VariableDeclaration(line=1, column=0, varT
 4. Code in C:
 ```C
 #include <stdio.h>
+void Dodaj(){
+printf("%d", y);
+}
 int main(){
 int x = 5;
 int y = 10;
+
 if(x < y){
 x = x + 1;
 }else{ 
 y = y - 1;
 }
-while(x < y){
+while(x < y && x != y){
 printf("%d", x);
 x = x + 1;
+Dodaj();
 }
+Dodaj();
 printf("%d", x);
 printf("%d", y);
 return 0;
