@@ -78,7 +78,7 @@ class gui:
             messagebox.showinfo("Info", "Pole tekstowe po lewej jest puste!")
             return
         # Compilation logic
-        processed, errors_and_warnings, success = compile_code_from_gui(input_content)
+        processed, errors_and_warnings, success, ast = compile_code_from_gui(input_content)
         # Debug
         print("Errors and warnings: " + errors_and_warnings)
         """

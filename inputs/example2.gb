@@ -12,7 +12,7 @@ if x < y then
 else y := y - 1;
 end if;
 
-while x < y and x/= {
+while x < y and x/= 1{
     print x;
     x := x + 1;
     --Dodaj();
